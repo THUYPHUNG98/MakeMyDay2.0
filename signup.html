@@ -1,0 +1,90 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="signup.css">
+    <title>Register</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-database.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-analytics.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-auth.js"></script>
+    <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyDEbLyxX7Z3DnQNc3Gw_MRBIrdutFk3rLg",
+        authDomain: "makemyday-eee4f.firebaseapp.com",
+        databaseURL: "https://makemyday-eee4f.firebaseio.com",
+        projectId: "makemyday-eee4f",
+        storageBucket: "makemyday-eee4f.appspot.com",
+        messagingSenderId: "971213658274",
+        appId: "1:971213658274:web:0f3af11dee68dea1fe5ffb",
+        measurementId: "G-52M14G18F5"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    </script>
+    <div class="register-box">
+        <div class="left-box">
+            <h1>Better planning</h1>
+            <h1>Better life</h1>
+            <h3>MakeMyDay - 2019</h3>
+        </div>
+        <div class="right-box">
+            <ul class="navigation-menu">
+                <li><a href="login.html">Login</a></li>
+                <li><a href="#">About us</a></li>
+                <li><a href="signup.html">Sign up</a></li>
+            </ul>
+            <div class="form-wrapper">
+                <form action="">
+                    <div class="wrap-name">
+                        <div class="input-wrapper">
+                            <img src="assets/log_in_page element-05.png" alt="">
+                            <input type="text" placeholder="First name" id="first_name">
+                        </div>
+                        <div class="input-wrapper">
+                            <img src="assets/log_in_page element-05.png" alt="">
+                            <input type="text" placeholder="Last name" id="last_name">
+                        </div>
+                    </div>
+                    <div class="input-wrapper">
+                        <img src="assets/log_in_page element-05.png" alt="">
+                        <input type="email" placeholder="Your email" id="email_input">
+                    </div>
+                    <div class="input-wrapper">
+                        <img src="assets/log_in_page element-04.png" alt="">
+                        <input type="text" placeholder="Username" id="username_input">
+                    </div>
+                    <div class="input-wrapper">
+                        <img src="assets/log_in_page element-05.png" alt="">
+                        <input type="password" placeholder="Password" id="passwd_input">
+                    </div>
+                    <div class="input-wrapper">
+                        <img src="assets/log_in_page element-05.png" alt="">
+                        <input type="password" placeholder="Confirm password" id="confirm_passwd">
+                    </div>
+                    <div>
+                        <span id="warn_message" style="color: red"></span>
+                    </div>
+                    <div class="btn-wrapper">
+                        <button type="button" id="signup_button">Let's MakeMyDay</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="signup.js"></script>
+</body>
+
+</html>

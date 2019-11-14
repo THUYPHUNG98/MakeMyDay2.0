@@ -484,8 +484,8 @@ body {
 .close_panel{
     color: #98C5FA;
     position: absolute;
-    top:3.8%;
-    right:38.5%;
+    top: -16px;
+    right: -9px;
     font-size: 28px;
     font-weight: bold;
   }
@@ -494,7 +494,7 @@ body {
       color: #5696E1;
       cursor: pointer;
   }
-#task_panel_content{
+  #task_panel_content{
     display: flex;
     background-color: #fefefe;
     overflow: auto;
@@ -502,9 +502,15 @@ body {
     padding: 25px;
     border: 1px solid #888;
     width: 25%;
-    height: 98%; 
+    /* height: 98%;  */
+    min-width: 452px;
     align-items: center;
     flex-direction: column;
+}
+#task_panel_content_holder{
+    width: 100%;
+    /* height: 480px; */
+    position: relative;
 }
 #panel_add{
     display: flex;
@@ -552,15 +558,14 @@ body {
     justify-content: space-between;
     width: 100%;
     max-height: 70px;
-    height: 20%;
+    height: 60px;
 }
 .panel_btn{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 70%;
-    max-height: 53px;
-    min-height: 42px;
+    min-height: 50px;
     width: 24%;
     color: white;
     cursor: pointer;
@@ -572,8 +577,9 @@ body {
 }
 #panel_set{
     display: flex;
+    margin-top: 5px;
     width: 100%;
-    height: 20%;
+    height: 60px;
     max-height: 70px;
     justify-content: space-between;
     align-items: center;
@@ -581,8 +587,7 @@ body {
 #panel_set div{
     display: flex;
     height: 70%;
-    max-height: 53px;
-    min-height: 42px;
+    min-height: 50px;
     width: 48%;
     background-color:#BCD9FF;
     justify-content: space-around;
@@ -602,7 +607,6 @@ body {
 }
                         /* lúc mà ấn set nha */
 #enable{
-    display: none;
     width: 100%;
     height: 100%;
     flex-direction: column;
@@ -619,10 +623,23 @@ body {
     font-size: 20px;
     
 
+
 }
+#pick_time_date{
+    display: flex;
+    height: 50px;
+    width: 100%;
+    background-color: #BCD9FF;
+    border: none;
+    text-align: center;
+    padding-left: 18%;
+    font-size: 25px;
+    color: #5696E1;
+}
+
 #pick_time_icon{
-    width: 15%;
-    height: 100%;
+    width: 45px;
+    height: 45px;
     background-image: url(./assets/icon_task_panel-01.png);
     background-size: contain;
     transform: scale(0.6) translateX(-17px);;
@@ -630,22 +647,8 @@ body {
     background-repeat: no-repeat;
 
 }
-#pick_time_date{
-    display: flex;
-    text-align: center;
-    background-color: #BCD9FF;
-    border: none;
-    width: 8%;
-    height: 100%;
-    font-size: 20px;
-    color: white;
-}
-#pick_time_date:hover{
-    font-size: 30px;
-    color: #5996E1;
-    transition: 100ms;
-    cursor: pointer;
-}
+
+
 
 #repeat_container{
     display: flex;
@@ -712,35 +715,29 @@ body {
     font-size: 20px;
 }
 .pick_hour_icon{
-    width: 15%;
-    height: 100%;
+    display:inline-block;
+    width: 45px;
+    height: 45px;
     background-image: url(./assets/icon_task_panel-02.png);
     background-size: contain;
     transform: scale(0.8);
     background-position: center;
     background-repeat: no-repeat;
 }
-.input_hour ,.input_minute{
+.input_start ,.input_end{
     display:flex;
     height: 100%;
-    width: 30%;
+    width: 70%;
     border: none;
     background-color: #BCD9FF;
     color: white;
     font-size: 20px;
     text-align: center;
-    
-}
-
-.input_hour option, .input_minute option{
-    background-color: white;
     color: #5696E1;
     
 }
-.input_hour:hover,.input_minute:hover{
-    transform: scale(1.1);
-    transition: 100ms;
-    background-color: #5696E1;
+
+.input_start:hover,.input_end:hover{
     cursor: pointer;
 }
 #arrow{
@@ -762,7 +759,7 @@ body {
     justify-content: center;
     align-items: center;
     margin: 5px 0px;
-    height: 40%;
+    height: 50px;
     width: 100%;
     background-color: #BCD9FF;
     justify-content: space-between;
@@ -770,7 +767,7 @@ body {
     padding-right: 20px
 }
 #remind_at_task select{
-    height: 100%;
+    height: 85%;
     width: 15%;
     background-color:#BCD9FF ;
     color: white;
@@ -808,7 +805,7 @@ body {
     color: white;
 }
 #delete_task{
-    height: 10%;
+    height: 50px;
     width: 100%;
     min-height: 42px;
     display: flex;
@@ -895,8 +892,8 @@ body {
 } */
 #close{
     position: absolute;
-    top: -38px;
-    right: -55px;
+    top: -23px;
+    right: -115px;
     transform: rotate(45deg);
     cursor: pointer;
 }

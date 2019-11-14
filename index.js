@@ -45,16 +45,37 @@ window.onclick = function(event) {
     }
 }
 // set button
+let task_panel_content_holder = document.getElementById("task_panel_content_holder")
+let task_panel_content = document.getElementById("task_panel_content")
 let enable = document.getElementById("enable");
 let set_btn = document.getElementById("set_btn");
 set_btn.addEventListener("click",()=>{
+    console.log(enable.style.display);
+    
+
     if(enable.style.display == "none"){
-        enable.style.display = "flex"; 
+        enable.style.display = "flex";
+        // task_panel_content_holder.style.height= "480px"; 
+        // task_panel_content.style.height = "98%"
 
     } else {
         enable.style.display = "none";
+        // task_panel_content_holder.style.height= "410px";
+        // task_panel_content.style.height = "410px"
+         
     }
 })
+
+/////// chọn minute hẹn giờ
+let remind_array = [00,02,10,15,20,25,30,35,40,45,50,55,60];
+let select_string_remind = [];
+let insert_remind = document.getElementById("pick_time_remind");
+remind_array.map(item =>{
+    let a = `<option value = "${item}">${item}</option>`
+    select_string_remind.push(a);
+});
+insert_remind.innerHTML = `${select_string_remind}`;
+
 // modal date detail
 // console.log(document.getElementById('cal_day'));
 // list_cal_day = document.getElementsByClassName('cal_day');

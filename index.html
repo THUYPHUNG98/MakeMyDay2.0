@@ -10,15 +10,15 @@
 </head>
 
 <body>
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
-        <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-database.js"></script>
-        <!-- TODO: Add SDKs for Firebase products that you want to use
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-database.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
             https://firebase.google.com/docs/web/setup#available-libraries -->
-        <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-analytics.js"></script>
-        <!-- Add Firebase products that you want to use -->
-        <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-auth.js"></script>
-        <script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-analytics.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-auth.js"></script>
+    <script>
         // Your web app's Firebase configuration
         var firebaseConfig = {
             apiKey: "AIzaSyDEbLyxX7Z3DnQNc3Gw_MRBIrdutFk3rLg",
@@ -33,16 +33,16 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
-        </script>
+    </script>
     <div>
-                            <!-- người dùng -->
+        <!-- người dùng -->
         <div id="user_tab">
             <div></div>
             <div>
                 <img src="" alt="">
             </div>
         </div>
-                            <!-- tab weather -->
+        <!-- tab weather -->
         <div id="weather_tab">
             <div id="mini_tab_weather_left">
                 <div class="mini" id="todayy">
@@ -70,83 +70,83 @@
                         <li id="feedback">Feedback</li>
                     </ul>
                 </nav>
-                <div id="today_box" >
-                        <div id="just_today"> 
-                            <div id="today">Today</div>
-                            <div id="today_full">
-                                    <span id="today_full_1">Saturday</span>
-                                    <span id="today_full_2">2-11-2019</span> 
-                            </div>
+                <div id="today_box">
+                    <div id="just_today">
+                        <div id="today">Today</div>
+                        <div id="today_full">
+                            <span id="today_full_1">Saturday</span>
+                            <span id="today_full_2">2-11-2019</span>
                         </div>
-                        
-                        <div id="a_rectangle"></div>
+                    </div>
+
+                    <div id="a_rectangle"></div>
                 </div>
-                
+
             </div>
         </div>
-                            <!-- tab counter -->
+        <!-- tab counter -->
 
         <div id="todaycounter_tab">
-                <div class="count_box">
-                    <div class="count_box_first">
-                        <div style="color: #5696E1;" class="count_number">1</div>
-                        <div style="color: #5696E1;" class="count_name">To-do</div>
-                    </div>
-                    <div style="color: #5696E1;" class="count_list">
-                        <ul >
-                            <li>mua sách</li>
-                            <li>mua sách</li>
-                            <li>mua sách</li>
-                        </ul>
-                    </div>
+            <div class="count_box">
+                <div class="count_box_first">
+                    <div style="color: #5696E1;" class="count_number">1</div>
+                    <div style="color: #5696E1;" class="count_name">To-do</div>
                 </div>
-                <div class="count_box">
-                    <div class="count_box_first">
-                        <div style="color: #FFCC00;" class="count_number">1</div>
-                        <div style="color: #5696E1;" class="count_name">Dates</div>
-                    </div>
-                    <div style="color: #FFCC00;" class="count_list">
-                        <ul>
-                            <li>mua sách</li>
-                            <li>mua sách</li>
-                            <li>mua sách</li>
-                            <li>mua sách</li>
-                            <li>mua sách</li>
-                            <li>mua sách</li>
-                            <li>mua sách</li>
-                            <li>mua sách</li>
-                            <li>mua sách</li>
-                        </ul>
-                    </div>
+                <div style="color: #5696E1;" class="count_list">
+                    <ul>
+                        <li>mua sách</li>
+                        <li>mua sách</li>
+                        <li>mua sách</li>
+                    </ul>
                 </div>
-                <div  class="count_box">
-                    <div class="count_box_first">
-                        <div style="color: #72DB72;" class="count_number">1</div>
-                        <div style="color: #5696E1;" class="count_name">Routine</div>
-                    </div>
-                    <div style="color: #72DB72;" class="count_list">
-                        <ul>
-                            <li>mua sách</li>
-                            <li>mua sách</li>
-                            <li>mua sách</li>
-                        </ul>
-                    </div>
+            </div>
+            <div class="count_box">
+                <div class="count_box_first">
+                    <div style="color: #FFCC00;" class="count_number">1</div>
+                    <div style="color: #5696E1;" class="count_name">Dates</div>
                 </div>
-                <div  class ="count_box">
-                    <div class="count_box_first">
-                        <div style="color: #FF8383;" class="count_number">1</div>
-                        <div style="color: #5696E1;" class="count_name">Deadline</div>
-                    </div>
-                    <div style="color: #FF8383;" class="count_list">
-                        <ul>
-                            <li>mua sách</li>
-                            <li>mua sách</li>
-                            <li>mua sách</li>
-                        </ul>
-                    </div>
+                <div style="color: #FFCC00;" class="count_list">
+                    <ul>
+                        <li>mua sách</li>
+                        <li>mua sách</li>
+                        <li>mua sách</li>
+                        <li>mua sách</li>
+                        <li>mua sách</li>
+                        <li>mua sách</li>
+                        <li>mua sách</li>
+                        <li>mua sách</li>
+                        <li>mua sách</li>
+                    </ul>
                 </div>
+            </div>
+            <div class="count_box">
+                <div class="count_box_first">
+                    <div style="color: #72DB72;" class="count_number">1</div>
+                    <div style="color: #5696E1;" class="count_name">Routine</div>
+                </div>
+                <div style="color: #72DB72;" class="count_list">
+                    <ul>
+                        <li>mua sách</li>
+                        <li>mua sách</li>
+                        <li>mua sách</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="count_box">
+                <div class="count_box_first">
+                    <div style="color: #FF8383;" class="count_number">1</div>
+                    <div style="color: #5696E1;" class="count_name">Deadline</div>
+                </div>
+                <div style="color: #FF8383;" class="count_list">
+                    <ul>
+                        <li>mua sách</li>
+                        <li>mua sách</li>
+                        <li>mua sách</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-                            <!-- tab calenther -->
+        <!-- tab calenther -->
 
         <div id="calendar_tab">
             <div id="calendar">
@@ -154,7 +154,7 @@
                     <div>Month</div>
                     <div>Week</div>
                 </div>
-                <div id="cal_2" >
+                <div id="cal_2">
                     <div>Mon</div>
                     <div>Tue</div>
                     <div>Wed</div>
@@ -164,345 +164,15 @@
                     <div>Sun</div>
                 </div>
                 <div id="cal_3">
-                    <div class="month_div" id="November">
-                            <ul>
-                                    <li  class="cal_day">
-                                        <div class="count_day"></div>
-                                        
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day"></div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day"></div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day"></div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day" on>1</div>
-                                        <div style="opacity: 100" class="count_blue">2</div>
-                                        <div style="opacity: 100" class="count_green">1</div>
-                                        <div style="opacity: 0" class="count_yellow">3</div>
-                                        <div style="opacity: 0" class="count_red">2</div>
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">2</div>
-                                        <div style="opacity: 100" class="count_blue">2</div>
-                                        <div style="opacity: 0" class="count_green">0</div>
-                                        <div style="opacity: 0" class="count_yellow">0</div>
-                                        <div style="opacity: 100" class="count_red">2</div>
-                                        <ul style="display:none">
-                    
-                                                <li class="to_do_list"> Đọc sách</li>
-                                                <li class="to_do_list">Đi chợ</li>
-                                                <li class="deadline_list">thiết kế web</li>
-                    
-                                        </ul>
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">3</div>
-                                        <div style="opacity: 0" class="count_blue">2</div>
-                                        <div style="opacity: 100" class="count_green">1</div>
-                                        <div style="opacity: 0" class="count_yellow">3</div>
-                                        <div style="opacity: 0" class="count_red">2</div>
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">4</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">5</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">6</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">7</div>
-                                        <div style="opacity: 100" class="count_blue">2</div>
-                                        <div style="opacity: 100" class="count_green">1</div>
-                                        <div style="opacity: 100" class="count_yellow">3</div>
-                                        <div style="opacity: 100" class="count_red">2</div>
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">8</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">9</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">10</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">11</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">12</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">13</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">14</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">15</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">16</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">17</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">18</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">19</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">20</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">21</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">22</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">23</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">24</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">25</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">26</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">27</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">28</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">29</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">30</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">31</div>
-                                       
-                                    </li>
-                                
-                                    
-                                   
-                                    
-                                </ul>
-                    </div>
-                    <div id="space_month_div"></div>
-                    <div class="month_div" id="December">
-                            <ul>
-                                    <li  class="cal_day">
-                                        <div class="count_day"></div>
-                                        
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day"></div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day"></div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day"></div>
-                                       
-                                    </li>
-                                    <li  class="cal_day" id="cal_day">
-                                        <div class="count_day" >1</div>
-                                        <div style="opacity: 100" class="count_blue">2</div>
-                                        <div style="opacity: 100" class="count_green">1</div>
-                                        <div style="opacity: 0" class="count_yellow">3</div>
-                                        <div style="opacity: 0" class="count_red">2</div>
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">2</div>
-                                        <div style="opacity: 100" class="count_blue">2</div>
-                                        <div style="opacity: 0" class="count_green">0</div>
-                                        <div style="opacity: 0" class="count_yellow">0</div>
-                                        <div style="opacity: 100" class="count_red">2</div>
-                                        <ul style="display:none">
-                    
-                                                <li class="to_do_list"> Đọc sách</li>
-                                                <li class="to_do_list">Đi chợ</li>
-                                                <li class="deadline_list">thiết kế web</li>
-                    
-                                        </ul>
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">3</div>
-                                        <div style="opacity: 0" class="count_blue">2</div>
-                                        <div style="opacity: 100" class="count_green">1</div>
-                                        <div style="opacity: 0" class="count_yellow">3</div>
-                                        <div style="opacity: 0" class="count_red">2</div>
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">4</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">5</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">6</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">7</div>
-                                        <div style="opacity: 100" class="count_blue">2</div>
-                                        <div style="opacity: 100" class="count_green">1</div>
-                                        <div style="opacity: 100" class="count_yellow">3</div>
-                                        <div style="opacity: 100" class="count_red">2</div>
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">8</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">9</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">10</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">11</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">12</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">13</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">14</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">15</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">16</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">17</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">18</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">19</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">20</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">21</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">22</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">23</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">24</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">25</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">26</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">27</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">28</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">29</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">30</div>
-                                       
-                                    </li>
-                                    <li  class="cal_day">
-                                        <div class="count_day">31</div>
-                                       
-                                    </li>
-                                
-                                    
-                                   
-                                    
-                                </ul>
-                    </div>
-                    
+                    <ul id="month_container"  targetmonth = "0">
+
+
+                    </ul>
+
+
                 </div>
             </div>
-                            <!-- tab todo -->
+            <!-- tab todo -->
             <div id="todo">
 
                 <div id="unset">Unset</div>
@@ -510,238 +180,258 @@
                     <ul id="unset_list">
 
                         <!-- insert unset_lish vào chỗ này -->
-                        
+
 
                     </ul>
                 </div>
                 <div id="total">6 total</div>
-                
+
+            </div>
+
         </div>
-        
-    </div>
-    <div onclick="open_task_panel()" id="addBtn">+</div>
+        <div onclick="open_task_panel()" id="addBtn">+</div>
 
 
-    <div id="task_panel">
-        <div id="task_panel_content">
+        <div id="task_panel">
+            <div id="task_panel_content">
                 <div id="task_panel_content_holder">
-                        <span class="close_panel">&times;</span>
+                    <span class="close_panel">&times;</span>
+                    <div class="panel_name">
+                        <div class="line"></div>
+                        <div class="name1">Task name</div>
+                        <div class="line"></div>
+                    </div>
+                    <input id="input_name" type="text" value="">
+
+                    <div class="panel_name">
+                        <div class="line"></div>
+                        <div class="name1">Category</div>
+                        <div class="line"></div>
+                    </div>
+                    <div class="panel_cate">
+                        <div class="panel_btn blue" onclick="ready_to_unset()">To-do</div>
+                        <div class="panel_btn yellow" onclick="ready_to_unset()">Dates</div>
+                        <div class="panel_btn green" onclick="ready_to_unset()">Routine</div>
+                        <div class="panel_btn red" onclick="ready_to_unset()">Deadline</div>
+                    </div>
+                    <div class="line1"></div>
+                    <div id="panel_set">
+                        <div id="unset_btn">Unset</div>
+                        <div id="set_btn">Set</div>
+                    </div>
+                    <div id="noti_set"></div>
+                    <div id="enable" style="display: none;">
                         <div class="panel_name">
                             <div class="line"></div>
-                            <div class="name1">Task name</div>
+                            <div class="name1">Task date</div>
                             <div class="line"></div>
                         </div>
-                        <input id="input_name" type="text" value="">
-        
-                        <div class="panel_name">
-                                <div class="line"></div>
-                                <div class="name1">Category</div>
-                                <div class="line"></div>
+                        <div id="pick_time">
+                            <input id="pick_time_date" type="date">
+
                         </div>
-                        <div class="panel_cate">
-                            <div class="panel_btn blue" onclick="ready_to_unset()">To-do</div>
-                            <div class="panel_btn yellow" onclick="ready_to_unset()">Dates</div>
-                            <div class="panel_btn green" onclick="ready_to_unset()">Routine</div>
-                            <div class="panel_btn red" onclick="ready_to_unset()">Deadline</div>
+                        <div class="panel_name">
+                            <div class="line"></div>
+                            <div class="name1">Repeat every</div>
+                            <div class="line"></div>
+                        </div>
+                        <div id="repeat_container">
+                            <div class="every">Day</div>
+                            <div class="every">Week</div>
+                            <div class="every">Month</div>
+                            <div class="every">2 Days</div>
+                            <div class="every">3 Days</div>
+                            <div class="every">4 Days</div>
+                        </div>
+                        <div class="panel_name">
+                            <div class="line"></div>
+                            <div class="name1">Task time</div>
+                            <div class="line"></div>
+                        </div>
+                        <div id="pick_hour">
+                            <div id="pick_limit_hour">
+                                <div class="box" id="hour_start">
+                                    <div class="pick_hour_icon"></div>
+                                    <input type="time" class="input_start">
+
+                                </div>
+                                <div id="arrow">→</div>
+                                <div class="box" id="hour_end">
+                                    <div class="pick_hour_icon"></div>
+                                    <input type="time" class="input_end">
+                                </div>
+                            </div>
                         </div>
                         <div class="line1"></div>
-                        <div id="panel_set">
-                            <div id="unset_btn">Unset</div>
-                            <div id="set_btn">Set</div>
-                        </div>
-                        <div id="noti_set"></div>
-                        <div id="enable" style="display: none;">
-                            <div class="panel_name">
-                                <div class="line"></div>
-                                <div class="name1">Task date</div>
-                                <div class="line"></div>
-                            </div>
-                            <div id="pick_time">
-                                <input id="pick_time_date" type="date">
+                        <div id="remind">
+                            <div id="remind_at_task">
+                                <div>Remind me before</div>
+                                <select id="pick_time_remind">
 
+                                </select>
+                                <div>min</div>
+                                <input class="checkbox" type="checkbox">
                             </div>
-                            <div class="panel_name">
-                                    <div class="line"></div>
-                                    <div class="name1">Repeat every</div>
-                                    <div class="line"></div>
+                            <div id="remind_once">
+                                <div>Remind me at morning</div>
+                                <input class="checkbox" type="checkbox">
                             </div>
-                            <div id="repeat_container">
-                                <div class="every">Day</div>
-                                <div class="every">Week</div>
-                                <div class="every">Month</div>
-                                <div class="every">2 Days</div>
-                                <div class="every">3 Days</div>
-                                <div class="every">4 Days</div>
-                            </div>
-                            <div class="panel_name">
-                                    <div class="line"></div>
-                                    <div class="name1">Task time</div>
-                                    <div class="line"></div>
-                            </div>
-                           <div id="pick_hour">
-                               <div id="pick_limit_hour">
-                                   <div class="box" id="hour_start">
-                                        <div class="pick_hour_icon"></div>
-                                        <input type="time" class="input_start">
-        
-                                   </div>
-                                   <div id="arrow">→</div>
-                                   <div class="box" id="hour_end">
-                                        <div class="pick_hour_icon"></div>
-                                        <input type="time" class="input_end">
-                                    </div>
-                               </div>
-                            </div>
-                            <div class="line1"></div>
-                            <div id="remind">
-                                <div id="remind_at_task">
-                                    <div>Remind me before</div>
-                                    <select id="pick_time_remind">
-                                        
-                                    </select>
-                                    <div>min</div>
-                                    <input class="checkbox" type="checkbox">
-                                </div>
-                                <div id="remind_once">
-                                    <div>Remind me at morning</div>
-                                    <input class="checkbox" type="checkbox">
-                                </div>
-                                
-                            </div>
-                            <div class="line1"></div>
-                            <div id="make_task">Let's make</div>
-                        </div>
-        
-                        <div id="delete_task">
-                            <div id="delete_icon"></div>
-                            <div>Delete</div>
-                        </div>
-                </div>
-                
-                
-            </div>
-</div>
-<!-- end của task panel -->
 
- 
- <!--modal detailtasks_tab-->
- <div class="bg_detailtasks_tab">
-    <!-- <div class="detailtasks_content"> -->
-    <div class="bg_todaymodal_date">
-        <div id="todaymodal_tab">
-            <div class="todaymodal_date">
-                <div class="date_click">11/11/2019</div>
-                <div id="close">+</div>
+                        </div>
+                        <div class="line1"></div>
+                        <div id="make_task">Let's make</div>
+                    </div>
+
+                    <div id="delete_task">
+                        <div id="delete_icon"></div>
+                        <div>Delete</div>
+                    </div>
+                </div>
+
+
             </div>
-            <div class="todaymodal_tasks">
-                <div class="count_box">
-                    <div class="count_box_first">
-                        <div style="color: #5696E1;" class="count_number">1</div>
-                        <div style="color: #5696E1;" class="count_name">To-do</div>
+        </div>
+        <!-- end của task panel -->
+
+
+        <!--modal detailtasks_tab-->
+        <div class="bg_detailtasks_tab">
+            <!-- <div class="detailtasks_content"> -->
+            <div class="bg_todaymodal_date">
+                <div id="todaymodal_tab">
+                    <div class="todaymodal_date">
+                        <div class="date_click">11/11/2019</div>
+                        <div id="close">+</div>
                     </div>
-                    <div style="color: #5696E1;" class="count_list">
-                        <ul>
-                            <li>mua sách</li>
-                            <li>mua sách</li>
-                            <li>mua sách</li>
-                        </ul>
+                    <div class="todaymodal_tasks">
+                        <div class="count_box">
+                            <div class="count_box_first">
+                                <div style="color: #5696E1;" class="count_number">1</div>
+                                <div style="color: #5696E1;" class="count_name">To-do</div>
+                            </div>
+                            <div style="color: #5696E1;" class="count_list">
+                                <ul>
+                                    <li>mua sách</li>
+                                    <li>mua sách</li>
+                                    <li>mua sách</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="count_box">
+                            <div class="count_box_first">
+                                <div style="color: #FFCC00;" class="count_number">1</div>
+                                <div style="color: #5696E1;" class="count_name">Dates</div>
+                            </div>
+                            <div style="color: #FFCC00;" class="count_list">
+                                <ul>
+                                    <li>mua sách</li>
+                                    <li>mua sách</li>
+                                    <li>mua sách</li>
+                                    <li>mua sách</li>
+                                    <li>mua sách</li>
+                                    <li>mua sách</li>
+                                    <li>mua sách</li>
+                                    <li>mua sách</li>
+                                    <li>mua sách</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="count_box">
+                            <div class="count_box_first">
+                                <div style="color: #72DB72;" class="count_number">1</div>
+                                <div style="color: #5696E1;" class="count_name">Routine</div>
+                            </div>
+                            <div style="color: #72DB72;" class="count_list">
+                                <ul>
+                                    <li>mua sách</li>
+                                    <li>mua sách</li>
+                                    <li>mua sách</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="count_box">
+                            <div class="count_box_first">
+                                <div style="color: #FF8383;" class="count_number">1</div>
+                                <div style="color: #5696E1;" class="count_name">Deadline</div>
+                            </div>
+                            <div style="color: #FF8383;" class="count_list">
+                                <ul>
+                                    <li>mua sách</li>
+                                    <li>mua sách</li>
+                                    <li>mua sách</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
-                <div class="count_box">
-                    <div class="count_box_first">
-                        <div style="color: #FFCC00;" class="count_number">1</div>
-                        <div style="color: #5696E1;" class="count_name">Dates</div>
-                    </div>
-                    <div style="color: #FFCC00;" class="count_list">
-                        <ul>
-                            <li>mua sách</li>
-                            <li>mua sách</li>
-                            <li>mua sách</li>
-                            <li>mua sách</li>
-                            <li>mua sách</li>
-                            <li>mua sách</li>
-                            <li>mua sách</li>
-                            <li>mua sách</li>
-                            <li>mua sách</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="count_box">
-                    <div class="count_box_first">
-                        <div style="color: #72DB72;" class="count_number">1</div>
-                        <div style="color: #5696E1;" class="count_name">Routine</div>
-                    </div>
-                    <div style="color: #72DB72;" class="count_list">
-                        <ul>
-                            <li>mua sách</li>
-                            <li>mua sách</li>
-                            <li>mua sách</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="count_box">
-                    <div class="count_box_first">
-                        <div style="color: #FF8383;" class="count_number">1</div>
-                        <div style="color: #5696E1;" class="count_name">Deadline</div>
-                    </div>
-                    <div style="color: #FF8383;" class="count_list">
-                        <ul>
-                            <li>mua sách</li>
-                            <li>mua sách</li>
-                            <li>mua sách</li>
-                        </ul>
-                    </div>
-                </div>
+            </div>
+
+
+            <!-- </div> -->
+        </div>
+        <div class="modal-feedback">
+            <div class="mf-content">
+                <div class="close"> + </div>
+
+                <form action="">
+                    <textarea name="" id="" cols="50" rows="12" placeholder="Please give us your feed back"></textarea>
+                    <div class="submit">Submit</div>
+                </form>
             </div>
 
         </div>
-    </div>
 
-
-    <!-- </div> -->
-</div>
-<div class="modal-feedback">
-    <div class="mf-content">
-        <div class="close"> + </div>
-
-        <form action="">
-            <textarea name="" id="" cols="50" rows="12" placeholder="Please give us your feed back"></textarea>
-            <div class="submit" >Submit</div>
-        </form>
-    </div>
-
-    </div>
-
-    <div class="modal-aboutus">
+        <div class="modal-aboutus">
             <div class="ma-content">
                 <div class="close"> + </div>
-    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam nam distinctio excepturi maxime harum aliquam laborum reiciendis, illo impedit natus, voluptatibus vel repudiandae placeat asperiores ducimus vitae cupiditate, reprehenderit labore?
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, laboriosam! Pariatur officiis distinctio, at doloremque vitae fugiat blanditiis repellat dolore dicta molestias. Animi blanditiis beatae eos deserunt tempore amet similique?
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, ab cum. Expedita aliquid beatae illo. Quam amet vero quos asperiores unde illum, fuga accusamus voluptate iusto ab? Sit, atque cumque?
-    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam nam distinctio excepturi maxime harum aliquam laborum reiciendis, illo impedit natus, voluptatibus vel repudiandae placeat asperiores ducimus vitae cupiditate, reprehenderit labore?
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, laboriosam! Pariatur officiis distinctio, at doloremque vitae fugiat blanditiis repellat dolore dicta molestias. Animi blanditiis beatae eos deserunt tempore amet similique?
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, ab cum. Expedita aliquid beatae illo. Quam amet vero quos asperiores unde illum, fuga accusamus voluptate iusto ab? Sit, atque cumque?
-    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam nam distinctio excepturi maxime harum aliquam laborum reiciendis, illo impedit natus, voluptatibus vel repudiandae placeat asperiores ducimus vitae cupiditate, reprehenderit labore?
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, laboriosam! Pariatur officiis distinctio, at doloremque vitae fugiat blanditiis repellat dolore dicta molestias. Animi blanditiis beatae eos deserunt tempore amet similique?
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, ab cum. Expedita aliquid beatae illo. Quam amet vero quos asperiores unde illum, fuga accusamus voluptate iusto ab? Sit, atque cumque?
-    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam nam distinctio excepturi maxime harum aliquam laborum reiciendis, illo impedit natus, voluptatibus vel repudiandae placeat asperiores ducimus vitae cupiditate, reprehenderit labore?
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, laboriosam! Pariatur officiis distinctio, at doloremque vitae fugiat blanditiis repellat dolore dicta molestias. Animi blanditiis beatae eos deserunt tempore amet similique?
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, ab cum. Expedita aliquid beatae illo. Quam amet vero quos asperiores unde illum, fuga accusamus voluptate iusto ab? Sit, atque cumque?
-                
-            </div>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam nam distinctio excepturi maxime harum
+                aliquam laborum reiciendis, illo impedit natus, voluptatibus vel repudiandae placeat asperiores ducimus
+                vitae cupiditate, reprehenderit labore?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, laboriosam! Pariatur officiis
+                distinctio, at doloremque vitae fugiat blanditiis repellat dolore dicta molestias. Animi blanditiis
+                beatae eos deserunt tempore amet similique?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, ab cum. Expedita aliquid beatae illo.
+                Quam amet vero quos asperiores unde illum, fuga accusamus voluptate iusto ab? Sit, atque cumque?
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam nam distinctio excepturi maxime harum
+                aliquam laborum reiciendis, illo impedit natus, voluptatibus vel repudiandae placeat asperiores ducimus
+                vitae cupiditate, reprehenderit labore?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, laboriosam! Pariatur officiis
+                distinctio, at doloremque vitae fugiat blanditiis repellat dolore dicta molestias. Animi blanditiis
+                beatae eos deserunt tempore amet similique?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, ab cum. Expedita aliquid beatae illo.
+                Quam amet vero quos asperiores unde illum, fuga accusamus voluptate iusto ab? Sit, atque cumque?
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam nam distinctio excepturi maxime harum
+                aliquam laborum reiciendis, illo impedit natus, voluptatibus vel repudiandae placeat asperiores ducimus
+                vitae cupiditate, reprehenderit labore?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, laboriosam! Pariatur officiis
+                distinctio, at doloremque vitae fugiat blanditiis repellat dolore dicta molestias. Animi blanditiis
+                beatae eos deserunt tempore amet similique?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, ab cum. Expedita aliquid beatae illo.
+                Quam amet vero quos asperiores unde illum, fuga accusamus voluptate iusto ab? Sit, atque cumque?
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam nam distinctio excepturi maxime harum
+                aliquam laborum reiciendis, illo impedit natus, voluptatibus vel repudiandae placeat asperiores ducimus
+                vitae cupiditate, reprehenderit labore?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, laboriosam! Pariatur officiis
+                distinctio, at doloremque vitae fugiat blanditiis repellat dolore dicta molestias. Animi blanditiis
+                beatae eos deserunt tempore amet similique?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, ab cum. Expedita aliquid beatae illo.
+                Quam amet vero quos asperiores unde illum, fuga accusamus voluptate iusto ab? Sit, atque cumque?
 
             </div>
 
-
-<div class="modal-setting">
-        <div class="ms-content">
-
-            <div class="close"> + </div>
-            
         </div>
-</div>
-</div>
-<script src="index.js"></script>
+
+
+        <div class="modal-setting">
+            <div class="ms-content">
+
+                <div class="close"> + </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
 
 </body>
 

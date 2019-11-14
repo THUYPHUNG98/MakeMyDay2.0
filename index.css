@@ -366,30 +366,30 @@ body {
 #cal_3{
     display: flex;
     flex-direction: column;
-    overflow: scroll;
     width: 95%;
     height: 78%;
     margin: 0px auto;
 
 
 }
-.month_div{
-    width: 100%;
-    min-height: 714px;
-    height: 100%;
-}
-#space_month_div{
-    width: 100%;
-    min-height: 100px;
-    background-color: white;
-}    
-
-.month_div>ul{
+#month_container{
     display: flex;
     width: 100%;
     height: 100%;
     flex-wrap: wrap;
 }
+/* #space_month_div{
+    width: 100%;
+    min-height: 100px;
+    background-color: white;
+}     */
+
+/* .month_div>ul{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap;
+} */
             /* phần hiện từng ngày trong lịch */
 .cal_day{
     list-style-type: none;

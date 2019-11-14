@@ -1,3 +1,49 @@
+let tasks = [
+    {   
+        status: "set",
+        category:"Routine",
+        content: "mua sách",
+        date: "16",
+        month: "11",
+        year: "2019",
+        
+        remind: "9:30 SA-10:30 CH" 
+    },
+    {   
+        status: "unset",
+        category:"To-do",
+        content: "mua sách",
+        date: "16",
+        month: "11",
+        year: "2019",
+        
+        remind: "9:30 SA-10:30 CH" 
+    },
+    {   
+        status: "unset",
+        category:"Deadline",
+        content: "mua sách",
+        date: "19",
+        month: "11",
+        year: "2019",
+        
+        remind: "10:30 SA-11:30 CH" 
+    },
+    {   
+        status: "set",
+        category:"Dates",
+        content: "mua sách",
+        date: "17",
+        month: "11",
+        year: "2019",
+        
+        remind: "9:30 SA-10:30 CH" 
+    },
+]
+
+
+
+
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         const unsetContainer = document.getElementById('unset_list');
@@ -27,6 +73,45 @@ firebase.auth().onAuthStateChanged(function(user) {
         console.log('fail!');
     }
   });
+
+/////////// xử lý logic ngày tháng 
+  var d = new Date();
+  var month_name = ['January','February','March','April','May','June','July','August','September','October','November','December']
+  var  month = d.getMonth(); // 0-11
+  var year = d.getFullYear(); // 2019
+  var first_date = month_name[month] + " " + "1" + " " + year;
+  console.log(first_date);
+  // November 1 2019
+  
+  var tmp = new Date(first_date);
+  // có thẻ truyền vào new Date() một string theo dạng "Tháng Ngày năm" --trả ra cả thứ cũng có thể truyền vào dưới dạng (year,month,day) 
+  var day_no = tmp.getDay();
+  console.log(day_no);
+  var day_name = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var days = new Date(year, month + 1 ,0) // ra ngày cuối cùng 
+  console.log(days)
+  // sẽ trả ra Sat Sep 30 2019...
+
+
+
+
+// draw blank calendar
+let monthContainer = document.getElementById("month_container");
+monthContainer.targetmonth = month;
+console.log(`the current month is :${monthContainer.targetmonth}`)
+for(let i = 0; i < 35; i++){
+    monthContainer.insertAdjacentHTML("beforeend",
+        `<li  class="cal_day" index = ${i}>
+            <div class="count_day"></div>
+            <div style="opacity: 0" class="count_blue">0</div>
+            <div style="opacity: 0" class="count_green">0</div>
+            <div style="opacity: 0" class="count_yellow">0</div>
+            <div style="opacity: 0" class="count_red">0</div>
+        </li>` 
+    )
+}
+
+
   // trigger của panel
 var task_panel = document.getElementById("task_panel");
 function open_task_panel(){
@@ -87,11 +172,11 @@ insert_remind.innerHTML = `${select_string_remind}`;
 
 
 //
-document.getElementById('cal_day').addEventListener('click', function () {
-    console.log('ahihi');
-    
-    document.querySelector('.bg_detailtasks_tab').style.display = 'flex';
-});
+                            // document.getElementById('cal_day').addEventListener('click', function () {
+                            //     console.log('ahihi');
+                                
+                            //     document.querySelector('.bg_detailtasks_tab').style.display = 'flex';
+                            // });
 // document.getElementById('cal_day2').addEventListener('click', function () {
 //     document.querySelector('.bg_detailtasks_tab').style.display = 'flex';
 // });
@@ -138,3 +223,25 @@ let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oc
 console.log(today);
 console.log(currentMonth);
 console.log(currentYear);
+
+
+
+//////////// lấy data về//////////
+
+let unsetList = document.getElementById("unset_list");
+
+function loadData(tasks){
+var unsetLishArray = []
+    for(i = 0; i < tasks.length; i ++){
+        var {status,category,date,month,year,remind} = tasks[i]
+        if( status == "unset"){
+            
+            let tmpLiUnset = `<li class = ''></li>`
+            unsetLishArray.push
+        }
+    }
+}
+
+function whatColor(category){
+    switch
+}

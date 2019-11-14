@@ -1,49 +1,3 @@
-let tasks = [
-    {   
-        status: "set",
-        category:"Routine",
-        content: "mua sách",
-        date: "16",
-        month: "11",
-        year: "2019",
-        
-        remind: "9:30 SA-10:30 CH" 
-    },
-    {   
-        status: "unset",
-        category:"To-do",
-        content: "mua sách",
-        date: "16",
-        month: "11",
-        year: "2019",
-        
-        remind: "9:30 SA-10:30 CH" 
-    },
-    {   
-        status: "unset",
-        category:"Deadline",
-        content: "mua sách",
-        date: "19",
-        month: "11",
-        year: "2019",
-        
-        remind: "10:30 SA-11:30 CH" 
-    },
-    {   
-        status: "set",
-        category:"Dates",
-        content: "mua sách",
-        date: "17",
-        month: "11",
-        year: "2019",
-        
-        remind: "9:30 SA-10:30 CH" 
-    },
-]
-
-
-
-
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         const unsetContainer = document.getElementById('unset_list');
@@ -113,11 +67,12 @@ for(let i = 0; i < 35; i++){
 
 
   // trigger của panel
-var task_panel = document.getElementById("task_panel");
-function open_task_panel(){
+const add_btn = document.getElementById('addBtn');
+var task_panel = document.getElementById('task_panel');
+add_btn.addEventListener('click', function(){
     task_panel.style.display = "block";
     task_panel.transform = "scale(1.1)"
-}
+});
 
 // nút close của task panel
 var close_panel = document.getElementsByClassName("close_panel")[0];
@@ -129,6 +84,19 @@ window.onclick = function(event) {
       task_panel.style.display = "none";
     }
 }
+const work_name = document.getElementById('input_name');
+const label_btn = document.getElementsByClassName('panel_btn');
+const label_container = document.getElementsByClassName('name1')[0];
+// const datesLabel = document.getElementsByClassName('panel_btn yellow');
+// const routineLabel = document.getElementsByClassName('panel_btn green');
+// const deadlineLabel = document.getElementsByClassName('panel_btn red');
+for(let i = 0; i < label_btn.length; i++) {
+    label_btn[i].addEventListener('click', function() {
+        label_btn[i].focus();
+    });
+}
+//unset button
+const unset_btn = document.getElementById('unset_btn');
 // set button
 let task_panel_content_holder = document.getElementById("task_panel_content_holder")
 let task_panel_content = document.getElementById("task_panel_content")
@@ -136,14 +104,16 @@ let enable = document.getElementById("enable");
 let set_btn = document.getElementById("set_btn");
 set_btn.addEventListener("click",()=>{
     console.log(enable.style.display);
-    
-
+    unset_btn.style.display = "none";
+    set_btn.style.width = "100%";
     if(enable.style.display == "none"){
         enable.style.display = "flex";
         // task_panel_content_holder.style.height= "480px"; 
         // task_panel_content.style.height = "98%"
 
     } else {
+        unset_btn.style.display = "flex";
+        set_btn.style.width = "47%";
         enable.style.display = "none";
         // task_panel_content_holder.style.height= "410px";
         // task_panel_content.style.height = "410px"
@@ -242,6 +212,6 @@ var unsetLishArray = []
     }
 }
 
-function whatColor(category){
-    switch
-}
+// function whatColor(category){
+//     switch
+// }

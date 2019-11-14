@@ -74,19 +74,33 @@ firebase.auth().onAuthStateChanged(function(user) {
     }
   });
 
-
+////////////////////////////////////////////////////////////////////////////////
 // get full time - chỉ 1 lần
     var d = new Date();
     var month_name = ['January','February','March','April','May','June','July','August','September','October','November','December']
     var  currentMonth = d.getMonth(); // 0-11
     var currentYear = d.getFullYear(); // 2019
 
+///// hàm xử lý tình huống tràn ô
+function overDate(currentMonth,currentYear){
+    var first_date = month_name[currentMonth] + " " + "1" + " " + currentYear;
+    console.log(first_date);
+    var tmp = new Date(first_date);
+    var firstDay_no = tmp.getDay();
+    if(firstDay_no == 0){
+        firstDay_no = 7
+    }
+    var daysInMonth = new Date(currentYear, currentMonth + 1 ,0).getDate()
+    var totalDay = firstDay_no+daysInMonth -1
+    console.log(`index đầu ${firstDay_no-1} cộng thêm ${daysInMonth} là tổng ${totalDay} ô`)
+    return (totalDay < 35)?35:42;
+    }
+overDate(currentMonth,currentYear)
 
 // draw blank calendar - chỉ một lần
 
 
     let monthContainer = document.getElementById("month_container");
-    console.log(`the current month is :${monthContainer.targetmonth}`)
     for(let i = 0; i < 35; i++){
         let ranId = `${i}` + `${currentMonth}` + `${currentYear}`  
         monthContainer.insertAdjacentHTML("beforeend",
@@ -109,7 +123,6 @@ function returnDateMonth(currentMonth,currentYear){
     var first_date = month_name[currentMonth] + " " + "1" + " " + currentYear;
     console.log(first_date);
     // November 1 2019
-    console.log(innerDate);
     var tmp = new Date(first_date);
     // có thẻ truyền vào new Date() một string theo dạng "Tháng Ngày năm" --trả ra cả thứ cũng có thể truyền vào dưới dạng (year,month,day) 
     var firstDay_no = tmp.getDay();
@@ -126,22 +139,107 @@ function returnDateMonth(currentMonth,currentYear){
 // HÀM INSERT NGÀY VÀO Ô
 
 function get_calendar(firstDay_no, daysInMonth){
-    console.log("bắt đầu insert ngày")
+    console.log(`bắt đầu insert ngày, ngày 1 rơi vào thứ ${firstDay_no}+1`)
     var endCell = firstDay_no + daysInMonth;
     var k = 0;
     for( i = firstDay_no -1; i < endCell -1; i++){ //vì thứ 2 index 0 
         k++; // k là ngày chạy từ 0 tới cuối của tháng ấy
         innerDate[i].innerHTML = k; // i là chỉ sô index của ô trong bảng
-        console.log(`index ${i} ngày ${k}`) 
+        console.log(`index ${i} ngày ${k} tháng ${currentMonth} năm ${currentYear}`) 
     }
 }
+
+
+
+//////////// thêm sự kiện cho nút nhảy lịch////////
+let nextBtn = document.getElementById("next");
+let previousBtn = document.getElementById("previous");
+
+previousBtn.addEventListener("click",function previous(){
+    console.log(` in ${overDate(currentMonth,currentYear)} ô`)
+    if (currentMonth == 0){
+        currentMonth = 11;
+        currentYear -=1;
+    } else {
+        currentMonth -= 1;
+    }
+    loadAll(currentMonth,currentYear);
+})
+;
+nextBtn.addEventListener("click",function next(){
+    console.log(` in ${overDate(currentMonth,currentYear)} ô`)
     
+    if (currentMonth == 11){
+        currentYear +=1;
+        currentMonth = 0
+    } else {
+        currentMonth += 1;
+    }
+    loadAll(currentMonth,currentYear);
+
+})
+;
+///////////////////////////////////////////////////
 
 
+let monthAndYear = document.getElementById("month_and_year")
+function loadAll(currentMonth,currentYear){
+    /// nhảy vào ô bar trước
+    monthAndYear.innerHTML = `${month_name[currentMonth]} ${currentYear}`
+    monthContainer.innerHTML="";
+    redrawCalendar1(currentMonth,currentYear);
+    var innerDate1 = document.getElementsByClassName("count_day");
+    returnDateMonth1(currentMonth,currentYear,innerDate1);
+}
 
+
+///// hàm vẽ lại bảng
+function redrawCalendar1(currentMonth,currentYear){
+    for(let i = 0; i < overDate(currentMonth,currentYear); i++){
+        let ranId = `${i}` + `${currentMonth}` + `${currentYear}`  
+        monthContainer.insertAdjacentHTML("beforeend",
+            `<li  class="cal_day" id =${ranId} index = ${i}>
+                <div class="count_day"></div>
+                <div style="opacity: 0" class="count_blue">0</div>
+                <div style="opacity: 0" class="count_green">0</div>
+                <div style="opacity: 0" class="count_yellow">0</div>
+                <div style="opacity: 0" class="count_red">0</div>
+            </li>` 
+        )
+    }
+}
+
+function returnDateMonth1(currentMonth,currentYear,innerDate1){
+    var first_date = month_name[currentMonth] + " " + "1" + " " + currentYear;
+    console.log(first_date);
+    // November 1 2019
+    var tmp = new Date(first_date);
+    // có thẻ truyền vào new Date() một string theo dạng "Tháng Ngày năm" --trả ra cả thứ cũng có thể truyền vào dưới dạng (year,month,day) 
+    var firstDay_no = tmp.getDay();
+    console.log(` thứ của ngày đầu tiên :${firstDay_no}`);
+    var day_name = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    var daysInMonth = new Date(currentYear, currentMonth + 1 ,0).getDate() // ra ngày cuối cùng của tháng đang chọn
+    get_calendar1(firstDay_no, daysInMonth,innerDate1)
+}
   
+function get_calendar1(firstDay_no, daysInMonth,innerDate1){
+    console.log(`bắt đầu insert ngày, ngày 1 rơi vào thứ ${firstDay_no}+1`)
+    
+    var endCell = firstDay_no + daysInMonth;
+    var k = 0;
+    if(firstDay_no == 0){
+        firstDay_no = 7
+        endCell += 7
+    }
+    for( i = firstDay_no - 1; i < endCell-1; i++){ //vì thứ 2(hiện số 1) index 0 
+        k++; // k là ngày chạy từ 0 tới cuối của tháng ấy
+        innerDate1[i].innerHTML = k; // i là chỉ sô index của ô trong bảng
+        console.log(`index ${i} ngày ${k} tháng ${currentMonth} năm ${currentYear}`) 
+    }
+}
 
 
+///////////////////////////////////////////////////////////////////////
 
 
   // trigger của panel

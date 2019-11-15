@@ -425,3 +425,84 @@ document.querySelector('.ma-content .close').addEventListener('click', () => {
 today_full_1.textContent = newdate;
 
 
+//weather
+let weather = [
+    {
+        day: '20',
+        month: '11',
+        year: '2019',
+        temperature: '30°C',
+        status: 'Partly Cloudy',
+    },
+    {
+        day: '17',
+        month: '11',
+        year: '2019',
+        temperature: '31°C',
+        status: 'Partly Cloudy',
+    },
+    {
+        day: '18',
+        month: '11',
+        year: '2019',
+        temperature: '25°C',
+        status: 'Rain',
+    },
+    {
+        day: '19',
+        month: '11',
+        year: '2019',
+        temperature: '22°C',
+        status: 'Partly Cloudy',
+    },
+    {
+        day: '20',
+        month: '11',
+        year: '2019',
+        temperature: '23°C',
+        status: 'Partly Cloudy',
+    },
+    {
+        day: '21',
+        month: '11',
+        year: '2019',
+        temperature: '25°C',
+        status: 'Sunnny',
+    },
+    {
+        day: '22',
+        month: '11',
+        year: '2019',
+        temperature: '26°C',
+        status: 'Sunny',
+    },
+    {
+        day: '23',
+        month: '11',
+        year: '2019',
+        temperature: '27°C',
+        status: 'Partly Cloudy',
+    },
+    {
+        day: '24',
+        month: '11',
+        year: '2019',
+        temperature: '27°C',
+        status: 'Partly Cloudy',
+    },
+    {
+        day: '25',
+        month: '11',
+        year: '2019',
+        temperature: '26°C',
+        status: 'Rain',
+    },
+    {
+        day: '26',
+        month: '11',
+        year: '2019',
+        temperature: '31°C',
+        status: 'Partly Cloudy',
+    },
+]
+console.log(weather);

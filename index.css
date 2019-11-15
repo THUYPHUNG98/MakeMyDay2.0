@@ -28,9 +28,15 @@ body {
 #user_info_left p{
     font-size: 30px;
 }
-#user_info_left a{
-    color: #5996e1;
+#user_info_left button{
+    color: rgb(89, 150, 225);
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    background-color: transparent;
 }
+
+
 .user_info_nav img{
     border-radius: 100%;
 }

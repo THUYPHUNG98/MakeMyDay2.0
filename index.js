@@ -412,4 +412,16 @@ document.querySelector('.ma-content .close').addEventListener('click', () => {
     document.querySelector('.modal-aboutus').style.display = 'none';
 })
 
+    setInterval(() => { 
+        let newDate = new Date();
+        let time = newDate.getHours() + ":" + newDate.getMinutes() + ":" + newDate.getSeconds();
+        let today_full_2=  document.getElementById("today_full_2") ;
+        today_full_2.textContent = time;
+     }, 1000);
+    
+    var dt = new Date();
+    let newdate =  dt.getDate()  + "/" + (dt.getMonth() + 1) + "/" +  dt.getFullYear();
+    let today_full_1=  document.getElementById("today_full_1") ;
+today_full_1.textContent = newdate;
+
 

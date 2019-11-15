@@ -321,34 +321,38 @@ body {
     
 
 }
-.blue{
+.blue {
     background-color: #5696E1;
 }
-.blue:hover{
+.active {
+    background-color: #5696E1;
+    transform: scale(1.1);
+}
+/* .blue:hover{
     transform: scale(1.1);
     transition-delay: 0ms;
-}
+} */
 .red{
     background-color: #FF8383;
 }
-.red:hover{
+/* .red:hover{
     transform: scale(1.1);
     transition-delay: 0ms;
-}
+} */
 .yellow{
     background-color: #FFCC00;
 }
-.yellow:hover{
+/* .yellow:hover{
     transform: scale(1.1);
     transition-delay: 0ms;
-}
+} */
 .green{
     background-color: #72DB72;
 }
-.green:hover{
+/* .green:hover{
     transform: scale(1.1);
     transition-delay: 0ms;
-}
+} */
 
 
 
@@ -576,7 +580,7 @@ body {
     
 }
                         /* set label nha */
-.panel_cate{
+#panel_cate{
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -590,9 +594,21 @@ body {
     height: 70%;
     min-height: 50px;
     width: 24%;
+    background-color: #BCD9FF;
     color: white;
     cursor: pointer;
 }
+.panel_btn active{
+    background-color: #5696E1;
+}
+
+
+/* #panel_cate div:hover {
+    transform: scale(1.05);
+    background-color: #5696E1;
+    transition: 200ms;
+    cursor: pointer;
+} */
 .line1{
     width: 100%;
     height: 3px;
@@ -624,7 +640,6 @@ body {
     transition: 200ms;
     cursor: pointer;
 }
-
 #noti_set{
     color: #FF8383;
 }

@@ -21,7 +21,7 @@ body {
     height: 60%;
     min-width: 1020px;
     min-height: 510px;
-    background-image: url(./assets/log_in_page\ element-02.png);
+    background-image: url(first_tab.png);
     background-size: cover;
     box-shadow: 0px 0px 80px -25px  #5696E1;
 
@@ -234,23 +234,25 @@ body {
     flex-direction: column;
     align-items: center;
     box-shadow: 0px 0px 80px -25px  #5696E1;
+    position: relative;
 }
 
 #addBtn{
-    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
     bottom: 5%;
     right: 5%;
-
-    height: 100px;
-    width: 100px;
-    border:none;
+    height: 80px;
+    width: 80px;
+    border: none;
     border-radius: 50%;
-    background-color:   rgb(255, 169, 169);
+    background-color: rgb(255, 169, 169);
     font-size: 80px;
     color: white;
+    position: absolute;
+    top: -21px;
+    right: -23px;
 }
 #addBtn:hover{
     background-color: #FF8383;
@@ -337,77 +339,38 @@ body {
      
     display: flex;
     height: 10%;
-    min-height: 53px;
     background-color:  #EAF4FF;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-
 }
-.shift_month{
+#cal_1 div:hover{
+    text-decoration: underline;
+    background-color:  #BCD9FF;
+    transition: 300ms;
+}
+
+#cal_1 div{
     display: flex;
-    height: 60px;
-    width: 60px;
-    background-color: #BCD9FF;
+    height: 100%;
+    width: 50%;
     justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 40px;
-
-}
-#previous{ 
-    transform: rotate(-90deg);
-}
-#previous:hover{
-    transform: scale(1.1) rotate(-90deg);
-    background-color: #5696E1;
-    transition: 100ms;
-    cursor: pointer;
-}
-#next{ 
-    transform: rotate(90deg);
-}
-#next:hover{
-    transform: scale(1.1) rotate(90deg);
-    background-color: #5696E1;
-    transition: 100ms;
-    cursor: pointer;
-}
-#month_and_year{
     font-size: 30px;
-    color: #5696E1;
-}
-
-
-
+    align-items: center;
+    color: #5996E1;
                 /* phần hiện thứ mấy */
-
+}
 #cal_2{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: 26px; 
     font-size: 26px;
     color: #98C5FA;
-}
-#cal_2 div{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 14%;
-}
-
+}  
                 /* phần hiện lịch */
 #cal_3{
     display: flex;
     flex-direction: column;
     width: 95%;
-    /* height: 78%; */
-    height: 677px;
+    height: 78%;
     margin: 0px auto;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    
 
 
 }
@@ -689,7 +652,7 @@ body {
 
 
 
-/* #repeat_container{
+#repeat_container{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -717,7 +680,7 @@ body {
     background-color: #5696E1;
     transition: 200ms;
     cursor: pointer;
-} */
+}
 
                             /* remind ở đây */
 #pick_hour{
@@ -788,8 +751,8 @@ body {
     flex-direction: column;
     height: 30%;
     width: 100%;
-    max-height: 80px;
-    min-height: 63px;
+    max-height: 107px;
+    min-height: 87px;
     color: #5696E1;
     margin: 5px 0px;
 }
@@ -803,10 +766,9 @@ body {
     background-color: #BCD9FF;
     justify-content: space-between;
     padding-left: 20px;
-    padding-right: 20px;
-    font-size: 20px;
- }
-/* #remind_at_task select{
+    padding-right: 20px
+}
+#remind_at_task select{
     height: 85%;
     width: 15%;
     background-color:#BCD9FF ;
@@ -814,28 +776,22 @@ body {
     font-size: 20px;
     border: none;
     
-} */ */
-/* #pick_time_remind option{
+}
+#pick_time_remind option{
     background-color: white;
     color: #5696E1;
-} */
-/* #remind_at_task select:hover{
+}
+#remind_at_task select:hover{
     transform: scale(1.1);
     transition: 100ms;
     background-color: #5696E1;
     cursor: pointer;
 
-} */
-.checkbox{
-    display: flex;
-    height: 100px;
-    width: 100px;
-    background-color: #BCD9FF;
-    border: none;
 }
-.checkbox:hover{
-    transform: scale(2);
-    transition: 100ms;
+.checkbox{
+    height: 70%;
+    width: 10%;
+    border: none;
 }
 
 #make_task{
@@ -1006,6 +962,8 @@ textarea {
     display:none;
 }
 
+/* aboutus */
+
 .ms-content {
     background-image: url(./assets/index_bg.png);
 /* a Trọng thay ảnh cho em nhé :D */
@@ -1023,16 +981,37 @@ textarea {
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,0.7);
-    position: absolute; 
+    position: fixed; 
      top: 0;  
     align-items: center;
     justify-content: center;
     display:none;
 }
 
+.aboutus_top{
+    display: flex;
+}
+
+#aboutus_content{
+    margin-left: 337px;
+    background-color: white;
+    height: 205px;
+    text-align: left;
+    border-radius: 5px;
+    width: 70%;
+    padding: 10px;
+    border-color: black;
+    box-shadow: 0px 0px 0px 2px;
+    color: #79a3da;
+    overflow-y: scroll;
+}
+
 .ma-content {
-    background-image: url(./assets/index_bg.png);
+    background-image: url(./assets/log_in_page\ element-02.png);
 /* a Trọng thay ảnh cho em nhé :D */
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
     width: 800px;
     height: 500px;
     background-color : white;
@@ -1041,7 +1020,34 @@ textarea {
     text-align: center;
     padding: 20px;
     position: relative;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
+}
+.member_info img{
+    border-radius: 100%;
+}
+
+
+.member_info_detail{
+    display: flex;
+    width: 50%;
+    color: #7aa4da;
+}
+
+#member_info_top{
+    display: flex;
+    margin-top: 55px;
+}
+#member_info_bottom{
+    display: flex;
+    margin-top: 55px;
+}
+#member_name{
+    padding-top: 7px;
+    margin-left: 23px;
+}
+#member_age{
+    font-size: 13px;
+    color: #a6c2e6;
 }
 
 

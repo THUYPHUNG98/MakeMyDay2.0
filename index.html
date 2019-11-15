@@ -48,17 +48,17 @@
                 <div class="mini" id="todayy">
                     <div class="noon">Morning</div>
                     <div class="temperature">20°C</div>
-                    <img class="weather_icon" src="assets/rain_icon.png">
+                    <img class="weather_icon" src="rain_icon.png">
                 </div>
                 <div class="mini" id="tomorrow">
                     <div class="noon">Daytime</div>
                     <div class="temperature">20°C</div>
-                    <img class="weather_icon" src="assets/rain_icon.png">
+                    <img class="weather_icon" src="rain_icon.png">
                 </div>
                 <div class="mini" id="nextday">
                     <div class="noon">Evening</div>
                     <div class="temperature">20°C</div>
-                    <img class="weather_icon" src="assets/rain_icon.png">
+                    <img class="weather_icon" src="rain_icon.png">
                 </div>
             </div>
             <div id="mini_tab_weather_right" class='bg'>
@@ -151,9 +151,8 @@
         <div id="calendar_tab">
             <div id="calendar">
                 <div id="cal_1">
-                    <div class="shift_month" id="previous">^</div>
-                    <div id="month_and_year"> November 2019</div>
-                    <div  class="shift_month" id="next">^</div>
+                    <div>Month</div>
+                    <div>Week</div>
                 </div>
                 <div id="cal_2">
                     <div>Mon</div>
@@ -165,10 +164,9 @@
                     <div>Sun</div>
                 </div>
                 <div id="cal_3">
-                    <ul id="month_container"  targetmonth = "0">
+                    <ul id="month_container" targetmonth="0">
 
-                  <!-- insert bảng vào đây -->
-                  
+
                     </ul>
 
 
@@ -178,6 +176,7 @@
             <div id="todo">
 
                 <div id="unset">Unset</div>
+                <div onclick="open_task_panel()" id="addBtn">+</div>
                 <div id="todo_list">
                     <ul id="unset_list">
 
@@ -191,7 +190,7 @@
             </div>
 
         </div>
-        <div id="addBtn">+</div>
+        
 
 
         <div id="task_panel">
@@ -207,14 +206,14 @@
 
                     <div class="panel_name">
                         <div class="line"></div>
-                        <div class="name1" label="abc">Category</div>
+                        <div class="name1">Category</div>
                         <div class="line"></div>
                     </div>
                     <div class="panel_cate">
-                        <div class="panel_btn blue">To-do</div>
-                        <div class="panel_btn yellow">Dates</div>
-                        <div class="panel_btn green">Routine</div>
-                        <div class="panel_btn red">Deadline</div>
+                        <div class="panel_btn blue" onclick="ready_to_unset()">To-do</div>
+                        <div class="panel_btn yellow" onclick="ready_to_unset()">Dates</div>
+                        <div class="panel_btn green" onclick="ready_to_unset()">Routine</div>
+                        <div class="panel_btn red" onclick="ready_to_unset()">Deadline</div>
                     </div>
                     <div class="line1"></div>
                     <div id="panel_set">
@@ -232,7 +231,7 @@
                             <input id="pick_time_date" type="date">
 
                         </div>
-                        <!-- <div class="panel_name">
+                        <div class="panel_name">
                             <div class="line"></div>
                             <div class="name1">Repeat every</div>
                             <div class="line"></div>
@@ -244,7 +243,7 @@
                             <div class="every">2 Days</div>
                             <div class="every">3 Days</div>
                             <div class="every">4 Days</div>
-                        </div> -->
+                        </div>
                         <div class="panel_name">
                             <div class="line"></div>
                             <div class="name1">Task time</div>
@@ -266,14 +265,14 @@
                         </div>
                         <div class="line1"></div>
                         <div id="remind">
-                            <!-- <div id="remind_at_task">
+                            <div id="remind_at_task">
                                 <div>Remind me before</div>
                                 <select id="pick_time_remind">
 
                                 </select>
                                 <div>min</div>
                                 <input class="checkbox" type="checkbox">
-                            </div> -->
+                            </div>
                             <div id="remind_once">
                                 <div>Remind me at morning</div>
                                 <input class="checkbox" type="checkbox">
@@ -387,39 +386,66 @@
         <div class="modal-aboutus">
             <div class="ma-content">
                 <div class="close"> + </div>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam nam distinctio excepturi maxime harum
-                aliquam laborum reiciendis, illo impedit natus, voluptatibus vel repudiandae placeat asperiores ducimus
-                vitae cupiditate, reprehenderit labore?
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, laboriosam! Pariatur officiis
-                distinctio, at doloremque vitae fugiat blanditiis repellat dolore dicta molestias. Animi blanditiis
-                beatae eos deserunt tempore amet similique?
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, ab cum. Expedita aliquid beatae illo.
-                Quam amet vero quos asperiores unde illum, fuga accusamus voluptate iusto ab? Sit, atque cumque?
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam nam distinctio excepturi maxime harum
-                aliquam laborum reiciendis, illo impedit natus, voluptatibus vel repudiandae placeat asperiores ducimus
-                vitae cupiditate, reprehenderit labore?
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, laboriosam! Pariatur officiis
-                distinctio, at doloremque vitae fugiat blanditiis repellat dolore dicta molestias. Animi blanditiis
-                beatae eos deserunt tempore amet similique?
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, ab cum. Expedita aliquid beatae illo.
-                Quam amet vero quos asperiores unde illum, fuga accusamus voluptate iusto ab? Sit, atque cumque?
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam nam distinctio excepturi maxime harum
-                aliquam laborum reiciendis, illo impedit natus, voluptatibus vel repudiandae placeat asperiores ducimus
-                vitae cupiditate, reprehenderit labore?
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, laboriosam! Pariatur officiis
-                distinctio, at doloremque vitae fugiat blanditiis repellat dolore dicta molestias. Animi blanditiis
-                beatae eos deserunt tempore amet similique?
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, ab cum. Expedita aliquid beatae illo.
-                Quam amet vero quos asperiores unde illum, fuga accusamus voluptate iusto ab? Sit, atque cumque?
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam nam distinctio excepturi maxime harum
-                aliquam laborum reiciendis, illo impedit natus, voluptatibus vel repudiandae placeat asperiores ducimus
-                vitae cupiditate, reprehenderit labore?
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, laboriosam! Pariatur officiis
-                distinctio, at doloremque vitae fugiat blanditiis repellat dolore dicta molestias. Animi blanditiis
-                beatae eos deserunt tempore amet similique?
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, ab cum. Expedita aliquid beatae illo.
-                Quam amet vero quos asperiores unde illum, fuga accusamus voluptate iusto ab? Sit, atque cumque?
+                <div class="aboutus_top">
+                    <div id="aboutus_content">
+                        MakeMyDay là 1 website về quản lý thời gian và sắp xếp lịch trình. Web cung cấp cho bạn những
+                        thông tin cần thiết để bạn có thể bắt đầu một ngày mới nhanh chóng, biết những điều cần biết và
+                        giữ cho lịch trình trong một ngày của bạn luôn được sắp xếp, nhắc nhở đúng lúc. Giúp cho mọi
+                        công việc và dự định được hoàn thành, từ đó cải thiện tâm trạng, sức khỏe, lối sống.
+                        <br>
+                        MakeMyDay : với ý nghĩa trong tiếng anh là làm nên ngày của bạn, chúng tôi sẽ giữ cho công việc,
+                        lịch trình, những cuộc hẹn, của bạn luôn ngăn nắp, rõ ràng, trực quan. Và bạn có thể yên tâm
+                        rằng ngày hôm nay của mình sẽ thật suôn sẻ. Chữ “My” thể hiện tính tùy biến và cá nhân hóa trong
+                        tất cả các nội dung mà bạn cần.
+                        <br>
+                        MakeMyDay còn tới từ câu “You’ve made my day” – bạn đã khiến ngày hôm nay của tôi thật tuyệt
+                        vời. Đó chính là điều chúng tôi nỗ lực để đem tới cho bạn
 
+                    </div>
+                </div>
+                <div class="member_info">
+                    <div id="member_info_top">
+                        <div class="member_info_detail">
+                            <img src="/assets/demo.webmaster541295de29059.png" alt="avatar" height="65" width="65">
+                            <div id="member_name">
+                                <p>PHÙNG THỊ THÙY</p>
+                                <p id="member_age">21 years old
+                                    <br>Email: abc@gmail.com
+                                </p>
+                            </div>
+                        </div>
+                        <div class="member_info_detail">
+                            <img src="/assets/demo.webmaster541295de29059.png" alt="avatar" height="65" width="65">
+                            <div id="member_name">
+                                <p>PHAN ĐỨC TRỌNG</p>
+                                <p id="member_age">19 years old
+                                        <br>Email: abc@gmail.com
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="member_info_bottom">
+                        <div class="member_info_detail">
+                            <img src="/assets/demo.webmaster541295de29059.png" alt="avatar" height="65" width="65">
+                            <div id="member_name">
+                                <p>NGUYỄN HÙNG SƠN</p>
+                                <p id="member_age">18 years old
+                                        <br>Email: abc@gmail.com
+                                </p>
+                            </div>
+                        </div>
+                        <div class="member_info_detail">
+                            <img src="/assets/demo.webmaster541295de29059.png" alt="avatar" height="65" width="65">
+                            <div id="member_name">
+                                <p>TRẦN KHÁNH NGÂN</p>
+                                <p id="member_age">20 years old
+                                        <br>Email: abc@gmail.com
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
         </div>

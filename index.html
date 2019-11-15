@@ -210,11 +210,11 @@
                         <div class="name1" label="abc">Category</div>
                         <div class="line"></div>
                     </div>
-                    <div class="panel_cate">
-                        <div class="panel_btn blue">To-do</div>
-                        <div class="panel_btn yellow">Dates</div>
-                        <div class="panel_btn green">Routine</div>
-                        <div class="panel_btn red">Deadline</div>
+                    <div id="panel_cate">
+                        <div class="panel_btn active">To-do</div>
+                        <div class="panel_btn">Dates</div>
+                        <div class="panel_btn">Routine</div>
+                        <div class="panel_btn">Deadline</div>
                     </div>
                     <div class="line1"></div>
                     <div id="panel_set">
@@ -254,13 +254,13 @@
                             <div id="pick_limit_hour">
                                 <div class="box" id="hour_start">
                                     <div class="pick_hour_icon"></div>
-                                    <input type="time" class="input_start">
+                                    <input type="time" class="input_start" id="start_time">
 
                                 </div>
                                 <div id="arrow">→</div>
                                 <div class="box" id="hour_end">
                                     <div class="pick_hour_icon"></div>
-                                    <input type="time" class="input_end">
+                                    <input type="time" class="input_end" id="end_time">
                                 </div>
                             </div>
                         </div>
@@ -276,7 +276,7 @@
                             </div> -->
                             <div id="remind_once">
                                 <div>Remind me at morning</div>
-                                <input class="checkbox" type="checkbox">
+                                <input class="checkbox" type="checkbox" id="remind_checkbox" value="false">
                             </div>
 
                         </div>

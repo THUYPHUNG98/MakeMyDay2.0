@@ -35,32 +35,31 @@
         firebase.analytics();
     </script>
     <div>
-
         <!-- người dùng -->
         <div class="user_info_nav">
-                <div id="user_info_name">
-                    <p>My name</p>
-                    <a href="login.html">Log out</a>
-                </div>
-                <img src="/assets/demo.webmaster541295de29059.png" alt="avatar" height="65" width="65">
-        </div>
+            <div id="user_info_left">
+                <p>My name</p>
+                <a href="login.html">Log out</a>
+            </div>
+            <img src="/assets/demo.webmaster541295de29059.png" alt="avatar" height="65" width="65">
+    </div>
         <!-- tab weather -->
         <div id="weather_tab">
             <div id="mini_tab_weather_left">
                 <div class="mini" id="todayy">
                     <div class="noon">Morning</div>
                     <div class="temperature">20°C</div>
-                    <img class="weather_icon" src="rain_icon.png">
+                    <img class="weather_icon" src="assets/rain_icon.png">
                 </div>
                 <div class="mini" id="tomorrow">
                     <div class="noon">Daytime</div>
                     <div class="temperature">20°C</div>
-                    <img class="weather_icon" src="rain_icon.png">
+                    <img class="weather_icon" src="assets/rain_icon.png">
                 </div>
                 <div class="mini" id="nextday">
                     <div class="noon">Evening</div>
                     <div class="temperature">20°C</div>
-                    <img class="weather_icon" src="rain_icon.png">
+                    <img class="weather_icon" src="assets/rain_icon.png">
                 </div>
             </div>
             <div id="mini_tab_weather_right" class='bg'>
@@ -153,8 +152,9 @@
         <div id="calendar_tab">
             <div id="calendar">
                 <div id="cal_1">
-                    <div>Month</div>
-                    <div>Week</div>
+                    <div class="shift_month" id="previous">^</div>
+                    <div id="month_and_year"> November 2019</div>
+                    <div  class="shift_month" id="next">^</div>
                 </div>
                 <div id="cal_2">
                     <div>Mon</div>
@@ -166,9 +166,10 @@
                     <div>Sun</div>
                 </div>
                 <div id="cal_3">
-                    <ul id="month_container" targetmonth="0">
+                    <ul id="month_container"  targetmonth = "0">
 
-
+                  <!-- insert bảng vào đây -->
+                  
                     </ul>
 
 
@@ -179,11 +180,7 @@
                 <div id="addBtn">+</div>
 
                 <div id="unset">Unset</div>
-<<<<<<< HEAD
-                <div onclick="open_task_panel()" id="addBtn">+</div>
-=======
 
->>>>>>> e01564ae9b2282a14f3966089a1a0027f3b050d0
                 <div id="todo_list">
                     <ul id="unset_list">
 
@@ -213,22 +210,14 @@
 
                     <div class="panel_name">
                         <div class="line"></div>
-                        <div class="name1">Category</div>
+                        <div class="name1" label="abc">Category</div>
                         <div class="line"></div>
                     </div>
-<<<<<<< HEAD
-                    <div class="panel_cate">
-                        <div class="panel_btn blue" onclick="ready_to_unset()">To-do</div>
-                        <div class="panel_btn yellow" onclick="ready_to_unset()">Dates</div>
-                        <div class="panel_btn green" onclick="ready_to_unset()">Routine</div>
-                        <div class="panel_btn red" onclick="ready_to_unset()">Deadline</div>
-=======
                     <div id="panel_cate">
                         <div class="panel_btn active">To-do</div>
                         <div class="panel_btn">Dates</div>
                         <div class="panel_btn">Routine</div>
                         <div class="panel_btn">Deadline</div>
->>>>>>> e01564ae9b2282a14f3966089a1a0027f3b050d0
                     </div>
                     <div class="line1"></div>
                     <div id="panel_set">
@@ -246,7 +235,7 @@
                             <input id="pick_time_date" type="date">
 
                         </div>
-                        <div class="panel_name">
+                        <!-- <div class="panel_name">
                             <div class="line"></div>
                             <div class="name1">Repeat every</div>
                             <div class="line"></div>
@@ -258,7 +247,7 @@
                             <div class="every">2 Days</div>
                             <div class="every">3 Days</div>
                             <div class="every">4 Days</div>
-                        </div>
+                        </div> -->
                         <div class="panel_name">
                             <div class="line"></div>
                             <div class="name1">Task time</div>
@@ -280,14 +269,14 @@
                         </div>
                         <div class="line1"></div>
                         <div id="remind">
-                            <div id="remind_at_task">
+                            <!-- <div id="remind_at_task">
                                 <div>Remind me before</div>
                                 <select id="pick_time_remind">
 
                                 </select>
                                 <div>min</div>
                                 <input class="checkbox" type="checkbox">
-                            </div>
+                            </div> -->
                             <div id="remind_once">
                                 <div>Remind me at morning</div>
                                 <input class="checkbox" type="checkbox" id="remind_checkbox" value="false">
@@ -398,6 +387,7 @@
 
         </div>
 
+ 
         <div class="modal-aboutus">
             <div class="ma-content">
                 <div class="close"> + </div>

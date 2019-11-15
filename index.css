@@ -10,13 +10,34 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
 
-
+}
+                /* user info */
+.user_info_nav{
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 30px;
+}
+#user_info_name{
+    text-align: right;
+    margin-right: 10px;
+    color: #5996e1;
+    padding-top: 8px;
+}
+#user_info_name p{
+    font-size: 30px;
+}
+#user_info_name a{
+    color: #5996e1;
+}
+.user_info_nav img{
+    border-radius: 100%;
 }
                 /* bắt đầu tab weather này */
 #weather_tab{
     display: flex;
     margin: 0px auto; 
-    margin-top: 100px;
+    margin-top: 32px;
     width: 70%;
     height: 60%;
     min-width: 1020px;

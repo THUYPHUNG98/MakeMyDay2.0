@@ -25,10 +25,10 @@ overDate(currentMonth,currentYear)
 
 
     let monthContainer = document.getElementById("month_container");
-    for(let i = 0; i < 35; i++){
-        let ranId = `${i}` + `${currentMonth}` + `${currentYear}`  
+    for(let i = 0; i < overDate(currentMonth,currentYear); i++){
+        let ranId =`${currentYear}${currentMonth}${i}`  
         monthContainer.insertAdjacentHTML("beforeend",
-            `<li  class="cal_day" id =${ranId} index = ${i}>
+            `<li  class="cal_day" index = ${i}>
                 <div class="count_day"></div>
                 <div style="opacity: 0" class="count_blue">0</div>
                 <div style="opacity: 0" class="count_green">0</div>
@@ -40,6 +40,7 @@ overDate(currentMonth,currentYear)
 
 
     var innerDate = document.getElementsByClassName("count_day");
+    var liDate = document.getElementsByClassName("cal_day");
 /////////// lấy dữ liệu tháng và năm đang trỏ tới để sinh: ngày đầu tiên của tháng ấy rơi vào thứ mấy và số ngày của tháng ấy
 returnDateMonth(currentMonth,currentYear);
 
@@ -59,7 +60,6 @@ function returnDateMonth(currentMonth,currentYear){
 
 
 
-
 // HÀM INSERT NGÀY VÀO Ô
 
 function get_calendar(firstDay_no, daysInMonth){
@@ -69,7 +69,7 @@ function get_calendar(firstDay_no, daysInMonth){
     for( i = firstDay_no -1; i < endCell -1; i++){ //vì thứ 2 index 0 
         k++; // k là ngày chạy từ 0 tới cuối của tháng ấy
         innerDate[i].innerHTML = k; // i là chỉ sô index của ô trong bảng
-        console.log(`index ${i} ngày ${k} tháng ${currentMonth} năm ${currentYear}`) 
+        liDate[i].setAttribute("id",`${currentYear}-${currentMonth+1}-${k}`)
     }
 }
 
@@ -103,7 +103,7 @@ nextBtn.addEventListener("click",function next(){
 
 })
 ;
-///////////////////////////////////////////////////
+/////////////////////////////////////////////////// chuyển tháng ở đây/////////////////////////////////
 
 
 let monthAndYear = document.getElementById("month_and_year")
@@ -113,16 +113,18 @@ function loadAll(currentMonth,currentYear){
     monthContainer.innerHTML="";
     redrawCalendar1(currentMonth,currentYear);
     var innerDate1 = document.getElementsByClassName("count_day");
-    returnDateMonth1(currentMonth,currentYear,innerDate1);
+    var liDate1 = document.getElementsByClassName("cal_day");
+    console.log(`                            ${innerDate1}`);
+    returnDateMonth1(currentMonth,currentYear,liDate1,innerDate1);
 }
 
 
 ///// hàm vẽ lại bảng
 function redrawCalendar1(currentMonth,currentYear){
     for(let i = 0; i < overDate(currentMonth,currentYear); i++){
-        let ranId = `${i}` + `${currentMonth}` + `${currentYear}`  
+        let ranId =`${currentYear}${currentMonth}${i}`   
         monthContainer.insertAdjacentHTML("beforeend",
-            `<li  class="cal_day" id =${ranId} index = ${i}>
+            `<li  class="cal_day" index = ${i}>
                 <div class="count_day"></div>
                 <div style="opacity: 0" class="count_blue">0</div>
                 <div style="opacity: 0" class="count_green">0</div>
@@ -133,7 +135,7 @@ function redrawCalendar1(currentMonth,currentYear){
     }
 }
 
-function returnDateMonth1(currentMonth,currentYear,innerDate1){
+function returnDateMonth1(currentMonth,currentYear,liDate1,innerDate1){
     var first_date = month_name[currentMonth] + " " + "1" + " " + currentYear;
     console.log(first_date);
     // November 1 2019
@@ -143,10 +145,10 @@ function returnDateMonth1(currentMonth,currentYear,innerDate1){
     console.log(` thứ của ngày đầu tiên :${firstDay_no}`);
     var day_name = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
     var daysInMonth = new Date(currentYear, currentMonth + 1 ,0).getDate() // ra ngày cuối cùng của tháng đang chọn
-    get_calendar1(firstDay_no, daysInMonth,innerDate1)
+    get_calendar1(firstDay_no, daysInMonth,liDate1,innerDate1)
 }
   
-function get_calendar1(firstDay_no, daysInMonth,innerDate1){
+function get_calendar1(firstDay_no, daysInMonth,liDate1,innerDate1){
     console.log(`bắt đầu insert ngày, ngày 1 rơi vào thứ ${firstDay_no}+1`)
     
     var endCell = firstDay_no + daysInMonth;
@@ -158,7 +160,7 @@ function get_calendar1(firstDay_no, daysInMonth,innerDate1){
     for( i = firstDay_no - 1; i < endCell-1; i++){ //vì thứ 2(hiện số 1) index 0 
         k++; // k là ngày chạy từ 0 tới cuối của tháng ấy
         innerDate1[i].innerHTML = k; // i là chỉ sô index của ô trong bảng
-        console.log(`index ${i} ngày ${k} tháng ${currentMonth} năm ${currentYear}`) 
+        liDate1[i].setAttribute("id",`${currentYear}-${currentMonth+1}-${k}`)
     }
 }
 

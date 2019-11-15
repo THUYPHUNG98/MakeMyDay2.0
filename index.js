@@ -326,7 +326,6 @@ firebase.auth().onAuthStateChanged(function(user) {
     }
 
   });
-
 // set button
 let task_panel_content_holder = document.getElementById("task_panel_content_holder")
 let task_panel_content = document.getElementById("task_panel_content")

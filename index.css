@@ -287,7 +287,9 @@ body {
     cursor: pointer;
 }
 #todo_list{
+    display: flex;
     height: 85%;
+    width: 100%;
     min-height: 663px;
 }
 #total{
@@ -323,8 +325,16 @@ body {
     box-shadow: 1px 12px 25px -18px  rgb(0, 0, 0);
     font-size: 20px;
     color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     
 
+}
+#todo_list>ul li:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 100ms;
 }
 .blue {
     background-color: #5696E1;

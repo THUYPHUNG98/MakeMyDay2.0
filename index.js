@@ -238,7 +238,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                 let dateArr = work_date.value.split('-');
                 let month = parseInt(dateArr[1]);
                 let day = parseInt(dateArr[2]);
-                date = dateArr[0] + month + day;
+                date = dateArr[0] +'-'+ month +'-'+ day;
                 if(remind_btn.checked == true) {
                     remind_btn.value = true;
                 }
@@ -276,8 +276,26 @@ firebase.auth().onAuthStateChanged(function(user) {
                             },
                     });
                 });
-            } else {
+            } else { // da co du lieu
+                const unsetContainer = document.getElementById('unset_list');
                 const worksList = snapshot.val();
+                for(let i = 0; i < worksList.length; i++) {
+                    console.log(worksList[i]);
+                    if(worksList[i].date == null|| worksList[i].date == undefined) {
+                        if(worksList[i].label == 0) {
+                            unsetContainer.insertAdjacentHTML('beforeend', `<li class="blue">${worksList[i].name}</li>`);
+                        } else if(worksList[i].label == 1) {
+                            unsetContainer.insertAdjacentHTML('beforeend', `<li class="yellow">${worksList[i].name}</li>`);
+                        } else if(worksList[i].label == 2) {
+                            unsetContainer.insertAdjacentHTML('beforeend', `<li class="green">${worksList[i].name}</li>`);
+                        } else if(worksList[i].label == 3){
+                            unsetContainer.insertAdjacentHTML('beforeend', `<li class="red">${worksList[i].name}</li>`);
+                        } else {
+                            console.log('no unset');
+                                
+                        }
+                    };
+                }; 
                 console.log(worksList.length);
                 unset_btn.addEventListener('click', function() {
                     let label = checkFieldUnset();
@@ -299,33 +317,15 @@ firebase.auth().onAuthStateChanged(function(user) {
                     });
                 });
             };
-            // function unset_display() {
-                // const unsetContainer = document.getElementById('unset_list');
-                // works.on('value', function(snapshot){
-                //     const worksList = snapshot.val();
-                //     for(let i = 0; i < worksList.length; i++) {
-                //         console.log(worksList[i]);
-                //         if(worksList[i].date == null|| worksList[i].date == undefined) {
-                //             if(worksList[i].label == 0) {
-                //                 unsetContainer.insertAdjacentHTML('beforeend', `<li class="blue">${worksList[i].name}</li>`);
-                //             } else if(worksList[i].label == 1) {
-                //                 unsetContainer.insertAdjacentHTML('beforeend', `<li class="yellow">${worksList[i].name}</li>`);
-                //             } else if(worksList[i].label == 2) {
-                //                 unsetContainer.insertAdjacentHTML('beforeend', `<li class="green">${worksList[i].name}</li>`);
-                //             } else {
-                //                 unsetContainer.insertAdjacentHTML('beforeend', `<li class="red">${worksList[i].name}</li>`);
-                //             }
-                //         };
-                //     }; 
-                // });
-            // };
+            function unset_display() {
+            };
         });
+        
     } else {
         console.log('fail!');
     }
 
   });
-
 // set button
 let task_panel_content_holder = document.getElementById("task_panel_content_holder")
 let task_panel_content = document.getElementById("task_panel_content")

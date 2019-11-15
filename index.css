@@ -12,11 +12,40 @@ body {
 
 
 }
+                /* user info */
+.user_info_nav{
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 30px;
+}
+#user_info_left{
+    text-align: right;
+    margin-right: 10px;
+    color: #5996e1;
+    padding-top: 8px;
+}
+#user_info_left p{
+    font-size: 30px;
+}
+#user_info_left button{
+    color: rgb(89, 150, 225);
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+
+.user_info_nav img{
+    border-radius: 100%;
+}
+
                 /* bắt đầu tab weather này */
 #weather_tab{
     display: flex;
     margin: 0px auto; 
-    margin-top: 100px;
+    margin-top: 32px;
     width: 70%;
     height: 60%;
     min-width: 1020px;
@@ -24,9 +53,6 @@ body {
     background-image: url(./assets/log_in_page\ element-02.png);
     background-size: cover;
     box-shadow: 0px 0px 80px -25px  #5696E1;
-
-
-    
 }
 #mini_tab_weather_left{
     display: flex;
@@ -234,23 +260,25 @@ body {
     flex-direction: column;
     align-items: center;
     box-shadow: 0px 0px 80px -25px  #5696E1;
+    position: relative;
 }
 
 #addBtn{
-    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
     bottom: 5%;
     right: 5%;
-
-    height: 100px;
-    width: 100px;
-    border:none;
+    height: 80px;
+    width: 80px;
+    border: none;
     border-radius: 50%;
-    background-color:   rgb(255, 169, 169);
+    background-color: rgb(255, 169, 169);
     font-size: 80px;
     color: white;
+    position: absolute;
+    top: -21px;
+    right: -23px;
 }
 #addBtn:hover{
     background-color: #FF8383;
@@ -259,7 +287,9 @@ body {
     cursor: pointer;
 }
 #todo_list{
+    display: flex;
     height: 85%;
+    width: 100%;
     min-height: 663px;
 }
 #total{
@@ -295,8 +325,16 @@ body {
     box-shadow: 1px 12px 25px -18px  rgb(0, 0, 0);
     font-size: 20px;
     color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     
 
+}
+#todo_list>ul li:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 100ms;
 }
 .blue {
     background-color: #5696E1;
@@ -1006,6 +1044,7 @@ textarea {
     height: 30px;
     border-radius: 2px;
     background-color :#5696E1;
+    cursor: pointer;
 }
 
 
@@ -1021,6 +1060,7 @@ textarea {
     display:none;
 }
 
+/* aboutus */
 .ms-content {
     background-image: url(./assets/index_bg.png);
 /* a Trọng thay ảnh cho em nhé :D */
@@ -1038,16 +1078,37 @@ textarea {
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,0.7);
-    position: absolute; 
+    position: fixed; 
      top: 0;  
     align-items: center;
     justify-content: center;
     display:none;
 }
 
+.aboutus_top{
+    display: flex;
+}
+
+#aboutus_content{
+    margin-left: 337px;
+    background-color: white;
+    height: 205px;
+    text-align: left;
+    border-radius: 5px;
+    width: 70%;
+    padding: 10px;
+    border-color: black;
+    box-shadow: 0px 0px 0px 2px;
+    color: #79a3da;
+    overflow-y: scroll;
+}
+
 .ma-content {
-    background-image: url(./assets/index_bg.png);
+    background-image: url(./assets/log_in_page\ element-02.png);
 /* a Trọng thay ảnh cho em nhé :D */
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
     width: 800px;
     height: 500px;
     background-color : white;
@@ -1056,7 +1117,33 @@ textarea {
     text-align: center;
     padding: 20px;
     position: relative;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
+}
+.member_info img{
+    border-radius: 100%;
 }
 
+
+.member_info_detail{
+    display: flex;
+    width: 50%;
+    color: #7aa4da;
+}
+
+#member_info_top{
+    display: flex;
+    margin-top: 55px;
+}
+#member_info_bottom{
+    display: flex;
+    margin-top: 55px;
+}
+#member_name{
+    padding-top: 7px;
+    margin-left: 23px;
+}
+#member_age{
+    font-size: 13px;
+    color: #a6c2e6;
+}
 

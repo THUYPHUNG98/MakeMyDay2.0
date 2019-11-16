@@ -397,12 +397,12 @@ document.querySelector('.mf-content .close').addEventListener('click', () => {
 
 //setting
 
-document.getElementById("setting").addEventListener('click', () => {          
-    document.querySelector('.modal-setting').style.display = 'flex';
-});
-document.querySelector('.ms-content .close').addEventListener('click', () => {
-    document.querySelector('.modal-setting').style.display = 'none';
-})
+// document.getElementById("setting").addEventListener('click', () => {          
+//     document.querySelector('.modal-setting').style.display = 'flex';
+// });
+// document.querySelector('.ms-content .close').addEventListener('click', () => {
+//     document.querySelector('.modal-setting').style.display = 'none';
+// })
 
 //about us
 document.getElementById("aboutus").addEventListener('click', () => {          
@@ -411,7 +411,7 @@ document.getElementById("aboutus").addEventListener('click', () => {
 document.querySelector('.ma-content .close').addEventListener('click', () => {
     document.querySelector('.modal-aboutus').style.display = 'none';
 })
-
+    //set time and date
     setInterval(() => { 
         let newDate = new Date();
         let time = newDate.getHours() + ":" + newDate.getMinutes() + ":" + newDate.getSeconds();
@@ -423,6 +423,16 @@ document.querySelector('.ma-content .close').addEventListener('click', () => {
     let newdate =  dt.getDate()  + "/" + (dt.getMonth() + 1) + "/" +  dt.getFullYear();
     let today_full_1=  document.getElementById("today_full_1") ;
 today_full_1.textContent = newdate;
+
+//       setting
+  let setting=   document.getElementById("setting");
+ setting.addEventListener('click', ()=> {
+ window.location.href = 'setting.html';
+ })
+
+
+
+
 
 
 //weather

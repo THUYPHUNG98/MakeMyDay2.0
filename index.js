@@ -77,7 +77,21 @@ function get_calendar(firstDay_no, daysInMonth){
         innerDate[i].innerHTML = k; // i là chỉ sô index của ô trong bảng
         liDate[i].setAttribute("id",`${currentYear}-${currentMonth+1}-${k}`)
         liDate[i].insertAdjacentHTML("beforeend",`<ul style = "display : none" id = "1${currentYear}-${currentMonth+1}-${k}"> 
-            <li> hello</li>
+            <li class="blue">mua sấccsc</li>
+            <li class="green">mua sấccsc</li>
+            <li class="red">mua sấccsc</li>
+            <li class="blue">mua sấccsc</li>
+            <li class="green">mua sấccsc</li>
+            <li class="red">mua sấccsc</li>
+            <li class="blue">mua sấccsc</li>
+            <li class="green">mua sấccsc</li>
+            <li class="red">mua sấccsc</li>
+            <li class="blue">mua sấccsc</li>
+            <li class="green">mua sấccsc</li>
+            <li class="red">mua sấccsc</li>
+            <li class="blue">mua sấccsc</li>
+            <li class="green">mua sấccsc</li>
+            <li class="red">mua sấccsc</li>
         </ul>`)
     }
 }
@@ -184,6 +198,17 @@ function get_calendar1(firstDay_no, daysInMonth,liDate1,innerDate1){
 
 //// thêm sự kiện trỏ vào ô trong bảng và chức năng của nó///////////////
 
+let modalTodo = document.getElementById("modal_Todo");
+let modalDates = document.getElementById("modal_Dates");
+let modalRoutine = document.getElementById("modal_Routine");
+let modalDeadline = document.getElementById("modal_Deadline");
+
+let modalTodoCount = document.getElementById("modal_Todo_count");
+let modalDatesCount = document.getElementById("modal_Dates_count");
+let modalRoutineCount = document.getElementById("modal_Routine_count");
+let modalDeadlineCount = document.getElementById("modal_Deadline_count");
+
+
 function setEventCell(){
     let monthContainerList = monthContainer.getElementsByClassName('cal_day')
     let monthHasId = [];
@@ -195,20 +220,85 @@ function setEventCell(){
 
     }
 
-    for(let i = 0; i < monthHasId.length; i ++){
-        takeId[i] = monthHasId[i].getAttribute("id");
+    for(let i = 0; i < monthHasId.length; i ++){ //monthHasId là đúng cái ô cal_day đang trỏ vào
+        takeId[i] = monthHasId[i].getAttribute("id"); //takeId[i] là id của ô cal_day ấy
         let id = takeId[i];
         console.log(id);
         monthHasId[i].addEventListener("click", ()=>{
             document.querySelector('.bg_detailtasks_tab').style.display = 'flex';
             let pushListUl = document.getElementById(`1${id}`);
-            console.log(pushListUl)
-            console.log(pushListUl.innerHTML)
+            let pushListLi = pushListUl.innerHTML; //lấy ra đống li của ô cal_day ấy
+            insertDetailTime(pushListLi,id)
+            let x = countLi(pushListUl);
+            insertDetailData(x);
+            
         })
 
 }
 }
 setEventCell();
+
+function insertDetailTime(pushListLi,id){
+    let splitId = id.split("-")
+    console.log(splitId); 
+    document.getElementsByClassName("date_click")[0].innerHTML = `${splitId[2]}-${splitId[1]}-${splitId[0]}`
+
+}
+
+//////////////////// đếm số màu thẻ li
+function countLi(pushListUl){
+       let blueLi = pushListUl.getElementsByClassName("blue");
+       console.log(blueLi);
+       let yellowLi = pushListUl.getElementsByClassName("yellow");
+       let greenLi = pushListUl.getElementsByClassName("green");
+       let redLi = pushListUl.getElementsByClassName("red");
+       let blueCount = blueLi.length;
+       let yellowCount = yellowLi.length;
+       let greenCount = greenLi.length;
+       let redCount = redLi.length;
+    x = {
+        blueLi : blueLi,
+        yellowLi : yellowLi,
+        greenLi : greenLi,
+        redLi : redLi,
+        blueCount : blueCount,
+        yellowCount : yellowCount,
+        greenCount : greenCount,
+        redCount : redCount,
+    }
+    return x;
+}
+
+function insertDetailData(y){
+    modalTodo.innerHTML= "";
+    modalDates.innerHTML = "";
+    modalRoutine.innerHTML ="";
+    modalDeadline.innerHTML="";
+
+
+
+    for( let i = 0; i < y.blueLi.length; i++){
+        modalTodo.innerHTML += `<li>${y.blueLi[i].innerHTML}</li>`;
+    }
+    for( let i = 0; i < y.yellowLi.length; i++){
+        modalDates.innerHTML += `<li>${y.yellowLi[i].innerHTML}</li>`;
+    }
+    for( let i = 0; i < y.greenLi.length; i++){
+        modalRoutine.innerHTML += `<li>${y.greenLi[i].innerHTML}</li>`;
+    }
+    for( let i = 0; i < y.redLi.length; i++){
+        modalDeadline.innerHTML += `<li>${y.redLi[i].innerHTML}</li>`;
+    }
+
+    modalTodoCount.innerHTML = y.blueCount;
+    modalDatesCount.innerHTML = y.yellowCount;
+    modalRoutineCount.innerHTML = y.greenCount;
+    modalDeadlineCount.innerHTML = y.redCount;
+}
+/////////////// in vào modal
+
+
+
 
 ///////////////////////////////////////////////////////////////////////
 

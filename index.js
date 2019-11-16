@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////////
-// get full time - chỉ 1 lần
+// F1 get full time - chỉ 1 lần
     var d = new Date();
     var month_name = ['January','February','March','April','May','June','July','August','September','October','November','December']
     var  currentMonth = d.getMonth(); // 0-11
@@ -23,7 +23,7 @@ function overDate(currentMonth,currentYear){
     }
 overDate(currentMonth,currentYear)
 
-// draw blank calendar - chỉ một lần
+// F2 draw blank calendar - chỉ một lần
 
 
     let monthContainer = document.getElementById("month_container");
@@ -43,7 +43,7 @@ overDate(currentMonth,currentYear)
 
     var innerDate = document.getElementsByClassName("count_day");
     var liDate = document.getElementsByClassName("cal_day");
-/////////// lấy dữ liệu tháng và năm đang trỏ tới để sinh: ngày đầu tiên của tháng ấy rơi vào thứ mấy và số ngày của tháng ấy
+///////////  F3 lấy dữ liệu tháng và năm đang trỏ tới để sinh: ngày đầu tiên của tháng ấy rơi vào thứ mấy và số ngày của tháng ấy
 returnDateMonth(currentMonth,currentYear);
 
 function returnDateMonth(currentMonth,currentYear){
@@ -62,7 +62,7 @@ function returnDateMonth(currentMonth,currentYear){
 
 
 
-// HÀM INSERT NGÀY VÀO Ô
+// F4 HÀM INSERT NGÀY VÀO Ô   
 
 function get_calendar(firstDay_no, daysInMonth){
     console.log(`bắt đầu insert ngày, ngày 1 rơi vào thứ ${firstDay_no}+1`)
@@ -98,7 +98,7 @@ function get_calendar(firstDay_no, daysInMonth){
 
 
 
-//////////// thêm sự kiện cho nút nhảy lịch////////
+//////////// F5 thêm sự kiện cho nút nhảy lịch////////
 let nextBtn = document.getElementById("next");
 let previousBtn = document.getElementById("previous");
 
@@ -134,10 +134,13 @@ function loadAll(currentMonth,currentYear){
     /// nhảy vào ô bar trước
     monthAndYear.innerHTML = `${month_name[currentMonth]} ${currentYear}`
     monthContainer.innerHTML="";
+    //F2
     redrawCalendar1(currentMonth,currentYear);
     var innerDate1 = document.getElementsByClassName("count_day");
     var liDate1 = document.getElementsByClassName("cal_day");
+    //F3 - F4
     returnDateMonth1(currentMonth,currentYear,liDate1,innerDate1);
+    //F6
     setEventCell();
 
     //// thêm sự kiện đọc dữ liệu, chèn vào, xử lý số liệu nữa
@@ -247,7 +250,7 @@ function insertDetailTime(pushListLi,id){
 
 }
 
-//////////////////// đếm số màu thẻ li
+//////////////////// đếm số màu thẻ li F6.2
 function countLi(pushListUl){
        let blueLi = pushListUl.getElementsByClassName("blue");
        let yellowLi = pushListUl.getElementsByClassName("yellow");
@@ -271,7 +274,7 @@ function countLi(pushListUl){
 }
 
 
-
+///
 function insertDetailData(y){
     modalTodo.innerHTML= "";
     modalDates.innerHTML = "";
@@ -599,16 +602,16 @@ document.querySelector('.mf-content .close').addEventListener('click', () => {
 })
 
 
-//setting
+// setting
 
-// document.getElementById("setting").addEventListener('click', () => {          
-//     document.querySelector('.modal-setting').style.display = 'flex';
-// });
-// document.querySelector('.ms-content .close').addEventListener('click', () => {
-//     document.querySelector('.modal-setting').style.display = 'none';
-// })
+document.getElementById("setting").addEventListener('click', () => {          
+    document.querySelector('.modal-setting').style.display = 'flex';
+});
+document.querySelector('.ms-content .close').addEventListener('click', () => {
+    document.querySelector('.modal-setting').style.display = 'none';
+})
 
-//about us
+// about us
 document.getElementById("aboutus").addEventListener('click', () => {          
     document.querySelector('.modal-aboutus').style.display = 'flex';
 });

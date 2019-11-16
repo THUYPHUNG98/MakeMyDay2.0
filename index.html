@@ -41,25 +41,25 @@
                 <p>My name</p>
                 <button>Log out</button>
             </div>
-            <img src="/assets/demo.webmaster541295de29059.png" alt="avatar" height="65" width="65">
+            <img src="./assets/demo.webmaster541295de29059.png" alt="avatar" height="65" width="65">
     </div>
         <!-- tab weather -->
         <div id="weather_tab">
             <div id="mini_tab_weather_left">
                 <div class="mini" id="todayy">
                     <div class="noon">Today</div>
-                    <div class="temperature">20°C</div>
-                    <img class="weather_icon" src="assets/rain_icon.png">
+                    <div class="temperature" id="today_temp">20°C</div>
+                    <img class="weather_icon" id="today_icon" src="assets/rain_icon.png">
                 </div>
                 <div class="mini" id="tomorrow">
                     <div class="noon">Tomorrow</div>
-                    <div class="temperature">20°C</div>
-                    <img class="weather_icon" src="assets/rain_icon.png">
+                    <div class="temperature" id="tomorrow_temp">20°C</div>
+                    <img class="weather_icon" id="tomor_icon" src="assets/rain_icon.png">
                 </div>
                 <div class="mini" id="nextday">
                     <div class="noon">Next day</div>
-                    <div class="temperature">20°C</div>
-                    <img class="weather_icon" src="assets/rain_icon.png">
+                    <div class="temperature" id="nextday_temp">20°C</div>
+                    <img class="weather_icon" id="nextday_icon" src="assets/rain_icon.png">
                 </div>
             </div>
             <div id="mini_tab_weather_right" class='bg'>
@@ -80,7 +80,7 @@
                         </div>
                     </div>
 
-                    <div id="a_rectangle"></div>
+                    <div id="a_rectangle">remind</div>
                 </div>
 
             </div>
@@ -426,7 +426,7 @@
                             </div>
                         </div>
                         <div class="member_info_detail">
-                            <img src="/assets/demo.webmaster541295de29059.png" alt="avatar" height="65" width="65">
+                            <img src="./assets/demo.webmaster541295de29059.png" alt="avatar" height="65" width="65">
                             <div id="member_name">
                                 <p>TRẦN KHÁNH NGÂN</p>
                                 <p id="member_age">20 years old
@@ -444,7 +444,6 @@
 
         <div class="modal-setting">
             <div class="ms-content">
-
                 <div class="close"> + </div>
 
             </div>

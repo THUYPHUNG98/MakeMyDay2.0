@@ -139,6 +139,8 @@ function loadAll(currentMonth,currentYear){
     var liDate1 = document.getElementsByClassName("cal_day");
     returnDateMonth1(currentMonth,currentYear,liDate1,innerDate1);
     setEventCell();
+
+    //// thêm sự kiện đọc dữ liệu, chèn vào, xử lý số liệu nữa
 }
 
 
@@ -215,7 +217,7 @@ function setEventCell(){
     let takeId = [];
     for(let i = 0; i < monthContainerList.length; i ++){
         if(monthContainerList[i].hasAttribute('id')){
-            monthHasId.push(monthContainerList[i]);
+            monthHasId.push(monthContainerList[i]); //tạo ra 1 array chỉ chứa cal_day có id;
         }
 
     }
@@ -248,7 +250,6 @@ function insertDetailTime(pushListLi,id){
 //////////////////// đếm số màu thẻ li
 function countLi(pushListUl){
        let blueLi = pushListUl.getElementsByClassName("blue");
-       console.log(blueLi);
        let yellowLi = pushListUl.getElementsByClassName("yellow");
        let greenLi = pushListUl.getElementsByClassName("green");
        let redLi = pushListUl.getElementsByClassName("red");
@@ -268,6 +269,8 @@ function countLi(pushListUl){
     }
     return x;
 }
+
+
 
 function insertDetailData(y){
     modalTodo.innerHTML= "";
@@ -295,7 +298,7 @@ function insertDetailData(y){
     modalRoutineCount.innerHTML = y.greenCount;
     modalDeadlineCount.innerHTML = y.redCount;
 }
-/////////////// in vào modal
+
 
 
 
@@ -303,6 +306,70 @@ function insertDetailData(y){
 ///////////////////////////////////////////////////////////////////////
 
 
+//////////////////////// load từ li ẩn lên bảng calendar
+function loadCalendarTag(){
+    let monthContainerList = monthContainer.getElementsByClassName('cal_day')
+    let monthHasId = [];
+    let takeId = [];
+    for(let i = 0; i < monthContainerList.length; i ++){
+        if(monthContainerList[i].hasAttribute('id')){
+            monthHasId.push(monthContainerList[i]); //tạo ra 1 array chỉ chứa cal_day có id;
+        }
+
+    }
+
+    for(let i = 0; i < monthHasId.length; i ++){ //monthHasId là đúng cái ô cal_day đang trỏ vào
+        takeId[i] = monthHasId[i].getAttribute("id"); //takeId[i] là id của ô cal_day ấy
+        let id = takeId[i];
+        console.log(id);
+        let pushListUl = document.getElementById(`1${id}`);
+        let pushListLi = pushListUl.innerHTML; //lấy ra đống li của ô cal_day ấy
+        console.log(pushListLi);
+        let x = countLi(pushListUl); // ra một object đã xử lý đếm
+        console.log(x)
+        let y = monthHasId[i]
+        console.log(y)
+        insertTag(x,y);
+
+    }
+}
+
+loadCalendarTag();
+
+{/* <div class="count_day"></div>
+<div style="opacity: 0" class="count_blue">0</div>
+<div style="opacity: 0" class="count_green">0</div>
+<div style="opacity: 0" class="count_yellow">0</div>
+<div style="opacity: 0" class="count_red">0</div> */}
+
+///////////////////////// đếm và hiện màu cho tag
+function insertTag(x,y){
+    let countBlue = y.getElementsByClassName("count_blue")[0];
+        switchColor(x.blueCount,countBlue); // là thẻ div chứ opacity
+    let countYellow = y.getElementsByClassName("count_yellow")[0];
+        switchColor(x.yellowCount,countYellow);
+    let countGreen = y.getElementsByClassName("count_green")[0];
+        switchColor(x.greenCount,countGreen);
+    let countRed = y.getElementsByClassName("count_red")[0];
+        switchColor(x.redCount,countRed);
+    countBlue.innerHTML = x.blueCount;
+    countYellow.innerHTML = x.yellowCount;
+    countGreen.innerHTML = x.greenCount;
+    countRed.innerHTML = x.redCount;
+    
+
+
+}
+function switchColor(colorCount,countColor){
+    if (colorCount == 0){
+        countColor.style.opacity = "0";
+    } else {
+        countColor.style.opacity = "100"
+    }
+}
+
+
+///////////////////////////////////////////////////
   // trigger của panel
 const add_btn = document.getElementById('addBtn');
 var task_panel = document.getElementById('task_panel');

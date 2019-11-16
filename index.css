@@ -148,7 +148,10 @@ body {
     color: #BCD9FF;
 }
 #a_rectangle{
+    color: white;
+    justify-content: center;
     display: flex;
+    align-items: center;
     width: 70%;
     height: 56%;
     background-color: #BCD9FF;

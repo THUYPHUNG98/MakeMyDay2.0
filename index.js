@@ -423,16 +423,18 @@ document.querySelector('.ma-content .close').addEventListener('click', () => {
     let newdate =  dt.getDate()  + "/" + (dt.getMonth() + 1) + "/" +  dt.getFullYear();
     let today_full_1=  document.getElementById("today_full_1") ;
 today_full_1.textContent = newdate;
+// console.log(dt.getDate());
 
 
 //weather
 let weather = [
     {
-        day: '20',
+        day: '16',
         month: '11',
         year: '2019',
         temperature: '30°C',
         status: 'Partly Cloudy',
+        img: '../assets/partly_cloudy.png',
     },
     {
         day: '17',
@@ -440,6 +442,7 @@ let weather = [
         year: '2019',
         temperature: '31°C',
         status: 'Partly Cloudy',
+        img: '../assets/partly_cloudy.png',
     },
     {
         day: '18',
@@ -447,6 +450,7 @@ let weather = [
         year: '2019',
         temperature: '25°C',
         status: 'Rain',
+        img: '../assets/rain.png'
     },
     {
         day: '19',
@@ -454,6 +458,7 @@ let weather = [
         year: '2019',
         temperature: '22°C',
         status: 'Partly Cloudy',
+        img: '../assets/partly_cloudy.png',
     },
     {
         day: '20',
@@ -461,6 +466,7 @@ let weather = [
         year: '2019',
         temperature: '23°C',
         status: 'Partly Cloudy',
+        img: '../assets/partly_cloudy.png',
     },
     {
         day: '21',
@@ -468,6 +474,7 @@ let weather = [
         year: '2019',
         temperature: '25°C',
         status: 'Sunnny',
+        img: '../assets/sunny.png',
     },
     {
         day: '22',
@@ -475,6 +482,7 @@ let weather = [
         year: '2019',
         temperature: '26°C',
         status: 'Sunny',
+        img: '../assets/sunny.png',
     },
     {
         day: '23',
@@ -482,6 +490,7 @@ let weather = [
         year: '2019',
         temperature: '27°C',
         status: 'Partly Cloudy',
+        img: '../assets/partly_cloudy.png',
     },
     {
         day: '24',
@@ -489,6 +498,7 @@ let weather = [
         year: '2019',
         temperature: '27°C',
         status: 'Partly Cloudy',
+        img: '../assets/partly_cloudy.png',
     },
     {
         day: '25',
@@ -496,13 +506,30 @@ let weather = [
         year: '2019',
         temperature: '26°C',
         status: 'Rain',
-    },
-    {
-        day: '26',
-        month: '11',
-        year: '2019',
-        temperature: '31°C',
-        status: 'Partly Cloudy',
+        img: '../assets/rain.png',
     },
 ]
 console.log(weather);
+let today_temp = document.getElementById("today_temp").innerHTML;
+let tomor_temp = document.getElementById("tomorrow_temp").innerHTML;
+let nextday_temp = document.getElementById("nextday_temp").innerHTML;
+for(let i = 0; i < weather.length; i++){
+    if(weather[i].day == dt.getDate()){
+        today_temp = weather[i].temperature;
+        document.getElementById("today_temp").innerHTML = today_temp;
+        document.getElementById("today_icon").src= weather[i].img;
+    }
+    if(weather[i].day == dt.getDate()+1){
+        tomor_temp = weather[i].temperature;
+        document.getElementById("tomorrow_temp").innerHTML = tomor_temp;
+        document.getElementById("tomor_icon").src= weather[i].img;
+    }
+    if(weather[i].day == dt.getDate()+2){
+        nextday_temp = weather[i].temperature;
+        document.getElementById("nextday_temp").innerHTML = nextday_temp;
+        document.getElementById("nextday_icon").src= weather[i].img;
+    }
+}
+//quote
+
+

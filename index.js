@@ -3,7 +3,10 @@
     var d = new Date();
     var month_name = ['January','February','March','April','May','June','July','August','September','October','November','December']
     var  currentMonth = d.getMonth(); // 0-11
+    const monthPointer = currentMonth;
     var currentYear = d.getFullYear(); // 2019
+    const yearPointer = currentYear;
+    console.log(`Thời gian hiện tại : tháng ${monthPointer+1} năm ${yearPointer}`)
 
 ///// hàm xử lý tình huống tràn ô
 function overDate(currentMonth,currentYear){
@@ -16,7 +19,6 @@ function overDate(currentMonth,currentYear){
     }
     var daysInMonth = new Date(currentYear, currentMonth + 1 ,0).getDate()
     var totalDay = firstDay_no+daysInMonth -1
-    console.log(`index đầu ${firstDay_no-1} cộng thêm ${daysInMonth} là tổng ${totalDay} ô`)
     return (totalDay < 35)?35:42;
     }
 overDate(currentMonth,currentYear)
@@ -26,7 +28,6 @@ overDate(currentMonth,currentYear)
 
     let monthContainer = document.getElementById("month_container");
     for(let i = 0; i < overDate(currentMonth,currentYear); i++){
-        let ranId =`${currentYear}${currentMonth}${i}`  
         monthContainer.insertAdjacentHTML("beforeend",
             `<li  class="cal_day" index = ${i}>
                 <div class="count_day"></div>
@@ -34,6 +35,7 @@ overDate(currentMonth,currentYear)
                 <div style="opacity: 0" class="count_green">0</div>
                 <div style="opacity: 0" class="count_yellow">0</div>
                 <div style="opacity: 0" class="count_red">0</div>
+
             </li>` 
         )
     }
@@ -66,10 +68,31 @@ function get_calendar(firstDay_no, daysInMonth){
     console.log(`bắt đầu insert ngày, ngày 1 rơi vào thứ ${firstDay_no}+1`)
     var endCell = firstDay_no + daysInMonth;
     var k = 0;
+    if(firstDay_no == 0){
+        firstDay_no = 7
+        endCell += 7
+    }
     for( i = firstDay_no -1; i < endCell -1; i++){ //vì thứ 2 index 0 
         k++; // k là ngày chạy từ 0 tới cuối của tháng ấy
         innerDate[i].innerHTML = k; // i là chỉ sô index của ô trong bảng
         liDate[i].setAttribute("id",`${currentYear}-${currentMonth+1}-${k}`)
+        liDate[i].insertAdjacentHTML("beforeend",`<ul style = "display : none" id = "1${currentYear}-${currentMonth+1}-${k}"> 
+            <li class="blue">mua sấccsc</li>
+            <li class="green">mua sấccsc</li>
+            <li class="red">mua sấccsc</li>
+            <li class="blue">mua sấccsc</li>
+            <li class="green">mua sấccsc</li>
+            <li class="red">mua sấccsc</li>
+            <li class="blue">mua sấccsc</li>
+            <li class="green">mua sấccsc</li>
+            <li class="red">mua sấccsc</li>
+            <li class="blue">mua sấccsc</li>
+            <li class="green">mua sấccsc</li>
+            <li class="red">mua sấccsc</li>
+            <li class="blue">mua sấccsc</li>
+            <li class="green">mua sấccsc</li>
+            <li class="red">mua sấccsc</li>
+        </ul>`)
     }
 }
 
@@ -114,15 +137,14 @@ function loadAll(currentMonth,currentYear){
     redrawCalendar1(currentMonth,currentYear);
     var innerDate1 = document.getElementsByClassName("count_day");
     var liDate1 = document.getElementsByClassName("cal_day");
-    console.log(`                            ${innerDate1}`);
     returnDateMonth1(currentMonth,currentYear,liDate1,innerDate1);
+    setEventCell();
 }
 
 
 ///// hàm vẽ lại bảng
 function redrawCalendar1(currentMonth,currentYear){
     for(let i = 0; i < overDate(currentMonth,currentYear); i++){
-        let ranId =`${currentYear}${currentMonth}${i}`   
         monthContainer.insertAdjacentHTML("beforeend",
             `<li  class="cal_day" index = ${i}>
                 <div class="count_day"></div>
@@ -134,6 +156,9 @@ function redrawCalendar1(currentMonth,currentYear){
         )
     }
 }
+
+//////////////hàm trả ra thứ và số ngày lại
+
 
 function returnDateMonth1(currentMonth,currentYear,liDate1,innerDate1){
     var first_date = month_name[currentMonth] + " " + "1" + " " + currentYear;
@@ -148,6 +173,8 @@ function returnDateMonth1(currentMonth,currentYear,liDate1,innerDate1){
     get_calendar1(firstDay_no, daysInMonth,liDate1,innerDate1)
 }
   
+//////////////hàm insert lại
+
 function get_calendar1(firstDay_no, daysInMonth,liDate1,innerDate1){
     console.log(`bắt đầu insert ngày, ngày 1 rơi vào thứ ${firstDay_no}+1`)
     
@@ -161,8 +188,116 @@ function get_calendar1(firstDay_no, daysInMonth,liDate1,innerDate1){
         k++; // k là ngày chạy từ 0 tới cuối của tháng ấy
         innerDate1[i].innerHTML = k; // i là chỉ sô index của ô trong bảng
         liDate1[i].setAttribute("id",`${currentYear}-${currentMonth+1}-${k}`)
+        liDate1[i].insertAdjacentHTML("beforeend",`<ul style = "display : none" id = "1${currentYear}-${currentMonth+1}-${k}"> 
+        <li> hello</li>
+    </ul>`)
+
+
     }
 }
+
+//// thêm sự kiện trỏ vào ô trong bảng và chức năng của nó///////////////
+
+let modalTodo = document.getElementById("modal_Todo");
+let modalDates = document.getElementById("modal_Dates");
+let modalRoutine = document.getElementById("modal_Routine");
+let modalDeadline = document.getElementById("modal_Deadline");
+
+let modalTodoCount = document.getElementById("modal_Todo_count");
+let modalDatesCount = document.getElementById("modal_Dates_count");
+let modalRoutineCount = document.getElementById("modal_Routine_count");
+let modalDeadlineCount = document.getElementById("modal_Deadline_count");
+
+
+function setEventCell(){
+    let monthContainerList = monthContainer.getElementsByClassName('cal_day')
+    let monthHasId = [];
+    let takeId = [];
+    for(let i = 0; i < monthContainerList.length; i ++){
+        if(monthContainerList[i].hasAttribute('id')){
+            monthHasId.push(monthContainerList[i]);
+        }
+
+    }
+
+    for(let i = 0; i < monthHasId.length; i ++){ //monthHasId là đúng cái ô cal_day đang trỏ vào
+        takeId[i] = monthHasId[i].getAttribute("id"); //takeId[i] là id của ô cal_day ấy
+        let id = takeId[i];
+        console.log(id);
+        monthHasId[i].addEventListener("click", ()=>{
+            document.querySelector('.bg_detailtasks_tab').style.display = 'flex';
+            let pushListUl = document.getElementById(`1${id}`);
+            let pushListLi = pushListUl.innerHTML; //lấy ra đống li của ô cal_day ấy
+            insertDetailTime(pushListLi,id)
+            let x = countLi(pushListUl);
+            insertDetailData(x);
+            
+        })
+
+}
+}
+setEventCell();
+
+function insertDetailTime(pushListLi,id){
+    let splitId = id.split("-")
+    console.log(splitId); 
+    document.getElementsByClassName("date_click")[0].innerHTML = `${splitId[2]}-${splitId[1]}-${splitId[0]}`
+
+}
+
+//////////////////// đếm số màu thẻ li
+function countLi(pushListUl){
+       let blueLi = pushListUl.getElementsByClassName("blue");
+       console.log(blueLi);
+       let yellowLi = pushListUl.getElementsByClassName("yellow");
+       let greenLi = pushListUl.getElementsByClassName("green");
+       let redLi = pushListUl.getElementsByClassName("red");
+       let blueCount = blueLi.length;
+       let yellowCount = yellowLi.length;
+       let greenCount = greenLi.length;
+       let redCount = redLi.length;
+    x = {
+        blueLi : blueLi,
+        yellowLi : yellowLi,
+        greenLi : greenLi,
+        redLi : redLi,
+        blueCount : blueCount,
+        yellowCount : yellowCount,
+        greenCount : greenCount,
+        redCount : redCount,
+    }
+    return x;
+}
+
+function insertDetailData(y){
+    modalTodo.innerHTML= "";
+    modalDates.innerHTML = "";
+    modalRoutine.innerHTML ="";
+    modalDeadline.innerHTML="";
+
+
+
+    for( let i = 0; i < y.blueLi.length; i++){
+        modalTodo.innerHTML += `<li>${y.blueLi[i].innerHTML}</li>`;
+    }
+    for( let i = 0; i < y.yellowLi.length; i++){
+        modalDates.innerHTML += `<li>${y.yellowLi[i].innerHTML}</li>`;
+    }
+    for( let i = 0; i < y.greenLi.length; i++){
+        modalRoutine.innerHTML += `<li>${y.greenLi[i].innerHTML}</li>`;
+    }
+    for( let i = 0; i < y.redLi.length; i++){
+        modalDeadline.innerHTML += `<li>${y.redLi[i].innerHTML}</li>`;
+    }
+
+    modalTodoCount.innerHTML = y.blueCount;
+    modalDatesCount.innerHTML = y.yellowCount;
+    modalRoutineCount.innerHTML = y.greenCount;
+    modalDeadlineCount.innerHTML = y.redCount;
+}
+/////////////// in vào modal
+
+
 
 
 ///////////////////////////////////////////////////////////////////////
@@ -376,13 +511,15 @@ set_btn.addEventListener("click",()=>{
                                 
                             //     document.querySelector('.bg_detailtasks_tab').style.display = 'flex';
                             // });
-// document.getElementById('cal_day2').addEventListener('click', function () {
-//     document.querySelector('.bg_detailtasks_tab').style.display = 'flex';
-// });
+
+
+
+
+
 
 
 document.getElementById('close').addEventListener('click', function () {
-    console.log("csdjjsdfsdcsdc");
+    console.log("closewhat");
     
     document.querySelector('.bg_detailtasks_tab').style.display = 'none';
 });
@@ -423,6 +560,7 @@ document.querySelector('.ma-content .close').addEventListener('click', () => {
     let newdate =  dt.getDate()  + "/" + (dt.getMonth() + 1) + "/" +  dt.getFullYear();
     let today_full_1=  document.getElementById("today_full_1") ;
 today_full_1.textContent = newdate;
+// console.log(dt.getDate());
 
 //       setting
   let setting=   document.getElementById("setting");
@@ -438,11 +576,12 @@ today_full_1.textContent = newdate;
 //weather
 let weather = [
     {
-        day: '20',
+        day: '16',
         month: '11',
         year: '2019',
         temperature: '30°C',
         status: 'Partly Cloudy',
+        img: '../assets/partly_cloudy.png',
     },
     {
         day: '17',
@@ -450,6 +589,7 @@ let weather = [
         year: '2019',
         temperature: '31°C',
         status: 'Partly Cloudy',
+        img: '../assets/partly_cloudy.png',
     },
     {
         day: '18',
@@ -457,6 +597,7 @@ let weather = [
         year: '2019',
         temperature: '25°C',
         status: 'Rain',
+        img: '../assets/rain.png'
     },
     {
         day: '19',
@@ -464,6 +605,7 @@ let weather = [
         year: '2019',
         temperature: '22°C',
         status: 'Partly Cloudy',
+        img: '../assets/partly_cloudy.png',
     },
     {
         day: '20',
@@ -471,6 +613,7 @@ let weather = [
         year: '2019',
         temperature: '23°C',
         status: 'Partly Cloudy',
+        img: '../assets/partly_cloudy.png',
     },
     {
         day: '21',
@@ -478,6 +621,7 @@ let weather = [
         year: '2019',
         temperature: '25°C',
         status: 'Sunnny',
+        img: '../assets/sunny.png',
     },
     {
         day: '22',
@@ -485,6 +629,7 @@ let weather = [
         year: '2019',
         temperature: '26°C',
         status: 'Sunny',
+        img: '../assets/sunny.png',
     },
     {
         day: '23',
@@ -492,6 +637,7 @@ let weather = [
         year: '2019',
         temperature: '27°C',
         status: 'Partly Cloudy',
+        img: '../assets/partly_cloudy.png',
     },
     {
         day: '24',
@@ -499,6 +645,7 @@ let weather = [
         year: '2019',
         temperature: '27°C',
         status: 'Partly Cloudy',
+        img: '../assets/partly_cloudy.png',
     },
     {
         day: '25',
@@ -506,13 +653,30 @@ let weather = [
         year: '2019',
         temperature: '26°C',
         status: 'Rain',
-    },
-    {
-        day: '26',
-        month: '11',
-        year: '2019',
-        temperature: '31°C',
-        status: 'Partly Cloudy',
+        img: '../assets/rain.png',
     },
 ]
 console.log(weather);
+let today_temp = document.getElementById("today_temp").innerHTML;
+let tomor_temp = document.getElementById("tomorrow_temp").innerHTML;
+let nextday_temp = document.getElementById("nextday_temp").innerHTML;
+for(let i = 0; i < weather.length; i++){
+    if(weather[i].day == dt.getDate()){
+        today_temp = weather[i].temperature;
+        document.getElementById("today_temp").innerHTML = today_temp;
+        document.getElementById("today_icon").src= weather[i].img;
+    }
+    if(weather[i].day == dt.getDate()+1){
+        tomor_temp = weather[i].temperature;
+        document.getElementById("tomorrow_temp").innerHTML = tomor_temp;
+        document.getElementById("tomor_icon").src= weather[i].img;
+    }
+    if(weather[i].day == dt.getDate()+2){
+        nextday_temp = weather[i].temperature;
+        document.getElementById("nextday_temp").innerHTML = nextday_temp;
+        document.getElementById("nextday_icon").src= weather[i].img;
+    }
+}
+//quote
+
+

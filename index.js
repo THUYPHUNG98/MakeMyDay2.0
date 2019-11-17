@@ -99,7 +99,7 @@ function get_calendar(firstDay_no, daysInMonth){
 
 
 
-
+//////////////// F4.1 load lên count_tab
 function loadTodayCounterTab(){
 
     var tmp2 = new Date();
@@ -165,6 +165,7 @@ previousBtn.addEventListener("click",function previous(){
         currentMonth -= 1;
     }
     loadAll(currentMonth,currentYear);
+    loadCalendarTag()
 })
 ;
 nextBtn.addEventListener("click",function next(){
@@ -177,6 +178,7 @@ nextBtn.addEventListener("click",function next(){
         currentMonth += 1;
     }
     loadAll(currentMonth,currentYear);
+    loadCalendarTag()
 
 })
 ;
@@ -275,7 +277,7 @@ let modalDatesCount = document.getElementById("modal_Dates_count");
 let modalRoutineCount = document.getElementById("modal_Routine_count");
 let modalDeadlineCount = document.getElementById("modal_Deadline_count");
 
-
+///////////////// F7 thêm sự kiện ấn vào nạp lên modal
 function setEventCell(){
     let monthContainerList = monthContainer.getElementsByClassName('cal_day')
     let monthHasId = [];
@@ -312,7 +314,7 @@ function insertDetailTime(pushListLi,id){
 
 }
 
-//////////////////// đếm số màu thẻ li F6.2
+//////////////////// đếm số màu thẻ li F7.1
 function countLi(pushListUl){
        let blueLi = pushListUl.getElementsByClassName("blue");
        let yellowLi = pushListUl.getElementsByClassName("yellow");
@@ -371,7 +373,7 @@ function insertDetailData(y){
 ///////////////////////////////////////////////////////////////////////
 
 
-//////////////////////// load từ li ẩn lên bảng calendar
+//////////////////////// load từ li ẩn lên bảng calendar F8
 function loadCalendarTag(){
     let monthContainerList = monthContainer.getElementsByClassName('cal_day')
     let monthHasId = [];

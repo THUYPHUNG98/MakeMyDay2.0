@@ -94,8 +94,62 @@ function get_calendar(firstDay_no, daysInMonth){
             <li class="red">mua sấccsc</li>
         </ul>`)
     }
+    loadTodayCounterTab();
 }
 
+
+
+
+function loadTodayCounterTab(){
+
+    var tmp2 = new Date();
+    let tmp4 = tmp2.getDate();
+    let id = `1${yearPointer}-${monthPointer+1}-${tmp4}`
+
+    let pushListUl = document.getElementById(`${id}`);
+    let pushListLi = pushListUl.innerHTML; //lấy ra đống li của ô cal_day ấy
+    console.log(pushListLi)
+    let x = countLi(pushListUl);
+    insertDetailTabCounter(x); 
+}
+
+
+function insertDetailTabCounter(y){
+    var countBoxTodo = document.getElementsByClassName("count_number")[0];
+    var countBoxDates = document.getElementsByClassName("count_number")[1];
+    var countBoxRoutine = document.getElementsByClassName("count_number")[2];
+    var countBoxDeadline = document.getElementsByClassName("count_number")[3];
+    
+    var countListTodo = document.getElementsByClassName("count_list_li")[0];
+    var countListDates = document.getElementsByClassName("count_list_li")[1];
+    var countListRoutine = document.getElementsByClassName("count_list_li")[2];
+    var countListDeadline = document.getElementsByClassName("count_list_li")[3];    
+
+    countListTodo.innerHTML = "";
+    countListDates.innerHTML = "";
+    countListRoutine.innerHTML = "";
+    countListDeadline.innerHTML = "";
+
+
+    for( let i = 0; i < y.blueLi.length; i++){
+        countListTodo.innerHTML += `<li>${y.blueLi[i].innerHTML}</li>`;
+    }
+    for( let i = 0; i < y.yellowLi.length; i++){
+        countListDates.innerHTML += `<li>${y.yellowLi[i].innerHTML}</li>`;
+    }
+    for( let i = 0; i < y.greenLi.length; i++){
+        countListRoutine.innerHTML += `<li>${y.greenLi[i].innerHTML}</li>`;
+    }
+    for( let i = 0; i < y.redLi.length; i++){
+        countListDeadline.innerHTML += `<li>${y.redLi[i].innerHTML}</li>`;
+    }
+
+    countBoxTodo.innerHTML = y.blueCount;
+    countBoxDates.innerHTML = y.yellowCount;
+    countBoxRoutine.innerHTML = y.greenCount;
+    countBoxDeadline.innerHTML = y.redCount;   
+
+}
 
 
 //////////// F5 thêm sự kiện cho nút nhảy lịch////////
@@ -194,7 +248,15 @@ function get_calendar1(firstDay_no, daysInMonth,liDate1,innerDate1){
         innerDate1[i].innerHTML = k; // i là chỉ sô index của ô trong bảng
         liDate1[i].setAttribute("id",`${currentYear}-${currentMonth+1}-${k}`)
         liDate1[i].insertAdjacentHTML("beforeend",`<ul style = "display : none" id = "1${currentYear}-${currentMonth+1}-${k}"> 
-        <li> hello</li>
+        <li class="blue">mua sấccsc</li>
+        <li class="green">mua sấccsc</li>
+        <li class="red">mua sấccsc</li>
+        <li class="blue">mua sấccsc</li>
+        <li class="green">mua sấccsc</li>
+        <li class="red">mua sấccsc</li>
+        <li class="blue">mua sấccsc</li>
+        <li class="green">mua sấccsc</li>
+        <li class="red">mua sấccsc</li>
     </ul>`)
 
 
@@ -714,10 +776,16 @@ setInterval(() => {
 }, 1000);
     
 var dt = new Date();
-let newdate =  dt.getDate()  + "/" + (dt.getMonth() + 1) + "/" +  dt.getFullYear();
+let newdate =  dt.getDate()  + "-" + (dt.getMonth() + 1) + "-" +  dt.getFullYear();
 let today_full_1=  document.getElementById("today_full_1") ;
 today_full_1.textContent = newdate;
-// console.log(dt.getDate());
+tmp3 = `${month_name[monthPointer]}`+ " " + `${dt.getDate()}` +" " + `${yearPointer}`
+console.log(tmp3) 
+var tmp2 = new Date(tmp3);
+console.log(tmp2.getDay());
+dayArr = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+document.getElementById("today").innerHTML = dayArr[tmp2.getDay()];
+
 
 //setting
 let setting = document.getElementById("setting");
@@ -829,6 +897,24 @@ for(let i = 0; i < weather.length; i++){
         document.getElementById("nextday_icon").src= weather[i].img;
     }
 }
+<<<<<<< HEAD
 //quote
+=======
+//remind
+let todayIcon = document.getElementById("today_icon").src;
+function remind(){
+    if(todayIcon = '../assets/partly_cloudy.png'){
+        document.getElementById("a_rectangle").innerHTML = "Today is a beautiful day. Enjoy your day!";
+    }else if(todayIcon = '../assets/sunny.png'){
+        document.getElementById("a_rectangle").innerHTML = "It's sunny today </br> Take care for your health </br> 👓☀️⛱️";
+    }else if(todayIcon = '../assets/rain.png'){
+        document.getElementById("a_rectangle").innerHTML = "It will rain today. Take an umbrella with you when you go out for a complete working day. </br> ☂️🌧️☔";
+    }
+    // Today is a beautiful day. Enjoy your day!
+    // It will rain today. Take an umbrella with you when you go out for a complete working day. </br> ☂️🌧️☔
+    // It's sunny today </br> Take care for your health <br> 👓☀️⛱️
+}
+remind();
+>>>>>>> bf4eb5b7d6215fe525914db9cbe5b1f77e26db00
 
 

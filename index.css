@@ -153,11 +153,13 @@ body {
 #a_rectangle{
     color: white;
     justify-content: center;
+    text-align: center;
     display: flex;
     align-items: center;
     width: 70%;
     height: 56%;
     background-color: #BCD9FF;
+    font-size: 21px;
 
 }
 

@@ -141,20 +141,25 @@ body {
 
 }
 #today_full_1{
+    text-align: right;
     color: #98C5FA;
-    width: 96px;
+    width: 138px;
     height: 35px;
+    margin-right: 10px;
 }
 #today_full_2{
+    text-align: left;
     color: #BCD9FF;
-    width: 96px;
+    width: 138px;
     height: 35px;
+    margin-left: 10px;
 }
 #a_rectangle{
     color: white;
     justify-content: center;
     text-align: center;
     display: flex;
+    padding: 10%;
     align-items: center;
     width: 70%;
     height: 56%;

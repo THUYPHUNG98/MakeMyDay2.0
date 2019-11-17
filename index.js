@@ -878,7 +878,7 @@ let weather = [
         img: '../assets/rain.png',
     },
 ]
-// console.log(weather);
+console.log(weather);
 let today_temp = document.getElementById("today_temp").innerHTML;
 let tomor_temp = document.getElementById("tomorrow_temp").innerHTML;
 let nextday_temp = document.getElementById("nextday_temp").innerHTML;
@@ -899,6 +899,9 @@ for(let i = 0; i < weather.length; i++){
         document.getElementById("nextday_icon").src= weather[i].img;
     }
 }
+<<<<<<< HEAD
+//quote
+=======
 //remind
 let todayIcon = document.getElementById("today_icon").src;
 function remind(){
@@ -914,5 +917,6 @@ function remind(){
     // It's sunny today </br> Take care for your health <br> 👓☀️⛱️
 }
 remind();
+>>>>>>> bf4eb5b7d6215fe525914db9cbe5b1f77e26db00
 
 

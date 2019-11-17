@@ -376,9 +376,19 @@ function switchColor(colorCount,countColor){
   // trigger của panel
 const add_btn = document.getElementById('addBtn');
 var task_panel = document.getElementById('task_panel');
+const delete_enable = document.getElementById('delete_task');
 add_btn.addEventListener('click', function(){
     task_panel.style.display = "flex";
     task_panel.transform = "scale(1.1)";
+    delete_enable.style.display = "none";
+    unset_btn.textContent = "Unset";
+    work_name.value = "";
+    let currentActive = document.getElementsByClassName("active");
+        for(let i = 0; i < currentActive.length; i++) {
+            console.log(currentActive[i]);
+            currentActive[i].className = "panel_btn";
+        };
+    label_btns[0].className += " active";
 });
 
 // nút close của task panel
@@ -388,10 +398,10 @@ close_panel.onclick = function() {
 }
 window.onclick = function(event) {
     if (event.target == this.task_panel) {
-      task_panel.style.display = "none";
+        task_panel.style.display = "none";
     }
 }
-//////// declare input fields
+//////// declare input fields and buttons
 const work_name = document.getElementById('input_name');
 const work_date = document.getElementById('pick_time_date');
 const start_time = document.getElementById('start_time');
@@ -399,6 +409,8 @@ const end_time = document.getElementById('end_time');
 const remind_btn = document.getElementById('remind_checkbox');
 const unset_btn = document.getElementById('unset_btn');
 const letMake_btn = document.getElementById('make_task');
+const delete_btn = document.getElementById('delete_btn');
+const logOut_btn = document.getElementById('logout_btn');
 const label_container = document.getElementsByClassName('active');
 const header = document.getElementById('panel_cate');
 var label_btns = header.getElementsByClassName('panel_btn');
@@ -418,114 +430,192 @@ firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         const userId = user.uid;
         let works = firebase.database().ref(userId + '/works');
+        const unsetContainer = document.getElementById('unset_list');
         works.on('value', function(snapshot) {
-            console.log(snapshot.val());
-            function checkFieldUnset() {
-                if(work_name.value == "") {
-                    alert('Enter your work name');
-                } else {
-                    console.log(work_name.value);
+            let worksList = snapshot.val();
+            if(worksList != null && worksList != undefined) {
+                unsetContainer.innerHTML = "";
+                console.log(worksList.length);
+                for(let i = 0; i < worksList.length; i++) {
+                    if(worksList[i] != undefined) {
+                        if(worksList[i].date == null || worksList[i].date == undefined ) {
+                            if(worksList[i].label == 0) {
+                                unsetContainer.insertAdjacentHTML('beforeend', `<li class="blue unsetList" id="${i}">${worksList[i].name}</li>`);
+                            } else if(worksList[i].label == 1) {
+                                unsetContainer.insertAdjacentHTML('beforeend', `<li class="yellow unsetList" id="${i}">${worksList[i].name}</li>`);
+                            } else if(worksList[i].label == 2) {
+                                unsetContainer.insertAdjacentHTML('beforeend', `<li class="green unsetList" id="${i}">${worksList[i].name}</li>`);
+                            } else if(worksList[i].label == 3){
+                                unsetContainer.insertAdjacentHTML('beforeend', `<li class="red unsetList" id="${i}">${worksList[i].name}</li>`);
+                            } else {
+                                console.log('no unset');
+                                    
+                            }
+                        } else {
+                            ///code lich vao
+                        };
+                    };
+                    
+                };
+                //get update unset
+                const updateUnsetList = document.getElementsByClassName('unsetList');
+                console.log(updateUnsetList);
+                for(let i = 0; i < updateUnsetList.length; i++) {
+                    updateUnsetList[i].addEventListener('click', function(e) {
+                    console.log(e.target);
+                    task_panel.style.display = "flex";
+                    task_panel.transform = "scale(1.1)";
+                    unset_btn.style.display = "flex";
+                    set_btn.style.width = "47%";
+                    enable.style.display = "none";
+                    delete_enable.style.display = "flex";
+                    work_name.value = e.target.textContent;
+                    let currentActive = document.getElementsByClassName("active");
+                    for(let i = 0; i < currentActive.length; i++) {
+                        console.log(currentActive[i]);
+                        currentActive[i].className = "panel_btn";
+                    };
+                    //console.log(...currentActive);
+                    let index = e.target.getAttribute('id');
+                    let label = worksList[index].label;
+                    if(label == 1) {
+                        label_btns[1].className += " active";
+                    } else if(label == 2) {
+                        label_btns[2].className += " active";
+                    } else if(label == 3) {
+                        label_btns[3].className += " active";
+                    } else {
+                        label_btns[0].className += " active";
+                    };
+                    unset_btn.textContent = "Update";
+                    letMake_btn.textContent = "Update";
+                    delete_btn.setAttribute('index', index);
+                    });
                 }
-                let label = 0;
-                if(label_container[0].textContent == 'Dates') {
-                    label = 1;
-                } else if(label_container[0].textContent == 'Routine') {
-                    label = 2;
-                } else if(label_container[0].textContent == 'Deadline') {
-                    label = 3;
-                } else {
-                    label = 0;
-                }
-                console.log(label);
-                return label;
+            } else {
+                works.child(0).set({// thiet lap mang
+                    label: 'first',
+                    name: 'first',
+                });
             };
-            function checkFieldSet() {
+        });
+        function checkFieldUnset() {
+            if(work_name.value == "") {
+                alert('Enter your work name');
+            } else {
+                console.log(work_name.value);
+            }
+            let label = 0;
+            if(label_container[0].textContent == 'Dates') {
+                label = 1;
+            } else if(label_container[0].textContent == 'Routine') {
+                label = 2;
+            } else if(label_container[0].textContent == 'Deadline') {
+                label = 3;
+            } else {
+                label = 0;
+            }
+            console.log(label);
+            return label;
+        };
+        function checkFieldSet() {
+            if(work_date.value == null|| start_time.value == null|| end_time == null) {
+                alert('Please fill full in');
+            } else {
                 let dateArr = work_date.value.split('-');
                 let month = parseInt(dateArr[1]);
                 let day = parseInt(dateArr[2]);
                 date = dateArr[0] +'-'+ month +'-'+ day;
                 if(remind_btn.checked == true) {
                     remind_btn.value = true;
-                }
-                console.log(date);
-                console.log(start_time.value);
-                console.log(end_time.value);
-                console.log(remind_btn.value);
-                return date;
+                };
             };
-            const ref = firebase.database().ref(userId);
-            //console.log(snapshot.val().length);
-            if(snapshot.val() == null) { ///đăng nhập lần đầu chưa có works
-                //them first unset
-                unset_btn.addEventListener('click', function() {
-                    let label = checkFieldUnset();
-                    ref.child('works').set({
-                        0 : {
+            return date;
+        };
+        const ref = firebase.database().ref(userId);
+        ref.on('value', function(snapshot) {// hien thi username
+            const username = document.getElementById('login_name');
+            username.textContent = snapshot.val().username;
+        });
+        //log out
+        logOut_btn.addEventListener('click', function() {
+            firebase.auth().signOut().then(function() {
+                // Sign-out successful.
+                window.location.assign('login.html');
+                alert('Logging out succeed!');
+              }).catch(function(error) {
+                // An error happened.
+                console.log(error);
+                
+              });
+        });
+        unset_btn.addEventListener('click', function() {
+            let label = checkFieldUnset();
+            works.once('value', function(snapshot) {
+                if(snapshot.val() == null) {
+                    console.log('no data!!!');
+                } else {
+                    console.log('have data!!!');
+                    if(unset_btn.textContent == "Unset") {// them Unset
+                        works.child(snapshot.val().length).set({
                             label: label,
                             name: work_name.value,
-                            },
                         });
-                    });
-                //them first set
-                letMake_btn.addEventListener('click', function() {
-                    let label = checkFieldUnset();
-                    let date = checkFieldSet();
-                    ref.child('works').set({
-                        0 : {
+                    } else { // update unset
+                        let upIndex = delete_btn.getAttribute('index');
+                        works.child(upIndex).set({
+                            label: label,
+                            name: work_name.value,
+                        });
+                        delete_btn.setAttribute('index', '');
+                        task_panel.style.display = "none";
+                    };
+                };
+            });
+        });
+
+        letMake_btn.addEventListener('click', function() {
+            let label = checkFieldUnset();
+            let date = checkFieldSet();
+            works.once('value', function(snapshot) {
+                if(snapshot.val() == null) {
+                    console.log('no data!!!');
+                    
+                } else {
+                    console.log('have data!!!');
+                    
+                    if(letMake_btn.textContent == "Let's make") {//them set
+                        works.child(snapshot.val().length).set({
                             label: label,
                             name: work_name.value,
                             date: date, 
                             startTime: start_time.value,
                             endTime: end_time.value,
                             remind: remind_btn.value,
-                            },
-                    });
-                });
-            } else { // da co du lieu
-                const unsetContainer = document.getElementById('unset_list');
-                const worksList = snapshot.val();
-                for(let i = 0; i < worksList.length; i++) {
-                    console.log(worksList[i]);
-                    if(worksList[i].date == null|| worksList[i].date == undefined) {
-                        if(worksList[i].label == 0) {
-                            unsetContainer.insertAdjacentHTML('beforeend', `<li class="blue">${worksList[i].name}</li>`);
-                        } else if(worksList[i].label == 1) {
-                            unsetContainer.insertAdjacentHTML('beforeend', `<li class="yellow">${worksList[i].name}</li>`);
-                        } else if(worksList[i].label == 2) {
-                            unsetContainer.insertAdjacentHTML('beforeend', `<li class="green">${worksList[i].name}</li>`);
-                        } else if(worksList[i].label == 3){
-                            unsetContainer.insertAdjacentHTML('beforeend', `<li class="red">${worksList[i].name}</li>`);
-                        } else {
-                            console.log('no unset');
-                                
-                        }
+                        });
+                    } else {//update set
+                        let upIndex = delete_btn.getAttribute('index');
+                        works.child(upIndex).set({
+                            label: label,
+                            name: work_name.value,
+                            date: date,
+                            startTime: start_time.value,
+                            endTime: end_time.value,
+                            remind: remind_btn.value,
+                        });
+                        delete_btn.setAttribute('index', '');
+                        task_panel.style.display = "none";
                     };
-                }; 
-                console.log(worksList.length);
-                unset_btn.addEventListener('click', function() {
-                    let label = checkFieldUnset();
-                    works.child(worksList.length).set({
-                        label: label,
-                        name: work_name.value,
-                    });
-                });
-                set_btn.addEventListener('click', function() {
-                    let label = checkFieldUnset();
-                    let date = checkFieldSet();
-                    works.child(worksList.length).set({
-                        label: label,
-                        name: work_name.value,
-                        date: date, 
-                        startTime: start_time.value,
-                        endTime: end_time.value,
-                        remind: remind_btn.value,
-                    });
-                });
-            };
-            function unset_display() {
-            };
+                };
+            });
         });
-        
+        delete_btn.addEventListener('click', function() {
+            let delIndex = delete_btn.getAttribute('index');
+            console.log(delIndex);
+            works.child(delIndex).set(null);
+            console.log('deleted');
+            task_panel.style.display = "none";
+        });
     } else {
         console.log('fail!');
     }
@@ -542,15 +632,11 @@ set_btn.addEventListener("click",()=>{
     set_btn.style.width = "100%";
     if(enable.style.display == "none"){
         enable.style.display = "flex";
-        // task_panel_content_holder.style.height= "480px"; 
-        // task_panel_content.style.height = "98%"
 
     } else {
         unset_btn.style.display = "flex";
         set_btn.style.width = "47%";
         enable.style.display = "none";
-        // task_panel_content_holder.style.height= "410px";
-        // task_panel_content.style.height = "410px"
          
     }
 })
@@ -617,31 +703,27 @@ document.getElementById("aboutus").addEventListener('click', () => {
 });
 document.querySelector('.ma-content .close').addEventListener('click', () => {
     document.querySelector('.modal-aboutus').style.display = 'none';
-})
-    //set time and date
-    setInterval(() => { 
-        let newDate = new Date();
-        let time = newDate.getHours() + ":" + newDate.getMinutes() + ":" + newDate.getSeconds();
-        let today_full_2=  document.getElementById("today_full_2") ;
-        today_full_2.textContent = time;
-     }, 1000);
+});
+
+//set time and date
+setInterval(() => { 
+    let newDate = new Date();
+    let time = newDate.getHours() + ":" + newDate.getMinutes() + ":" + newDate.getSeconds();
+    let today_full_2=  document.getElementById("today_full_2") ;
+       today_full_2.textContent = time;
+}, 1000);
     
-    var dt = new Date();
-    let newdate =  dt.getDate()  + "/" + (dt.getMonth() + 1) + "/" +  dt.getFullYear();
-    let today_full_1=  document.getElementById("today_full_1") ;
+var dt = new Date();
+let newdate =  dt.getDate()  + "/" + (dt.getMonth() + 1) + "/" +  dt.getFullYear();
+let today_full_1=  document.getElementById("today_full_1") ;
 today_full_1.textContent = newdate;
 // console.log(dt.getDate());
 
-//       setting
-  let setting=   document.getElementById("setting");
- setting.addEventListener('click', ()=> {
- window.location.href = 'setting.html';
- })
-
-
-
-
-
+//setting
+let setting = document.getElementById("setting");
+    setting.addEventListener('click', ()=> {
+    window.location.href = 'setting.html';
+});
 
 //weather
 let weather = [

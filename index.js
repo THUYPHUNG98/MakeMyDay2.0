@@ -107,6 +107,7 @@ function loadTodayCounterTab(){
 }
 
 function insertDetailTabCounter(y){
+    console.log("đã vào được ")
     var countBoxTodo = document.getElementsByClassName("count_number")[0];
     var countBoxDates = document.getElementsByClassName("count_number")[1];
     var countBoxRoutine = document.getElementsByClassName("count_number")[2];
@@ -124,17 +125,26 @@ function insertDetailTabCounter(y){
 
     console.log(y.blueLi[0]);
     
-    for( let i = 0; i < y.blueLi.length; i++){
-        countListTodo.innerHTML += `<li>${y.blueLi[i].innerHTML}</li>`;
+    for( let i = y.blueLi.length - 1; i > -1 ; i--){
+        countListTodo.innerHTML += `<li class ="tooltip">${y.blueLi[i].innerHTML}
+                                        <span class= "tooltiptext"  style="background-color: #5696E1 ;">${y.blueLi[i].getAttribute("time")}</span>
+                                    </li>`;
     }
-    for( let i = 0; i < y.yellowLi.length; i++){
-        countListDates.innerHTML += `<li>${y.yellowLi[i].innerHTML}</li>`;
+    for( let i = y.yellowLi.length - 1; i > -1 ; i--){
+        countListDates.innerHTML += `<li class ="tooltip">${y.yellowLi[i].innerHTML}
+                                        <span class= "tooltiptext"  style="background-color: #FFCC00 ;">${y.yellowLi[i].getAttribute("time")}</span>
+                                    </li>`;
     }
-    for( let i = 0; i < y.greenLi.length; i++){
-        countListRoutine.innerHTML += `<li>${y.greenLi[i].innerHTML}</li>`;
+    for( let i = y.greenLi.length - 1; i > -1 ; i--){
+        countListRoutine.innerHTML += `<li class ="tooltip">${y.greenLi[i].innerHTML}
+                                        <span class= "tooltiptext"  style="background-color: #72DB72 ;">${y.greenLi[i].getAttribute("time")}</span>
+                                    </li>`;
     }
-    for( let i = 0; i < y.redLi.length; i++){
-        countListDeadline.innerHTML += `<li>${y.redLi[i].innerHTML}</li>`;
+    for( let i = y.redLi.length - 1; i > -1 ; i--){
+        countListDeadline.innerHTML += `<li class ="tooltip">${y.redLi[i].innerHTML}
+                                        <span class= "tooltiptext"  style="background-color: #FF8383 ;">${y.redLi[i].getAttribute("time")}</span>
+                                    </li>`;
+                                    
     }
 
     countBoxTodo.innerHTML = y.blueCount;
@@ -366,6 +376,8 @@ function insertDetailData(y){
     modalDates.innerHTML = "";
     modalRoutine.innerHTML ="";
     modalDeadline.innerHTML="";
+
+    
 
     
     //console.log(y.blueLi[0]);
@@ -664,13 +676,13 @@ for(var i = 0; i < label_btns.length; i++) {
                 if(worksContainer != null) {
                     // worksContainer.innerHTML = "";
                 if(setsList[i].label == 0) {
-                    worksContainer.insertAdjacentHTML('beforeend', `<li class = "blue setList" id="${setsList[i].id}" time="${setsList[i].startTime +' -> '+ setsList[i].endTime}">${setsList[i].name}</li>`);
+                    worksContainer.insertAdjacentHTML('beforeend', `<li class = "blue setList" id="${setsList[i].id}" time="${setsList[i].startTime +' → '+ setsList[i].endTime}">${setsList[i].name}</li>`);
                 } else if(setsList[i].label == 1) {
-                    worksContainer.insertAdjacentHTML('beforeend', `<li class = "yellow setList" id="${setsList[i].id}" time="${setsList[i].startTime +' -> '+ setsList[i].endTime}">${setsList[i].name}</li>`);
+                    worksContainer.insertAdjacentHTML('beforeend', `<li class = "yellow setList" id="${setsList[i].id}" time="${setsList[i].startTime +' → '+ setsList[i].endTime}">${setsList[i].name}</li>`);
                 } else if(setsList[i].label == 2) {
-                    worksContainer.insertAdjacentHTML('beforeend', `<li class = "green setList" id="${setsList[i].id}" time="${setsList[i].startTime +' -> '+ setsList[i].endTime}">${setsList[i].name}</li>`);
+                    worksContainer.insertAdjacentHTML('beforeend', `<li class = "green setList" id="${setsList[i].id}" time="${setsList[i].startTime +' → '+ setsList[i].endTime}">${setsList[i].name}</li>`);
                 } else {
-                    worksContainer.insertAdjacentHTML('beforeend', `<li class = "red setList" id="${setsList[i].id}" time="${setsList[i].startTime +' -> '+ setsList[i].endTime}">${setsList[i].name}</li>`);
+                    worksContainer.insertAdjacentHTML('beforeend', `<li class = "red setList" id="${setsList[i].id}" time="${setsList[i].startTime +' → '+ setsList[i].endTime}">${setsList[i].name}</li>`);
                 }
                 loadCalendarTag();
                 }

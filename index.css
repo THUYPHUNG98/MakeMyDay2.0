@@ -193,6 +193,7 @@ body {
     
 }
 .count_box_first{
+    z-index: 0;
     display: flex;
     width: 100%;
     height: 43%;
@@ -220,13 +221,15 @@ body {
 .count_list{
     padding-left: 20%;
     padding-top: 10%;
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
 
 }
 .count_list ul{
     font-size: 25px;
     height: 100%;
     width: 100%;
+    /* list-style-type: disc; */
 }
 
 
@@ -948,6 +951,13 @@ body {
 }
 
 /*modal detail date*/
+.setlist1:hover{
+    color: rgb(129, 129, 129);
+    transform: scale(1.1);
+    transition: 100ms;
+    cursor: pointer;
+}
+
 .bg_detailtasks_tab{
     width: 100%;
     height: 100%;
@@ -1164,3 +1174,52 @@ background-size: cover;
     color: #a6c2e6;
 }
 
+
+
+/* tooltip */
+.tooltip {
+    /* border-bottom: 2px solid #BCD9FF; */
+    list-style-type: disc;
+    display: list-item;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 80%;
+    background-color: #98C5FA;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 110%;
+    left: 0%;
+    opacity: 0;
+    transition-delay: 2s;
+    transition: opacity 0.1s;
+  }
+ 
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    transform: rotate(180deg);
+    bottom: 100%;
+    left: 20%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #98C5FA transparent transparent transparent;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+  .tooltip:hover{
+      transform: scale(1.1);
+      transition: 100ms;
+      cursor: pointer;
+      color: rgb(114, 114, 114);
+
+  }

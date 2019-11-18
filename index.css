@@ -137,7 +137,7 @@ body {
     display: flex;
     justify-content: space-around;
     font-size: 28px;
-    padding-bottom:15%;
+    padding-bottom:7%;
     margin: 0px 25px;
 
 }
@@ -167,7 +167,8 @@ body {
     width: 70%;
     height: 56%;
     background-color: #BCD9FF;
-    font-size: 21px;
+    font-size: 27px;
+    font-family: 'Caveat', cursive;
 
 }
 

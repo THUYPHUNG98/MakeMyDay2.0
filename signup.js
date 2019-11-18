@@ -22,8 +22,8 @@ signup_btn.addEventListener('click', function(e) {
                 username: userName.value,
                 email: email.value,
             });
-            alert('Signing up succeed!');
-            //window.location.assign('login.html');
+            window.location.assign('login.html');
+            alert('Signing up succeed! Log in to enjoy');
         }).catch(function(error) {
             let codeErr = error.code;
             let messageErr = error.message;

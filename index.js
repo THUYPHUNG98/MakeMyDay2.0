@@ -88,22 +88,22 @@ function get_calendar(firstDay_no, daysInMonth){
 }
 
 
-
+// F4.4 nạp li vào today Counter
 
 function loadTodayCounterTab(){
 
     var tmp2 = new Date();
     let tmp4 = tmp2.getDate();
     let id = `1${yearPointer}-${monthPointer+1}-${tmp4}`
-    console.log(id);
+    console.log(` today countertab có nhận ${id}`);
     let pushListUl = document.getElementById(`${id}`);
+    console.log(pushListUl);
     let pushListLi = pushListUl.innerHTML; //lấy ra đống li của ô cal_day ấy
     //console.log(pushListLi)
     let x = countLi(pushListUl);
     insertDetailTabCounter(x); 
 
 }
-
 
 function insertDetailTabCounter(y){
     var countBoxTodo = document.getElementsByClassName("count_number")[0];
@@ -314,10 +314,11 @@ function setEventCell(){
                             delete_btn.setAttribute('index', index);
                             });
                         };
+                        loadTodayCounterTab();
                 };
             });
-
         });
+
 
 }
 }

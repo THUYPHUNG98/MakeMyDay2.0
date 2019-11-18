@@ -6,6 +6,34 @@ firebase.auth().onAuthStateChanged(function(user) {
         ////////////////////////////////////////////////////////////////////////////////
 // F1 get full time - chỉ 1 lần
 var d = new Date();
+let time, time1, setDate;
+let hours = d.getHours();
+let hours1 = d.getHours() + 1;
+let minutes = d.getMinutes();
+let date = d.getDate();
+let month = d.getMonth() + 1;
+if(hours.toString().length == 1) {
+    hours = "0" + hours;
+};
+if(hours1.toString().length == 1) {
+    hours1 = "0" + hours1;
+}
+if(minutes.toString().length == 1) {
+    minutes = "0" + minutes;
+};
+time = hours + ":" + minutes;
+time1 = hours1 + ":" + minutes;
+if(month.toString().length == 1) {
+    month = "0" + month;
+};
+if(date.toString().length == 1) {
+    date = "0" + date;
+};
+setDate = d.getFullYear()  + "-" + (d.getMonth() + 1) + "-" +  d.getDate();
+console.log(setDate);
+console.log(time);
+console.log(time1);
+
 const month_name = ['January','February','March','April','May','June','July','August','September','October','November','December']
 var  currentMonth = d.getMonth(); // 0-11
 const monthPointer = currentMonth;
@@ -84,7 +112,6 @@ function get_calendar(firstDay_no, daysInMonth){
         liDate[i].insertAdjacentHTML("beforeend",`<ul class="reset" style = "display : none" id = "1${currentYear}-${currentMonth+1}-${k}">
         </ul>`);
     }
-    loadTodayCounterTab();
 }
 
 
@@ -107,7 +134,6 @@ function loadTodayCounterTab(){
 }
 
 function insertDetailTabCounter(y){
-    console.log("đã vào được ")
     var countBoxTodo = document.getElementsByClassName("count_number")[0];
     var countBoxDates = document.getElementsByClassName("count_number")[1];
     var countBoxRoutine = document.getElementsByClassName("count_number")[2];
@@ -125,26 +151,17 @@ function insertDetailTabCounter(y){
 
     console.log(y.blueLi[0]);
     
-    for( let i = y.blueLi.length - 1; i > -1 ; i--){
-        countListTodo.innerHTML += `<li class ="tooltip">${y.blueLi[i].innerHTML}
-                                        <span class= "tooltiptext"  style="background-color: #5696E1 ;">${y.blueLi[i].getAttribute("time")}</span>
-                                    </li>`;
+    for( let i = 0; i < y.blueLi.length; i++){
+        countListTodo.innerHTML += `<li>${y.blueLi[i].innerHTML}</li>`;
     }
-    for( let i = y.yellowLi.length - 1; i > -1 ; i--){
-        countListDates.innerHTML += `<li class ="tooltip">${y.yellowLi[i].innerHTML}
-                                        <span class= "tooltiptext"  style="background-color: #FFCC00 ;">${y.yellowLi[i].getAttribute("time")}</span>
-                                    </li>`;
+    for( let i = 0; i < y.yellowLi.length; i++){
+        countListDates.innerHTML += `<li>${y.yellowLi[i].innerHTML}</li>`;
     }
-    for( let i = y.greenLi.length - 1; i > -1 ; i--){
-        countListRoutine.innerHTML += `<li class ="tooltip">${y.greenLi[i].innerHTML}
-                                        <span class= "tooltiptext"  style="background-color: #72DB72 ;">${y.greenLi[i].getAttribute("time")}</span>
-                                    </li>`;
+    for( let i = 0; i < y.greenLi.length; i++){
+        countListRoutine.innerHTML += `<li>${y.greenLi[i].innerHTML}</li>`;
     }
-    for( let i = y.redLi.length - 1; i > -1 ; i--){
-        countListDeadline.innerHTML += `<li class ="tooltip">${y.redLi[i].innerHTML}
-                                        <span class= "tooltiptext"  style="background-color: #FF8383 ;">${y.redLi[i].getAttribute("time")}</span>
-                                    </li>`;
-                                    
+    for( let i = 0; i < y.redLi.length; i++){
+        countListDeadline.innerHTML += `<li>${y.redLi[i].innerHTML}</li>`;
     }
 
     countBoxTodo.innerHTML = y.blueCount;
@@ -272,13 +289,13 @@ function setEventCell(){
             works.once('value', function(snapshot) {
                 let worksList = snapshot.val();
                 if(worksList != null) {
-                    console.log(...worksList);
+                    //console.log(...worksList);
                     
                     const updateSetList = document.getElementsByClassName('setList1');
                     console.log(...updateSetList);
                     for(let i = 0; i < updateSetList.length; i++) {
                         updateSetList[i].addEventListener('click', function(e) {
-                            console.log("ahihi");
+                            //console.log("ahihi");
                             console.log(e.target);
                             task_panel.style.display = "flex";
                             task_panel.transform = "scale(1.1)";
@@ -314,6 +331,8 @@ function setEventCell(){
                             }
                             work_date.value = dateArr[0] + '-' + dateArr[1] + '-' + dateArr[2];
                             start_time.value = worksList[index].startTime;
+                            console.log(worksList[index].startTime);
+                            
                             end_time.value = worksList[index].endTime;
                             if(worksList[index].remind == true) {
                                 remind_btn.checked == true;
@@ -376,8 +395,6 @@ function insertDetailData(y){
     modalDates.innerHTML = "";
     modalRoutine.innerHTML ="";
     modalDeadline.innerHTML="";
-
-    
 
     
     //console.log(y.blueLi[0]);
@@ -534,7 +551,7 @@ for(var i = 0; i < label_btns.length; i++) {
 };
         const unsetContainer = document.getElementById('unset_list');
         previousBtn.addEventListener("click",function previous(){
-            console.log("ahihi");
+            //console.log("ahihi");
             var setsList = [];
             works.once('value', function(snapshot) {
                 let worksList = snapshot.val();
@@ -662,10 +679,10 @@ for(var i = 0; i < label_btns.length; i++) {
             };
         });
         function loadData(setsList){
-            console.log('ahihi');
+            //console.log('ahihi');
             
             let reset = document.getElementsByClassName('reset');
-            console.log(...reset);
+            //console.log(...reset);
             
             for(let i = 0; i < reset.length; i++) {
                 reset[i].innerHTML = "";
@@ -676,13 +693,13 @@ for(var i = 0; i < label_btns.length; i++) {
                 if(worksContainer != null) {
                     // worksContainer.innerHTML = "";
                 if(setsList[i].label == 0) {
-                    worksContainer.insertAdjacentHTML('beforeend', `<li class = "blue setList" id="${setsList[i].id}" time="${setsList[i].startTime +' → '+ setsList[i].endTime}">${setsList[i].name}</li>`);
+                    worksContainer.insertAdjacentHTML('beforeend', `<li class = "blue setList" id="${setsList[i].id}" time="${setsList[i].startTime +' -> '+ setsList[i].endTime}">${setsList[i].name}</li>`);
                 } else if(setsList[i].label == 1) {
-                    worksContainer.insertAdjacentHTML('beforeend', `<li class = "yellow setList" id="${setsList[i].id}" time="${setsList[i].startTime +' → '+ setsList[i].endTime}">${setsList[i].name}</li>`);
+                    worksContainer.insertAdjacentHTML('beforeend', `<li class = "yellow setList" id="${setsList[i].id}" time="${setsList[i].startTime +' -> '+ setsList[i].endTime}">${setsList[i].name}</li>`);
                 } else if(setsList[i].label == 2) {
-                    worksContainer.insertAdjacentHTML('beforeend', `<li class = "green setList" id="${setsList[i].id}" time="${setsList[i].startTime +' → '+ setsList[i].endTime}">${setsList[i].name}</li>`);
+                    worksContainer.insertAdjacentHTML('beforeend', `<li class = "green setList" id="${setsList[i].id}" time="${setsList[i].startTime +' -> '+ setsList[i].endTime}">${setsList[i].name}</li>`);
                 } else {
-                    worksContainer.insertAdjacentHTML('beforeend', `<li class = "red setList" id="${setsList[i].id}" time="${setsList[i].startTime +' → '+ setsList[i].endTime}">${setsList[i].name}</li>`);
+                    worksContainer.insertAdjacentHTML('beforeend', `<li class = "red setList" id="${setsList[i].id}" time="${setsList[i].startTime +' -> '+ setsList[i].endTime}">${setsList[i].name}</li>`);
                 }
                 loadCalendarTag();
                 }
@@ -709,20 +726,73 @@ for(var i = 0; i < label_btns.length; i++) {
             return label;
         };
         function checkFieldSet() {
+            let date;
+            let message = "";
             if(work_date.value == null|| start_time.value == null|| end_time == null) {
                 alert('Please fill full in');
-            } else if(start_time.value > end_time.value) {
-                alert('Start time must be smaller than end time');
             } else {
+                let startArr = start_time.value.split(':');
+                let hours = parseInt(startArr[0]);
+                let minutes = parseInt(startArr[1]);
                 let dateArr = work_date.value.split('-');
                 let month = parseInt(dateArr[1]);
                 let day = parseInt(dateArr[2]);
-                date = dateArr[0] +'-'+ month +'-'+ day;
+                let year = parseInt(dateArr[0]);
+                if(year < d.getFullYear()) {
+                    message = 'Just set work for today or future!';
+                } else {
+                    if(year == d.getFullYear()) {
+                        if(month < (d.getMonth() + 1)){
+                            message += 'Just set work for today or future!';
+                        } else {
+                            if(month == (d.getMonth()+1)) {
+                                if(day < d.getDate()) {
+                                    message = 'Just set work for today or future!';
+                                } else {
+                                    if(day == d.getDate()) {
+                                        if(hours < d.getHours()) {
+                                            message = "Just set work for now or then\n";
+                                        } else {
+                                            if(hours == d.getHours()) {
+                                                if(minutes < d.getMinutes()) {
+                                                    message = "Just set work for now or then\n";
+                                                } else {
+                                                    if(start_time.value >= end_time.value) {
+                                                        message = "Start time must be smaller than end time";
+                                                    } else {
+                                                        date = dateArr[0] +'-'+ month +'-'+ day;
+                                                    }
+                                                }
+                                            } else {
+                                                if(start_time.value >= end_time.value) {
+                                                    message = "Start time must be smaller than end time";
+                                                } else {
+                                                    date = dateArr[0] +'-'+ month +'-'+ day;
+                                                }
+                                            }
+                                        }
+                                    } else {
+                                        date = dateArr[0] +'-'+ month +'-'+ day;
+                                    }
+                                }
+                            } else {
+                                date = dateArr[0] +'-'+ month +'-'+ day;
+                            }
+                        }
+                    } else {
+                        date = dateArr[0] +'-'+ month +'-'+ day;
+                    }
+                }
+                
                 if(remind_btn.checked == true) {
                     remind_btn.value = true;
                 };
             };
-            return date;
+            if(date == undefined) {
+                alert(message);
+            } else {
+                return date;
+            }
         };
         const ref = firebase.database().ref(userId);
         ref.on('value', function(snapshot) {// hien thi username
@@ -769,37 +839,40 @@ for(var i = 0; i < label_btns.length; i++) {
         letMake_btn.addEventListener('click', function() {
             let label = checkFieldUnset();
             let date = checkFieldSet();
-            works.once('value', function(snapshot) {
-                if(snapshot.val() == null) {
-                    console.log('no data!!!');
-                    
-                } else {
-                    console.log('have data!!!');
-                    
-                    if(letMake_btn.textContent == "Let's make") {//them set
-                        works.child(snapshot.val().length).set({
-                            label: label,
-                            name: work_name.value,
-                            date: date, 
-                            startTime: start_time.value,
-                            endTime: end_time.value,
-                            remind: remind_btn.value,
-                        });
-                    } else {//update set
-                        let upIndex = delete_btn.getAttribute('index');
-                        works.child(upIndex).set({
-                            label: label,
-                            name: work_name.value,
-                            date: date,
-                            startTime: start_time.value,
-                            endTime: end_time.value,
-                            remind: remind_btn.value,
-                        });
-                        delete_btn.setAttribute('index', '');
-                        task_panel.style.display = "none";
+            if(date != undefined) {
+                works.once('value', function(snapshot) {
+                    if(snapshot.val() == null) {
+                        console.log('no data!!!');
+                        
+                    } else {
+                        console.log('have data!!!');
+                        
+                        if(letMake_btn.textContent == "Let's make") {//them set
+                            works.child(snapshot.val().length).set({
+                                label: label,
+                                name: work_name.value,
+                                date: date, 
+                                startTime: start_time.value,
+                                endTime: end_time.value,
+                                remind: remind_btn.value,
+                            });
+
+                        } else {//update set
+                            let upIndex = delete_btn.getAttribute('index');
+                            works.child(upIndex).set({
+                                label: label,
+                                name: work_name.value,
+                                date: date,
+                                startTime: start_time.value,
+                                endTime: end_time.value,
+                                remind: remind_btn.value,
+                            });
+                            delete_btn.setAttribute('index', '');
+                            task_panel.style.display = "none";
+                        };
                     };
-                };
-            });
+                });
+            };
         });
         delete_btn.addEventListener('click', function() {
             let delIndex = delete_btn.getAttribute('index');
@@ -817,14 +890,17 @@ for(var i = 0; i < label_btns.length; i++) {
             
         });
                 // set button
-    let task_panel_content_holder = document.getElementById("task_panel_content_holder")
-    let task_panel_content = document.getElementById("task_panel_content")
+    // let task_panel_content_holder = document.getElementById("task_panel_content_holder")
+    // let task_panel_content = document.getElementById("task_panel_content")
     let enable = document.getElementById("enable");
     let set_btn = document.getElementById("set_btn");
     set_btn.addEventListener("click",()=>{
         console.log(enable.style.display);
         unset_btn.style.display = "none";
         set_btn.style.width = "100%";
+        work_date.value = setDate;
+        start_time.value = time;
+        end_time.value = time1;
         if(enable.style.display == "none"){
             enable.style.display = "flex";
 
@@ -903,7 +979,19 @@ for(var i = 0; i < label_btns.length; i++) {
     //set time and date
     setInterval(() => { 
         let newDate = new Date();
-        let time = newDate.getHours() + ":" + newDate.getMinutes() + ":" + newDate.getSeconds();
+        let hours = newDate.getHours();
+        let minutes = newDate.getMinutes();
+        let seconds = newDate.getSeconds();
+        if(hours.toString().length == 1) {
+            hours = "0" + hours;
+        };
+        if(minutes.toString().length == 1) {
+            minutes = "0" + minutes;
+        };
+        if(seconds.toString().length == 1) {
+            seconds = "0" + seconds;
+        }
+        let time = hours + ":" + minutes + ":" + seconds;
         let today_full_2=  document.getElementById("today_full_2") ;
         today_full_2.textContent = time;
     }, 1000);
@@ -1009,7 +1097,7 @@ for(var i = 0; i < label_btns.length; i++) {
             img: '../assets/rain.png',
         },
     ]
-    console.log(weather);
+    //console.log(weather);
     let today_temp = document.getElementById("today_temp").innerHTML;
     let tomor_temp = document.getElementById("tomorrow_temp").innerHTML;
     let nextday_temp = document.getElementById("nextday_temp").innerHTML;

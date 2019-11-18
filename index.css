@@ -135,9 +135,10 @@ body {
 }
 #today_full{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     font-size: 28px;
     padding-bottom:15%;
+    margin: 0px 25px;
 
 }
 #today_full_1{
@@ -149,6 +150,8 @@ body {
 }
 #today_full_2{
     text-align: left;
+    display: flex;
+    justify-content: center;
     color: #BCD9FF;
     width: 138px;
     height: 35px;

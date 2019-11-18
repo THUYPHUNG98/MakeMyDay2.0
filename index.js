@@ -403,6 +403,7 @@ add_btn.addEventListener('click', function(){
     task_panel.transform = "scale(1.1)";
     delete_enable.style.display = "none";
     unset_btn.textContent = "Unset";
+    letMake_btn.textContent = "Let's make";
     unset_btn.style.display = "flex";
     set_btn.style.width = "47%";
     work_name.value = "";

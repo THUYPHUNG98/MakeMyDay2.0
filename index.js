@@ -1,11 +1,16 @@
-////////////////////////////////////////////////////////////////////////////////
+// tương tác với database
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+        const userId = user.uid;
+        let works = firebase.database().ref(userId + '/works');
+        ////////////////////////////////////////////////////////////////////////////////
 // F1 get full time - chỉ 1 lần
-    var d = new Date();
-    var month_name = ['January','February','March','April','May','June','July','August','September','October','November','December']
-    var  currentMonth = d.getMonth(); // 0-11
-    const monthPointer = currentMonth;
-    var currentYear = d.getFullYear(); // 2019
-    const yearPointer = currentYear;
+var d = new Date();
+const month_name = ['January','February','March','April','May','June','July','August','September','October','November','December']
+var  currentMonth = d.getMonth(); // 0-11
+const monthPointer = currentMonth;
+var currentYear = d.getFullYear(); // 2019
+const yearPointer = currentYear;
     //console.log(`Thời gian hiện tại : tháng ${monthPointer+1} năm ${yearPointer}`)
 
 ///// hàm xử lý tình huống tràn ô
@@ -97,7 +102,6 @@ function loadTodayCounterTab(){
     let x = countLi(pushListUl);
     insertDetailTabCounter(x); 
 
-    console.log( `hhihihihi      ${pushListUl}`);
 }
 
 
@@ -252,10 +256,68 @@ function setEventCell(){
             let pushListLi = pushListUl.innerHTML; //lấy ra đống li của ô cal_day ấy
             insertDetailTime(pushListLi,id)
             let x = countLi(pushListUl);
-
             insertDetailData(x);
-            
-        })
+            //get update set
+            works.once('value', function(snapshot) {
+                let worksList = snapshot.val();
+                if(worksList != null) {
+                    console.log(...worksList);
+                    
+                    const updateSetList = document.getElementsByClassName('setList1');
+                    console.log(...updateSetList);
+                    for(let i = 0; i < updateSetList.length; i++) {
+                        updateSetList[i].addEventListener('click', function(e) {
+                            console.log("ahihi");
+                            console.log(e.target);
+                            task_panel.style.display = "flex";
+                            task_panel.transform = "scale(1.1)";
+                            unset_btn.style.display = "none";
+                            set_btn.style.width = "100%";
+                            enable.style.display = "flex";
+                            delete_enable.style.display = "flex";
+                            work_name.value = e.target.textContent;
+                            let currentActive = document.getElementsByClassName("active");
+                            for(let i = 0; i < currentActive.length; i++) {
+                                console.log(currentActive[i]);
+                                currentActive[i].className = "panel_btn";
+                            };
+                            //console.log(...currentActive);
+                            let index = e.target.getAttribute('idset');
+                            
+                            let label = worksList[index].label;
+                            if(label == 1) {
+                                label_btns[1].className += " active";
+                            } else if(label == 2) {
+                                label_btns[2].className += " active";
+                            } else if(label == 3) {
+                                label_btns[3].className += " active";
+                            } else {
+                                label_btns[0].className += " active";
+                            };
+                            let dateArr = worksList[index].date.split('-');
+                            if(dateArr[1].length == 1) {
+                                dateArr[1] = "0" + dateArr[1];
+                            };
+                            if(dateArr[2].length == 1) {
+                                dateArr[2] = "0" + dateArr[2];
+                            }
+                            work_date.value = dateArr[0] + '-' + dateArr[1] + '-' + dateArr[2];
+                            start_time.value = worksList[index].startTime;
+                            end_time.value = worksList[index].endTime;
+                            if(worksList[index].remind == true) {
+                                remind_btn.checked == true;
+                            } else {
+                                remind_btn.checked == false;
+                            }
+                            unset_btn.textContent = "Update";
+                            letMake_btn.textContent = "Update";
+                            delete_btn.setAttribute('index', index);
+                            });
+                        };
+                };
+            });
+
+        });
 
 }
 }
@@ -455,11 +517,6 @@ for(var i = 0; i < label_btns.length; i++) {
         
     });
 };
-// tương tác với database
-firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-        const userId = user.uid;
-        let works = firebase.database().ref(userId + '/works');
         const unsetContainer = document.getElementById('unset_list');
         previousBtn.addEventListener("click",function previous(){
             console.log("ahihi");
@@ -582,50 +639,6 @@ firebase.auth().onAuthStateChanged(function(user) {
                     delete_btn.setAttribute('index', index);
                     });
                 };
-                //get update set
-                const updateSetList = document.getElementsByClassName('setList1');
-                console.log(...updateSetList);
-                for(let i = 0; i < updateSetList.length; i++) {
-                    updateSetList[i].addEventListener('click', function(e) {
-                        console.log("ahihi");
-                        console.log(e.target);
-                        task_panel.style.display = "flex";
-                        task_panel.transform = "scale(1.1)";
-                        unset_btn.style.display = "none";
-                        set_btn.style.width = "100%";
-                        enable.style.display = "flex";
-                        delete_enable.style.display = "flex";
-                        work_name.value = e.target.textContent;
-                        let currentActive = document.getElementsByClassName("active");
-                        for(let i = 0; i < currentActive.length; i++) {
-                            console.log(currentActive[i]);
-                            currentActive[i].className = "panel_btn";
-                        };
-                        //console.log(...currentActive);
-                        let index = e.target.getAttribute('id');
-                        let label = worksList[index].label;
-                        if(label == 1) {
-                            label_btns[1].className += " active";
-                        } else if(label == 2) {
-                            label_btns[2].className += " active";
-                        } else if(label == 3) {
-                            label_btns[3].className += " active";
-                        } else {
-                            label_btns[0].className += " active";
-                        };
-                        work_date.value = worksList[index].date;
-                        start_time.value = worksList[index].startTime;
-                        end_time.value = worksList[index].endTime;
-                        if(worksList[index].remind == true) {
-                            remind_btn.checked == true;
-                        } else {
-                            remind_btn.checked == false;
-                        }
-                        unset_btn.textContent = "Update";
-                        letMake_btn.textContent = "Update";
-                        delete_btn.setAttribute('index', index);
-                        });
-                    };
             } else {
                 works.child(0).set({// thiet lap mang
                     label: 'first',
@@ -779,6 +792,8 @@ firebase.auth().onAuthStateChanged(function(user) {
             works.child(delIndex).set(null);
             console.log('deleted');
             task_panel.style.display = "none";
+            console.log('close oke');
+            
         });
         //feed back
         feedBack_btn.addEventListener('click', function() {
@@ -786,239 +801,237 @@ firebase.auth().onAuthStateChanged(function(user) {
             console.log("feedbacks");
             
         });
+                // set button
+    let task_panel_content_holder = document.getElementById("task_panel_content_holder")
+    let task_panel_content = document.getElementById("task_panel_content")
+    let enable = document.getElementById("enable");
+    let set_btn = document.getElementById("set_btn");
+    set_btn.addEventListener("click",()=>{
+        console.log(enable.style.display);
+        unset_btn.style.display = "none";
+        set_btn.style.width = "100%";
+        if(enable.style.display == "none"){
+            enable.style.display = "flex";
+
+        } else {
+            unset_btn.style.display = "flex";
+            set_btn.style.width = "47%";
+            enable.style.display = "none";
+            
+        }
+    })
+
+                /////// chọn minute hẹn giờ của remind at task
+    // let remind_array = [00,02,10,15,20,25,30,35,40,45,50,55,60];
+    // let select_string_remind = [];
+    // let insert_remind = document.getElementById("pick_time_remind");
+    // remind_array.map(item =>{
+    //     let a = `<option value = "${item}">${item}</option>`
+    //     select_string_remind.push(a);
+    // });
+    // insert_remind.innerHTML = `${select_string_remind}`;
+
+    // modal date detail
+    // console.log(document.getElementById('cal_day'));
+    // list_cal_day = document.getElementsByClassName('cal_day');
+    // for(let i = 0; i < list_cal_day.length; i++){
+    //     cal_day = list_cal_day[i]
+    //     cal_day.setAttribute("id", i);
+    //     console.log(cal_day);
+    // }
+
+
+    //
+                                // document.getElementById('cal_day').addEventListener('click', function () {
+                                //     console.log('ahihi');
+                                    
+                                //     document.querySelector('.bg_detailtasks_tab').style.display = 'flex';
+                                // });
+
+
+
+
+
+
+
+    document.getElementById('close').addEventListener('click', function () {
+        console.log("closewhat");
+        
+        document.querySelector('.bg_detailtasks_tab').style.display = 'none';
+    });
+    //feedback
+    document.getElementById("feedback").addEventListener('click', () => {          
+        document.querySelector('.modal-feedback').style.display = 'flex';
+    });
+    document.querySelector('.mf-content .close').addEventListener('click', () => {
+        document.querySelector('.modal-feedback').style.display = 'none';
+    })
+
+
+    // setting
+
+    document.getElementById("setting").addEventListener('click', () => {          
+        document.querySelector('.modal-setting').style.display = 'flex';
+    });
+    document.querySelector('.ms-content .close').addEventListener('click', () => {
+        document.querySelector('.modal-setting').style.display = 'none';
+    })
+
+    // about us
+    document.getElementById("aboutus").addEventListener('click', () => {          
+        document.querySelector('.modal-aboutus').style.display = 'flex';
+    });
+    document.querySelector('.ma-content .close').addEventListener('click', () => {
+        document.querySelector('.modal-aboutus').style.display = 'none';
+    });
+
+    //set time and date
+    setInterval(() => { 
+        let newDate = new Date();
+        let time = newDate.getHours() + ":" + newDate.getMinutes() + ":" + newDate.getSeconds();
+        let today_full_2=  document.getElementById("today_full_2") ;
+        today_full_2.textContent = time;
+    }, 1000);
+        
+    var dt = new Date();
+    let newdate =  dt.getDate()  + "-" + (dt.getMonth() + 1) + "-" +  dt.getFullYear();
+    let today_full_1=  document.getElementById("today_full_1") ;
+    today_full_1.textContent = newdate;
+    tmp3 = `${month_name[monthPointer]}`+ " " + `${dt.getDate()}` +" " + `${yearPointer}`
+    console.log(tmp3) 
+    var tmp2 = new Date(tmp3);
+    console.log(tmp2.getDay());
+    dayArr = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+    document.getElementById("today").innerHTML = dayArr[tmp2.getDay()];
+
+
+    //setting
+    let setting = document.getElementById("setting");
+        setting.addEventListener('click', ()=> {
+        window.location.href = 'setting.html';
+    });
+
+    //weather
+    let weather = [
+        {
+            day: '16',
+            month: '11',
+            year: '2019',
+            temperature: '30°C',
+            status: 'Partly Cloudy',
+            img: '../assets/partly_cloudy.png',
+        },
+        {
+            day: '17',
+            month: '11',
+            year: '2019',
+            temperature: '31°C',
+            status: 'Partly Cloudy',
+            img: '../assets/partly_cloudy.png',
+        },
+        {
+            day: '18',
+            month: '11',
+            year: '2019',
+            temperature: '25°C',
+            status: 'Rain',
+            img: '../assets/rain.png'
+        },
+        {
+            day: '19',
+            month: '11',
+            year: '2019',
+            temperature: '22°C',
+            status: 'Partly Cloudy',
+            img: '../assets/partly_cloudy.png',
+        },
+        {
+            day: '20',
+            month: '11',
+            year: '2019',
+            temperature: '23°C',
+            status: 'Partly Cloudy',
+            img: '../assets/partly_cloudy.png',
+        },
+        {
+            day: '21',
+            month: '11',
+            year: '2019',
+            temperature: '25°C',
+            status: 'Sunnny',
+            img: '../assets/sunny.png',
+        },
+        {
+            day: '22',
+            month: '11',
+            year: '2019',
+            temperature: '26°C',
+            status: 'Sunny',
+            img: '../assets/sunny.png',
+        },
+        {
+            day: '23',
+            month: '11',
+            year: '2019',
+            temperature: '27°C',
+            status: 'Partly Cloudy',
+            img: '../assets/partly_cloudy.png',
+        },
+        {
+            day: '24',
+            month: '11',
+            year: '2019',
+            temperature: '27°C',
+            status: 'Partly Cloudy',
+            img: '../assets/partly_cloudy.png',
+        },
+        {
+            day: '25',
+            month: '11',
+            year: '2019',
+            temperature: '26°C',
+            status: 'Rain',
+            img: '../assets/rain.png',
+        },
+    ]
+    console.log(weather);
+    let today_temp = document.getElementById("today_temp").innerHTML;
+    let tomor_temp = document.getElementById("tomorrow_temp").innerHTML;
+    let nextday_temp = document.getElementById("nextday_temp").innerHTML;
+    for(let i = 0; i < weather.length; i++){
+        if(weather[i].day == dt.getDate()){
+            today_temp = weather[i].temperature;
+            document.getElementById("today_temp").innerHTML = today_temp;
+            document.getElementById("today_icon").src= weather[i].img;
+        }
+        if(weather[i].day == dt.getDate()+1){
+            tomor_temp = weather[i].temperature;
+            document.getElementById("tomorrow_temp").innerHTML = tomor_temp;
+            document.getElementById("tomor_icon").src= weather[i].img;
+        }
+        if(weather[i].day == dt.getDate()+2){
+            nextday_temp = weather[i].temperature;
+            document.getElementById("nextday_temp").innerHTML = nextday_temp;
+            document.getElementById("nextday_icon").src= weather[i].img;
+        }
+    }
+    //remind
+    let todayIcon = document.getElementById("today_icon").src;
+    function remind(){
+        if(todayIcon == '../assets/partly_cloudy.png'){
+            document.getElementById("a_rectangle").innerHTML = "Today is a beautiful day. Enjoy your day!";
+        }else if(todayIcon == '../assets/sunny.png'){
+            document.getElementById("a_rectangle").innerHTML = "It's sunny today </br> Take care for your health </br> 👓☀️⛱️";
+        }else if(todayIcon == '../assets/rain.png'){
+            document.getElementById("a_rectangle").innerHTML = "It will rain today. Take an umbrella with you when you go out for a complete working day. </br> ☂️🌧️☔";
+        }
+        // Today is a beautiful day. Enjoy your day!
+        // It will rain today. Take an umbrella with you when you go out for a complete working day. </br> ☂️🌧️☔
+        // It's sunny today </br> Take care for your health <br> 👓☀️⛱️
+    }
+    remind();
     } else {
         console.log('fail!');
     }
 
   });
-// set button
-let task_panel_content_holder = document.getElementById("task_panel_content_holder")
-let task_panel_content = document.getElementById("task_panel_content")
-let enable = document.getElementById("enable");
-let set_btn = document.getElementById("set_btn");
-set_btn.addEventListener("click",()=>{
-    console.log(enable.style.display);
-    unset_btn.style.display = "none";
-    set_btn.style.width = "100%";
-    if(enable.style.display == "none"){
-        enable.style.display = "flex";
-
-    } else {
-        unset_btn.style.display = "flex";
-        set_btn.style.width = "47%";
-        enable.style.display = "none";
-         
-    }
-})
-
-             /////// chọn minute hẹn giờ của remind at task
-// let remind_array = [00,02,10,15,20,25,30,35,40,45,50,55,60];
-// let select_string_remind = [];
-// let insert_remind = document.getElementById("pick_time_remind");
-// remind_array.map(item =>{
-//     let a = `<option value = "${item}">${item}</option>`
-//     select_string_remind.push(a);
-// });
-// insert_remind.innerHTML = `${select_string_remind}`;
-
-// modal date detail
-// console.log(document.getElementById('cal_day'));
-// list_cal_day = document.getElementsByClassName('cal_day');
-// for(let i = 0; i < list_cal_day.length; i++){
-//     cal_day = list_cal_day[i]
-//     cal_day.setAttribute("id", i);
-//     console.log(cal_day);
-// }
-
-
-//
-                            // document.getElementById('cal_day').addEventListener('click', function () {
-                            //     console.log('ahihi');
-                                
-                            //     document.querySelector('.bg_detailtasks_tab').style.display = 'flex';
-                            // });
-
-
-
-
-
-
-
-document.getElementById('close').addEventListener('click', function () {
-    console.log("closewhat");
-    
-    document.querySelector('.bg_detailtasks_tab').style.display = 'none';
-});
-//feedback
-document.getElementById("feedback").addEventListener('click', () => {          
-    document.querySelector('.modal-feedback').style.display = 'flex';
-});
-document.querySelector('.mf-content .close').addEventListener('click', () => {
-    document.querySelector('.modal-feedback').style.display = 'none';
-})
-
-
-// setting
-
-document.getElementById("setting").addEventListener('click', () => {          
-    document.querySelector('.modal-setting').style.display = 'flex';
-});
-document.querySelector('.ms-content .close').addEventListener('click', () => {
-    document.querySelector('.modal-setting').style.display = 'none';
-})
-
-// about us
-document.getElementById("aboutus").addEventListener('click', () => {          
-    document.querySelector('.modal-aboutus').style.display = 'flex';
-});
-document.querySelector('.ma-content .close').addEventListener('click', () => {
-    document.querySelector('.modal-aboutus').style.display = 'none';
-});
-
-//set time and date
-setInterval(() => { 
-    let newDate = new Date();
-    let time = newDate.getHours() + ":" + newDate.getMinutes() + ":" + newDate.getSeconds();
-    let today_full_2=  document.getElementById("today_full_2") ;
-       today_full_2.textContent = time;
-}, 1000);
-    
-var dt = new Date();
-let newdate =  dt.getDate()  + "-" + (dt.getMonth() + 1) + "-" +  dt.getFullYear();
-let today_full_1=  document.getElementById("today_full_1") ;
-today_full_1.textContent = newdate;
-tmp3 = `${month_name[monthPointer]}`+ " " + `${dt.getDate()}` +" " + `${yearPointer}`
-console.log(tmp3) 
-var tmp2 = new Date(tmp3);
-console.log(tmp2.getDay());
-dayArr = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
-document.getElementById("today").innerHTML = dayArr[tmp2.getDay()];
-
-
-//setting
-let setting = document.getElementById("setting");
-    setting.addEventListener('click', ()=> {
-    window.location.href = 'setting.html';
-});
-
-//weather
-let weather = [
-    {
-        day: '16',
-        month: '11',
-        year: '2019',
-        temperature: '30°C',
-        status: 'Partly Cloudy',
-        img: '../assets/partly_cloudy.png',
-    },
-    {
-        day: '17',
-        month: '11',
-        year: '2019',
-        temperature: '31°C',
-        status: 'Partly Cloudy',
-        img: '../assets/partly_cloudy.png',
-    },
-    {
-        day: '18',
-        month: '11',
-        year: '2019',
-        temperature: '25°C',
-        status: 'Rain',
-        img: '../assets/rain.png'
-    },
-    {
-        day: '19',
-        month: '11',
-        year: '2019',
-        temperature: '22°C',
-        status: 'Partly Cloudy',
-        img: '../assets/partly_cloudy.png',
-    },
-    {
-        day: '20',
-        month: '11',
-        year: '2019',
-        temperature: '23°C',
-        status: 'Partly Cloudy',
-        img: '../assets/partly_cloudy.png',
-    },
-    {
-        day: '21',
-        month: '11',
-        year: '2019',
-        temperature: '25°C',
-        status: 'Sunnny',
-        img: '../assets/sunny.png',
-    },
-    {
-        day: '22',
-        month: '11',
-        year: '2019',
-        temperature: '26°C',
-        status: 'Sunny',
-        img: '../assets/sunny.png',
-    },
-    {
-        day: '23',
-        month: '11',
-        year: '2019',
-        temperature: '27°C',
-        status: 'Partly Cloudy',
-        img: '../assets/partly_cloudy.png',
-    },
-    {
-        day: '24',
-        month: '11',
-        year: '2019',
-        temperature: '27°C',
-        status: 'Partly Cloudy',
-        img: '../assets/partly_cloudy.png',
-    },
-    {
-        day: '25',
-        month: '11',
-        year: '2019',
-        temperature: '26°C',
-        status: 'Rain',
-        img: '../assets/rain.png',
-    },
-]
-console.log(weather);
-let today_temp = document.getElementById("today_temp").innerHTML;
-let tomor_temp = document.getElementById("tomorrow_temp").innerHTML;
-let nextday_temp = document.getElementById("nextday_temp").innerHTML;
-for(let i = 0; i < weather.length; i++){
-    if(weather[i].day == dt.getDate()){
-        today_temp = weather[i].temperature;
-        document.getElementById("today_temp").innerHTML = today_temp;
-        document.getElementById("today_icon").src= weather[i].img;
-    }
-    if(weather[i].day == dt.getDate()+1){
-        tomor_temp = weather[i].temperature;
-        document.getElementById("tomorrow_temp").innerHTML = tomor_temp;
-        document.getElementById("tomor_icon").src= weather[i].img;
-    }
-    if(weather[i].day == dt.getDate()+2){
-        nextday_temp = weather[i].temperature;
-        document.getElementById("nextday_temp").innerHTML = nextday_temp;
-        document.getElementById("nextday_icon").src= weather[i].img;
-    }
-}
-//remind
-let todayIcon = document.getElementById("today_icon").src;
-function remind(){
-    if(todayIcon == '../assets/partly_cloudy.png'){
-        document.getElementById("a_rectangle").innerHTML = "Today is a beautiful day. Enjoy your day!";
-    }else if(todayIcon == '../assets/sunny.png'){
-        document.getElementById("a_rectangle").innerHTML = "It's sunny today </br> Take care for your health </br> 👓☀️⛱️";
-    }else if(todayIcon == '../assets/rain.png'){
-        document.getElementById("a_rectangle").innerHTML = "It will rain today. Take an umbrella with you when you go out for a complete working day. </br> ☂️🌧️☔";
-    }
-    // Today is a beautiful day. Enjoy your day!
-    // It will rain today. Take an umbrella with you when you go out for a complete working day. </br> ☂️🌧️☔
-    // It's sunny today </br> Take care for your health <br> 👓☀️⛱️
-}
-remind();
-
-

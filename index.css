@@ -564,7 +564,7 @@ body {
                             /* modal task panel nha */
 #task_panel{
     display: none;
-    
+    overflow: auto;
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     padding-top: 28px; /* Location of the box */

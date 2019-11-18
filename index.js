@@ -6,7 +6,7 @@
     const monthPointer = currentMonth;
     var currentYear = d.getFullYear(); // 2019
     const yearPointer = currentYear;
-    console.log(`Thời gian hiện tại : tháng ${monthPointer+1} năm ${yearPointer}`)
+    //console.log(`Thời gian hiện tại : tháng ${monthPointer+1} năm ${yearPointer}`)
 
 ///// hàm xử lý tình huống tràn ô
 function overDate(currentMonth,currentYear){
@@ -48,12 +48,12 @@ returnDateMonth(currentMonth,currentYear);
 
 function returnDateMonth(currentMonth,currentYear){
     var first_date = month_name[currentMonth] + " " + "1" + " " + currentYear;
-    console.log(first_date);
+    //console.log(first_date);
     // November 1 2019
     var tmp = new Date(first_date);
     // có thẻ truyền vào new Date() một string theo dạng "Tháng Ngày năm" --trả ra cả thứ cũng có thể truyền vào dưới dạng (year,month,day) 
     var firstDay_no = tmp.getDay();
-    console.log(` thứ của ngày đầu tiên :${firstDay_no}`);
+    //console.log(` thứ của ngày đầu tiên :${firstDay_no}`);
     var day_name = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
     var daysInMonth = new Date(currentYear, currentMonth + 1 ,0).getDate() // ra ngày cuối cùng của tháng đang chọn
     get_calendar(firstDay_no, daysInMonth)
@@ -65,7 +65,7 @@ function returnDateMonth(currentMonth,currentYear){
 // F4 HÀM INSERT NGÀY VÀO Ô   
 
 function get_calendar(firstDay_no, daysInMonth){
-    console.log(`bắt đầu insert ngày, ngày 1 rơi vào thứ ${firstDay_no}+1`)
+    //console.log(`bắt đầu insert ngày, ngày 1 rơi vào thứ ${firstDay_no}+1`)
     var endCell = firstDay_no + daysInMonth;
     var k = 0;
     if(firstDay_no == 0){
@@ -76,41 +76,28 @@ function get_calendar(firstDay_no, daysInMonth){
         k++; // k là ngày chạy từ 0 tới cuối của tháng ấy
         innerDate[i].innerHTML = k; // i là chỉ sô index của ô trong bảng
         liDate[i].setAttribute("id",`${currentYear}-${currentMonth+1}-${k}`)
-        liDate[i].insertAdjacentHTML("beforeend",`<ul style = "display : none" id = "1${currentYear}-${currentMonth+1}-${k}"> 
-            <li class="blue">mua sấccsc</li>
-            <li class="green">mua sấccsc</li>
-            <li class="red">mua sấccsc</li>
-            <li class="blue">mua sấccsc</li>
-            <li class="green">mua sấccsc</li>
-            <li class="red">mua sấccsc</li>
-            <li class="blue">mua sấccsc</li>
-            <li class="green">mua sấccsc</li>
-            <li class="red">mua sấccsc</li>
-            <li class="blue">mua sấccsc</li>
-            <li class="green">mua sấccsc</li>
-            <li class="red">mua sấccsc</li>
-            <li class="blue">mua sấccsc</li>
-            <li class="green">mua sấccsc</li>
-            <li class="red">mua sấccsc</li>
-        </ul>`)
+        liDate[i].insertAdjacentHTML("beforeend",`<ul class="reset" style = "display : none" id = "1${currentYear}-${currentMonth+1}-${k}">
+        </ul>`);
     }
     loadTodayCounterTab();
 }
 
 
 
-//////////////// F4.1 load lên count_tab
+
 function loadTodayCounterTab(){
 
     var tmp2 = new Date();
     let tmp4 = tmp2.getDate();
     let id = `1${yearPointer}-${monthPointer+1}-${tmp4}`
-
+    console.log(id);
     let pushListUl = document.getElementById(`${id}`);
     let pushListLi = pushListUl.innerHTML; //lấy ra đống li của ô cal_day ấy
-    console.log(pushListLi)
+    //console.log(pushListLi)
     let x = countLi(pushListUl);
     insertDetailTabCounter(x); 
+
+    console.log( `hhihihihi      ${pushListUl}`);
 }
 
 
@@ -130,7 +117,8 @@ function insertDetailTabCounter(y){
     countListRoutine.innerHTML = "";
     countListDeadline.innerHTML = "";
 
-
+    console.log(y.blueLi[0]);
+    
     for( let i = 0; i < y.blueLi.length; i++){
         countListTodo.innerHTML += `<li>${y.blueLi[i].innerHTML}</li>`;
     }
@@ -155,33 +143,6 @@ function insertDetailTabCounter(y){
 //////////// F5 thêm sự kiện cho nút nhảy lịch////////
 let nextBtn = document.getElementById("next");
 let previousBtn = document.getElementById("previous");
-
-previousBtn.addEventListener("click",function previous(){
-    console.log(` in ${overDate(currentMonth,currentYear)} ô`)
-    if (currentMonth == 0){
-        currentMonth = 11;
-        currentYear -=1;
-    } else {
-        currentMonth -= 1;
-    }
-    loadAll(currentMonth,currentYear);
-    loadCalendarTag()
-})
-;
-nextBtn.addEventListener("click",function next(){
-    console.log(` in ${overDate(currentMonth,currentYear)} ô`)
-    
-    if (currentMonth == 11){
-        currentYear +=1;
-        currentMonth = 0
-    } else {
-        currentMonth += 1;
-    }
-    loadAll(currentMonth,currentYear);
-    loadCalendarTag()
-
-})
-;
 /////////////////////////////////////////////////// chuyển tháng ở đây/////////////////////////////////
 
 
@@ -223,12 +184,12 @@ function redrawCalendar1(currentMonth,currentYear){
 
 function returnDateMonth1(currentMonth,currentYear,liDate1,innerDate1){
     var first_date = month_name[currentMonth] + " " + "1" + " " + currentYear;
-    console.log(first_date);
+    //console.log(first_date);
     // November 1 2019
     var tmp = new Date(first_date);
     // có thẻ truyền vào new Date() một string theo dạng "Tháng Ngày năm" --trả ra cả thứ cũng có thể truyền vào dưới dạng (year,month,day) 
     var firstDay_no = tmp.getDay();
-    console.log(` thứ của ngày đầu tiên :${firstDay_no}`);
+    //console.log(` thứ của ngày đầu tiên :${firstDay_no}`);
     var day_name = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
     var daysInMonth = new Date(currentYear, currentMonth + 1 ,0).getDate() // ra ngày cuối cùng của tháng đang chọn
     get_calendar1(firstDay_no, daysInMonth,liDate1,innerDate1)
@@ -249,16 +210,8 @@ function get_calendar1(firstDay_no, daysInMonth,liDate1,innerDate1){
         k++; // k là ngày chạy từ 0 tới cuối của tháng ấy
         innerDate1[i].innerHTML = k; // i là chỉ sô index của ô trong bảng
         liDate1[i].setAttribute("id",`${currentYear}-${currentMonth+1}-${k}`)
-        liDate1[i].insertAdjacentHTML("beforeend",`<ul style = "display : none" id = "1${currentYear}-${currentMonth+1}-${k}"> 
-        <li class="blue">mua sấccsc</li>
-        <li class="green">mua sấccsc</li>
-        <li class="red">mua sấccsc</li>
-        <li class="blue">mua sấccsc</li>
-        <li class="green">mua sấccsc</li>
-        <li class="red">mua sấccsc</li>
-        <li class="blue">mua sấccsc</li>
-        <li class="green">mua sấccsc</li>
-        <li class="red">mua sấccsc</li>
+        liDate1[i].insertAdjacentHTML("beforeend",`<ul class="reset" style = "display : none" id = "1${currentYear}-${currentMonth+1}-${k}"> 
+
     </ul>`)
 
 
@@ -277,9 +230,9 @@ let modalDatesCount = document.getElementById("modal_Dates_count");
 let modalRoutineCount = document.getElementById("modal_Routine_count");
 let modalDeadlineCount = document.getElementById("modal_Deadline_count");
 
-///////////////// F7 thêm sự kiện ấn vào nạp lên modal
+//F7
 function setEventCell(){
-    let monthContainerList = monthContainer.getElementsByClassName('cal_day')
+    let monthContainerList = monthContainer.getElementsByClassName('cal_day');
     let monthHasId = [];
     let takeId = [];
     for(let i = 0; i < monthContainerList.length; i ++){
@@ -292,13 +245,14 @@ function setEventCell(){
     for(let i = 0; i < monthHasId.length; i ++){ //monthHasId là đúng cái ô cal_day đang trỏ vào
         takeId[i] = monthHasId[i].getAttribute("id"); //takeId[i] là id của ô cal_day ấy
         let id = takeId[i];
-        console.log(id);
+        //console.log(id);
         monthHasId[i].addEventListener("click", ()=>{
             document.querySelector('.bg_detailtasks_tab').style.display = 'flex';
             let pushListUl = document.getElementById(`1${id}`);
             let pushListLi = pushListUl.innerHTML; //lấy ra đống li của ô cal_day ấy
             insertDetailTime(pushListLi,id)
             let x = countLi(pushListUl);
+
             insertDetailData(x);
             
         })
@@ -309,17 +263,18 @@ setEventCell();
 
 function insertDetailTime(pushListLi,id){
     let splitId = id.split("-")
-    console.log(splitId); 
-    document.getElementsByClassName("date_click")[0].innerHTML = `${splitId[2]}-${splitId[1]}-${splitId[0]}`
+    //console.log(splitId); 
+    document.getElementsByClassName("date_click")[0].innerHTML = `${splitId[2]}-${splitId[1]}-${splitId[0]}`;
 
 }
 
-//////////////////// đếm số màu thẻ li F7.1
+////////////////// đếm số màu thẻ li F6.2
 function countLi(pushListUl){
-       let blueLi = pushListUl.getElementsByClassName("blue");
-       let yellowLi = pushListUl.getElementsByClassName("yellow");
-       let greenLi = pushListUl.getElementsByClassName("green");
-       let redLi = pushListUl.getElementsByClassName("red");
+
+       let blueLi = pushListUl.getElementsByClassName("blue setList");
+       let yellowLi = pushListUl.getElementsByClassName("yellow setList");
+       let greenLi = pushListUl.getElementsByClassName("green setList");
+       let redLi = pushListUl.getElementsByClassName("red setList");
        let blueCount = blueLi.length;
        let yellowCount = yellowLi.length;
        let greenCount = greenLi.length;
@@ -334,6 +289,8 @@ function countLi(pushListUl){
         greenCount : greenCount,
         redCount : redCount,
     }
+    //console.log(x);
+    
     return x;
 }
 
@@ -345,19 +302,19 @@ function insertDetailData(y){
     modalRoutine.innerHTML ="";
     modalDeadline.innerHTML="";
 
-
-
+    
+    //console.log(y.blueLi[0]);
     for( let i = 0; i < y.blueLi.length; i++){
-        modalTodo.innerHTML += `<li>${y.blueLi[i].innerHTML}</li>`;
+        modalTodo.innerHTML += `<li class = "setList1" idset = "${y.blueLi[i].getAttribute("id")}">${y.blueLi[i].innerHTML}</li>`;
     }
     for( let i = 0; i < y.yellowLi.length; i++){
-        modalDates.innerHTML += `<li>${y.yellowLi[i].innerHTML}</li>`;
+        modalDates.innerHTML += `<li class = "setList1" idset = "${y.yellowLi[i].getAttribute("id")}">${y.yellowLi[i].innerHTML}</li>`;
     }
     for( let i = 0; i < y.greenLi.length; i++){
-        modalRoutine.innerHTML += `<li>${y.greenLi[i].innerHTML}</li>`;
+        modalRoutine.innerHTML += `<li class = "setList1" idset = "${y.greenLi[i].getAttribute("id")}">${y.greenLi[i].innerHTML}</li>`;
     }
     for( let i = 0; i < y.redLi.length; i++){
-        modalDeadline.innerHTML += `<li>${y.redLi[i].innerHTML}</li>`;
+        modalDeadline.innerHTML += `<li class = "setList1" idset = "${y.redLi[i].getAttribute("id")}">${y.redLi[i].innerHTML}</li>`;
     }
 
     modalTodoCount.innerHTML = y.blueCount;
@@ -373,7 +330,7 @@ function insertDetailData(y){
 ///////////////////////////////////////////////////////////////////////
 
 
-//////////////////////// load từ li ẩn lên bảng calendar F8
+//////////////////////// load từ li ẩn lên bảng calendar
 function loadCalendarTag(){
     let monthContainerList = monthContainer.getElementsByClassName('cal_day')
     let monthHasId = [];
@@ -388,19 +345,19 @@ function loadCalendarTag(){
     for(let i = 0; i < monthHasId.length; i ++){ //monthHasId là đúng cái ô cal_day đang trỏ vào
         takeId[i] = monthHasId[i].getAttribute("id"); //takeId[i] là id của ô cal_day ấy
         let id = takeId[i];
-        console.log(id);
+        //console.log(id);
         let pushListUl = document.getElementById(`1${id}`);
         let pushListLi = pushListUl.innerHTML; //lấy ra đống li của ô cal_day ấy
-        console.log(pushListLi);
+        //console.log(pushListLi);
         let x = countLi(pushListUl); // ra một object đã xử lý đếm
-        console.log(x)
+        //console.log(x)
         let y = monthHasId[i]
-        console.log(y)
+        //console.log(y)
         insertTag(x,y);
 
     }
 }
-
+//F8
 loadCalendarTag();
 
 {/* <div class="count_day"></div>
@@ -446,7 +403,13 @@ add_btn.addEventListener('click', function(){
     task_panel.transform = "scale(1.1)";
     delete_enable.style.display = "none";
     unset_btn.textContent = "Unset";
+    unset_btn.style.display = "flex";
+    set_btn.style.width = "47%";
     work_name.value = "";
+    work_date.value = null;
+    start_time.value = null;
+    end_time.value = null;
+    enable.style.display = "none";
     let currentActive = document.getElementsByClassName("active");
         for(let i = 0; i < currentActive.length; i++) {
             console.log(currentActive[i]);
@@ -478,6 +441,8 @@ const logOut_btn = document.getElementById('logout_btn');
 const label_container = document.getElementsByClassName('active');
 const header = document.getElementById('panel_cate');
 var label_btns = header.getElementsByClassName('panel_btn');
+const feedBack_btn = document.getElementById('submit_btn');
+const feedback = document.getElementById('feed_back');
 for(var i = 0; i < label_btns.length; i++) {
     label_btns[i].addEventListener('click', function() {
         var current = document.getElementsByClassName('active');
@@ -495,8 +460,55 @@ firebase.auth().onAuthStateChanged(function(user) {
         const userId = user.uid;
         let works = firebase.database().ref(userId + '/works');
         const unsetContainer = document.getElementById('unset_list');
+        previousBtn.addEventListener("click",function previous(){
+            console.log("ahihi");
+            var setsList = [];
+            works.once('value', function(snapshot) {
+                let worksList = snapshot.val();
+                for(let i = 0; i < worksList.length; i++) {
+                    if(worksList[i] != undefined) {
+                        if(worksList[i].date != null || worksList[i].date != undefined ) {
+                            setsList.push(worksList[i]);
+                        };
+                    };
+                };
+            });
+            console.log(` in ${overDate(currentMonth,currentYear)} ô`);
+            if (currentMonth == 0){
+                currentMonth = 11;
+                currentYear -=1;
+            } else {
+                currentMonth -= 1;
+            }
+            loadAll(currentMonth,currentYear);
+            loadData(setsList);
+        });
+        nextBtn.addEventListener("click",function next(){
+            console.log("ahuhu");
+            var setsList = [];
+            works.once('value', function(snapshot) {
+                let worksList = snapshot.val();
+                for(let i = 0; i < worksList.length; i++) {
+                    if(worksList[i] != undefined) {
+                        if(worksList[i].date != null || worksList[i].date != undefined ) {
+                            setsList.push(worksList[i]);
+                        };
+                    };
+                };
+            });
+            console.log(` in ${overDate(currentMonth,currentYear)} ô`);
+            if (currentMonth == 11){
+                currentYear +=1;
+                currentMonth = 0
+            } else {
+                currentMonth += 1;
+            }
+            loadAll(currentMonth,currentYear);
+            loadData(setsList);
+        });
         works.on('value', function(snapshot) {
             let worksList = snapshot.val();
+            var setsList = [];
             if(worksList != null && worksList != undefined) {
                 unsetContainer.innerHTML = "";
                 console.log(worksList.length);
@@ -516,13 +528,26 @@ firebase.auth().onAuthStateChanged(function(user) {
                                     
                             }
                         } else {
-                            ///code lich vao
+                            let setItem = {
+                                id: i,
+                                label: worksList[i].label,
+                                name: worksList[i].name,
+                                date: worksList[i].date, 
+                                startTime: worksList[i].startTime,
+                                endTime: worksList[i].endTime,
+                                remind: worksList[i].remind,
+
+                            }
+                            setsList.push(setItem);
                         };
                     };
                     
                 };
+                loadData(setsList);
                 //get update unset
                 const updateUnsetList = document.getElementsByClassName('unsetList');
+                let unsetTotal = document.getElementById('total');
+                unsetTotal.textContent = updateUnsetList.length + ' total';
                 console.log(updateUnsetList);
                 for(let i = 0; i < updateUnsetList.length; i++) {
                     updateUnsetList[i].addEventListener('click', function(e) {
@@ -555,7 +580,51 @@ firebase.auth().onAuthStateChanged(function(user) {
                     letMake_btn.textContent = "Update";
                     delete_btn.setAttribute('index', index);
                     });
-                }
+                };
+                //get update set
+                const updateSetList = document.getElementsByClassName('setList1');
+                console.log(...updateSetList);
+                for(let i = 0; i < updateSetList.length; i++) {
+                    updateSetList[i].addEventListener('click', function(e) {
+                        console.log("ahihi");
+                        console.log(e.target);
+                        task_panel.style.display = "flex";
+                        task_panel.transform = "scale(1.1)";
+                        unset_btn.style.display = "none";
+                        set_btn.style.width = "100%";
+                        enable.style.display = "flex";
+                        delete_enable.style.display = "flex";
+                        work_name.value = e.target.textContent;
+                        let currentActive = document.getElementsByClassName("active");
+                        for(let i = 0; i < currentActive.length; i++) {
+                            console.log(currentActive[i]);
+                            currentActive[i].className = "panel_btn";
+                        };
+                        //console.log(...currentActive);
+                        let index = e.target.getAttribute('id');
+                        let label = worksList[index].label;
+                        if(label == 1) {
+                            label_btns[1].className += " active";
+                        } else if(label == 2) {
+                            label_btns[2].className += " active";
+                        } else if(label == 3) {
+                            label_btns[3].className += " active";
+                        } else {
+                            label_btns[0].className += " active";
+                        };
+                        work_date.value = worksList[index].date;
+                        start_time.value = worksList[index].startTime;
+                        end_time.value = worksList[index].endTime;
+                        if(worksList[index].remind == true) {
+                            remind_btn.checked == true;
+                        } else {
+                            remind_btn.checked == false;
+                        }
+                        unset_btn.textContent = "Update";
+                        letMake_btn.textContent = "Update";
+                        delete_btn.setAttribute('index', index);
+                        });
+                    };
             } else {
                 works.child(0).set({// thiet lap mang
                     label: 'first',
@@ -563,6 +632,34 @@ firebase.auth().onAuthStateChanged(function(user) {
                 });
             };
         });
+        function loadData(setsList){
+            console.log('ahihi');
+            
+            let reset = document.getElementsByClassName('reset');
+            console.log(...reset);
+            
+            for(let i = 0; i < reset.length; i++) {
+                reset[i].innerHTML = "";
+            }
+            for(let i = 0; i < setsList.length; i++) {
+                let id = setsList[i].date;
+                let worksContainer = document.getElementById('1'+id);
+                if(worksContainer != null) {
+                    // worksContainer.innerHTML = "";
+                if(setsList[i].label == 0) {
+                    worksContainer.insertAdjacentHTML('beforeend', `<li class = "blue setList" id="${setsList[i].id}" time="${setsList[i].startTime +' -> '+ setsList[i].endTime}">${setsList[i].name}</li>`);
+                } else if(setsList[i].label == 1) {
+                    worksContainer.insertAdjacentHTML('beforeend', `<li class = "yellow setList" id="${setsList[i].id}" time="${setsList[i].startTime +' -> '+ setsList[i].endTime}">${setsList[i].name}</li>`);
+                } else if(setsList[i].label == 2) {
+                    worksContainer.insertAdjacentHTML('beforeend', `<li class = "green setList" id="${setsList[i].id}" time="${setsList[i].startTime +' -> '+ setsList[i].endTime}">${setsList[i].name}</li>`);
+                } else {
+                    worksContainer.insertAdjacentHTML('beforeend', `<li class = "red setList" id="${setsList[i].id}" time="${setsList[i].startTime +' -> '+ setsList[i].endTime}">${setsList[i].name}</li>`);
+                }
+                loadCalendarTag();
+                }
+            };
+
+        }
         function checkFieldUnset() {
             if(work_name.value == "") {
                 alert('Enter your work name');
@@ -585,6 +682,8 @@ firebase.auth().onAuthStateChanged(function(user) {
         function checkFieldSet() {
             if(work_date.value == null|| start_time.value == null|| end_time == null) {
                 alert('Please fill full in');
+            } else if(start_time.value > end_time.value) {
+                alert('Start time must be smaller than end time');
             } else {
                 let dateArr = work_date.value.split('-');
                 let month = parseInt(dateArr[1]);
@@ -679,6 +778,12 @@ firebase.auth().onAuthStateChanged(function(user) {
             works.child(delIndex).set(null);
             console.log('deleted');
             task_panel.style.display = "none";
+        });
+        //feed back
+        feedBack_btn.addEventListener('click', function() {
+            ref.child('feedbacks').push(feedback.value);
+            console.log("feedbacks");
+            
         });
     } else {
         console.log('fail!');
@@ -899,9 +1004,6 @@ for(let i = 0; i < weather.length; i++){
         document.getElementById("nextday_icon").src= weather[i].img;
     }
 }
-<<<<<<< HEAD
-//quote
-=======
 //remind
 let todayIcon = document.getElementById("today_icon").src;
 function remind(){
@@ -917,6 +1019,5 @@ function remind(){
     // It's sunny today </br> Take care for your health <br> 👓☀️⛱️
 }
 remind();
->>>>>>> bf4eb5b7d6215fe525914db9cbe5b1f77e26db00
 
 

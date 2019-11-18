@@ -102,7 +102,8 @@ function loadTodayCounterTab(){
     //console.log(pushListLi)
     let x = countLi(pushListUl);
     insertDetailTabCounter(x); 
-
+    
+    
 }
 
 function insertDetailTabCounter(y){
@@ -314,9 +315,10 @@ function setEventCell(){
                             delete_btn.setAttribute('index', index);
                             });
                         };
-                        loadTodayCounterTab();
+
                 };
             });
+
         });
 
 
@@ -673,7 +675,7 @@ for(var i = 0; i < label_btns.length; i++) {
                 loadCalendarTag();
                 }
             };
-
+            loadTodayCounterTab();
         }
         function checkFieldUnset() {
             if(work_name.value == "") {

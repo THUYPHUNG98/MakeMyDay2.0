@@ -1007,11 +1007,11 @@ for(let i = 0; i < weather.length; i++){
 //remind
 let todayIcon = document.getElementById("today_icon").src;
 function remind(){
-    if(todayIcon = '../assets/partly_cloudy.png'){
+    if(todayIcon == '../assets/partly_cloudy.png'){
         document.getElementById("a_rectangle").innerHTML = "Today is a beautiful day. Enjoy your day!";
-    }else if(todayIcon = '../assets/sunny.png'){
+    }else if(todayIcon == '../assets/sunny.png'){
         document.getElementById("a_rectangle").innerHTML = "It's sunny today </br> Take care for your health </br> 👓☀️⛱️";
-    }else if(todayIcon = '../assets/rain.png'){
+    }else if(todayIcon == '../assets/rain.png'){
         document.getElementById("a_rectangle").innerHTML = "It will rain today. Take an umbrella with you when you go out for a complete working day. </br> ☂️🌧️☔";
     }
     // Today is a beautiful day. Enjoy your day!

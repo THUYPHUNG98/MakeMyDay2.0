@@ -1052,30 +1052,6 @@ for(var i = 0; i < label_btns.length; i++) {
     //weather
     let weather = [
         {
-            day: '16',
-            month: '11',
-            year: '2019',
-            temperature: '30°C',
-            status: 'Partly Cloudy',
-            img: '../assets/partly_cloudy.png',
-        },
-        {
-            day: '17',
-            month: '11',
-            year: '2019',
-            temperature: '31°C',
-            status: 'Partly Cloudy',
-            img: '../assets/partly_cloudy.png',
-        },
-        {
-            day: '18',
-            month: '11',
-            year: '2019',
-            temperature: '25°C',
-            status: 'Rain',
-            img: '../assets/rain.png'
-        },
-        {
             day: '19',
             month: '11',
             year: '2019',
@@ -1131,23 +1107,47 @@ for(var i = 0; i < label_btns.length; i++) {
             status: 'Rain',
             img: '../assets/rain.png',
         },
+        {
+            day: '26',
+            month: '11',
+            year: '2019',
+            temperature: '30°C',
+            status: 'Partly Cloudy',
+            img: '../assets/partly_cloudy.png',
+        },
+        {
+            day: '27',
+            month: '11',
+            year: '2019',
+            temperature: '31°C',
+            status: 'Partly Cloudy',
+            img: '../assets/partly_cloudy.png',
+        },
+        {
+            day: '28',
+            month: '11',
+            year: '2019',
+            temperature: '25°C',
+            status: 'Rain',
+            img: '../assets/rain.png'
+        },
     ]
     //console.log(weather);
     let today_temp = document.getElementById("today_temp").innerHTML;
     let tomor_temp = document.getElementById("tomorrow_temp").innerHTML;
     let nextday_temp = document.getElementById("nextday_temp").innerHTML;
     for(let i = 0; i < weather.length; i++){
-        if(weather[i].day == dt.getDate()){
+        if(weather[i].day == dt.getDate()){//today
             today_temp = weather[i].temperature;
             document.getElementById("today_temp").innerHTML = today_temp;
             document.getElementById("today_icon").src= weather[i].img;
         }
-        if(weather[i].day == dt.getDate()+1){
+        if(weather[i].day == dt.getDate()+1){//tomorrow
             tomor_temp = weather[i].temperature;
             document.getElementById("tomorrow_temp").innerHTML = tomor_temp;
             document.getElementById("tomor_icon").src= weather[i].img;
         }
-        if(weather[i].day == dt.getDate()+2){
+        if(weather[i].day == dt.getDate()+2){//next day
             nextday_temp = weather[i].temperature;
             document.getElementById("nextday_temp").innerHTML = nextday_temp;
             document.getElementById("nextday_icon").src= weather[i].img;
@@ -1156,12 +1156,14 @@ for(var i = 0; i < label_btns.length; i++) {
     //remind
     function remind() {
         for (let i = 0; i < weather.length; i++) {
-            if (weather[i].status == 'Partly Cloudy') {
-                document.getElementById("a_rectangle").innerHTML = "Today is a beautiful day. Enjoy your day!";
-            } else if (weather[i].status == 'Sunny') {
-                document.getElementById("a_rectangle").innerHTML = "It's sunny today </br> Take care for your health </br> 👓☀️⛱️";
-            } else if (weather[i].status == 'Rain') {
-                document.getElementById("a_rectangle").innerHTML = "It will rain today. Take an umbrella with you when you go out for a complete working day. </br> ☂️🌧️☔";
+            if(weather[i].day == dt.getDate()) {
+                if (weather[i].status == 'Partly Cloudy') {
+                    document.getElementById("a_rectangle").innerHTML = "Today is a beautiful day. Enjoy your day!";
+                } else if (weather[i].status == 'Sunny') {
+                    document.getElementById("a_rectangle").innerHTML = "It's sunny today </br> Take care for your health </br> 👓☀️⛱️";
+                } else if (weather[i].status == 'Rain') {
+                    document.getElementById("a_rectangle").innerHTML = "It will rain today. Take an umbrella with you when you go out for a complete working day. </br> ☂️🌧️☔";
+                }
             }
         }
     

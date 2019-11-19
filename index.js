@@ -300,6 +300,7 @@ function setEventCell(){
             let x = countLi(pushListUl);
             insertDetailData(x);
             //get update set
+
             works.once('value', function(snapshot) {
                 let worksList = snapshot.val();
                 if(worksList != null) {
@@ -319,6 +320,7 @@ function setEventCell(){
                             delete_enable.style.display = "flex";
                             work_name.value = e.target.textContent;
                             let currentActive = document.getElementsByClassName("active");
+
                             for(let i = 0; i < currentActive.length; i++) {
                                 console.log(currentActive[i]);
                                 currentActive[i].className = "panel_btn";
@@ -329,6 +331,7 @@ function setEventCell(){
                             let label = worksList[index].label;
                             if(label == 1) {
                                 label_btns[1].className += " active";
+
                             } else if(label == 2) {
                                 label_btns[2].className += " active";
                             } else if(label == 3) {
@@ -336,6 +339,7 @@ function setEventCell(){
                             } else {
                                 label_btns[0].className += " active";
                             };
+
                             let dateArr = worksList[index].date.split('-');
                             if(dateArr[1].length == 1) {
                                 dateArr[1] = "0" + dateArr[1];
@@ -556,7 +560,6 @@ for(var i = 0; i < label_btns.length; i++) {
     label_btns[i].addEventListener('click', function() {
         var current = document.getElementsByClassName('active');
         console.log(current[0]);
-        
         current[0].className = current[0].className.replace(' active','');
         this.className += ' active';
         console.log(this.className);
@@ -681,6 +684,7 @@ for(var i = 0; i < label_btns.length; i++) {
                     let label = worksList[index].label;
                     if(label == 1) {
                         label_btns[1].className += " active";
+                        
                     } else if(label == 2) {
                         label_btns[2].className += " active";
                     } else if(label == 3) {

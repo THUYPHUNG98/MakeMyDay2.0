@@ -769,7 +769,7 @@ for(var i = 0; i < label_btns.length; i++) {
                 } else {
                     if(year == d.getFullYear()) {
                         if(month < (d.getMonth() + 1)){
-                            message += 'Just set work for today or future!';
+                            message = 'Just set work for today or future!';
                         } else {
                             if(month == (d.getMonth()+1)) {
                                 if(day < d.getDate()) {
@@ -777,11 +777,11 @@ for(var i = 0; i < label_btns.length; i++) {
                                 } else {
                                     if(day == d.getDate()) {
                                         if(hours < d.getHours()) {
-                                            message = "Just set work for now or then\n";
+                                            message = "Just set work for now or then";
                                         } else {
                                             if(hours == d.getHours()) {
                                                 if(minutes < d.getMinutes()) {
-                                                    message = "Just set work for now or then\n";
+                                                    message = "Just set work for now or then";
                                                 } else {
                                                     if(start_time.value >= end_time.value) {
                                                         message = "Start time must be smaller than end time";
@@ -907,7 +907,7 @@ for(var i = 0; i < label_btns.length; i++) {
             console.log('deleted');
             task_panel.style.display = "none";
             console.log('close oke');
-            
+            document.querySelector('.bg_detailtasks_tab').style.display = 'none';
         });
         //feed back
         feedBack_btn.addEventListener('click', function() {

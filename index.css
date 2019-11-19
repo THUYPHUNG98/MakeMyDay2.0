@@ -338,7 +338,7 @@ body {
     text-align: center;
     width: 85%;
     min-height:55px;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     margin: 10px auto;
     overflow-wrap: break-word;
@@ -346,8 +346,8 @@ body {
     font-size: 20px;
     color: white;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    /* overflow: hidden;
+    text-overflow: ellipsis; */
     
 
 }

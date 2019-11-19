@@ -615,13 +615,21 @@ for(var i = 0; i < label_btns.length; i++) {
                     if(worksList[i] != undefined) {
                         if(worksList[i].date == null || worksList[i].date == undefined ) {
                             if(worksList[i].label == 0) {
-                                unsetContainer.insertAdjacentHTML('beforeend', `<li class="blue unsetList" id="${i}">${worksList[i].name}</li>`);
+                                unsetContainer.insertAdjacentHTML('beforeend', `<li class="blue unsetList tooltip" id="${i}">${worksList[i].name}
+                                                                                    <span class= "tooltiptext"  style="background-color: #5696E1 ;">${worksList[i].name}</span>
+                                                                                </li>`);
                             } else if(worksList[i].label == 1) {
-                                unsetContainer.insertAdjacentHTML('beforeend', `<li class="yellow unsetList" id="${i}">${worksList[i].name}</li>`);
+                                unsetContainer.insertAdjacentHTML('beforeend', `<li class="yellow unsetList tooltip" id="${i}">${worksList[i].name}
+                                                                                    <span class= "tooltiptext"  style="background-color: #FFCC00 ;">${worksList[i].name}</span>
+                                                                                </li>`);
                             } else if(worksList[i].label == 2) {
-                                unsetContainer.insertAdjacentHTML('beforeend', `<li class="green unsetList" id="${i}">${worksList[i].name}</li>`);
+                                unsetContainer.insertAdjacentHTML('beforeend', `<li class="green unsetList tooltip" id="${i}">${worksList[i].name}
+                                                                                    <span class= "tooltiptext"  style="background-color: #72DB72 ;">${worksList[i].name}</span>
+                                                                                </li>`);
                             } else if(worksList[i].label == 3){
-                                unsetContainer.insertAdjacentHTML('beforeend', `<li class="red unsetList" id="${i}">${worksList[i].name}</li>`);
+                                unsetContainer.insertAdjacentHTML('beforeend', `<li class="red unsetList tooltip" id="${i}">${worksList[i].name}
+                                                                                    <span class= "tooltiptext"  style="background-color: #FF8383 ;">${worksList[i].name}</span>
+                                                                                </li>`);
                             } else {
                                 console.log('no unset');
                                     

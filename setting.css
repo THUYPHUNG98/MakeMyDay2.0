@@ -45,7 +45,7 @@ body {
     font-size: 1.1rem;
     font-weight: 700;
     color: #5696E1;
-    padding: 0 10px;
+    padding: 0 75px;
 }
 .navigation-menu li a:hover {
         text-decoration: underline;
@@ -81,7 +81,7 @@ body {
 }
 
 .form-wrapper {
-    padding: 50px 30px 0 30px;
+    padding: 40px 20px 0 20px;
     height: 80%;
     
 }
@@ -112,6 +112,9 @@ body {
     left: 5px;
     z-index: 1;
 }
+.wrap-name{
+    margin-bottom: 20px;
+}
 .wrap-name .input-wrapper {
     flex: 0 0 48%;
 }
@@ -136,10 +139,10 @@ button {
 }
 
 .btn-wrapper button {
-    padding: 5px 20px;
+    padding: 5px 10px;
     font-size: 1.1rem;
     font-weight: 700;
-    margin-top: 20px;
+    margin-top: 4px;
     color: #fff;
     background: #5696E1;
     border: 1px solid #5696E1;
@@ -154,7 +157,9 @@ button {
 .left-box img {
     border-radius: 100%;
     width: 120px ;
-    height: 120px
+    height: 120px;
+    margin-bottom: 15px;
+
 }
 
 /* modal feedback */

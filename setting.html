@@ -9,50 +9,78 @@
 </head>
 
 <body>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-database.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-analytics.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-auth.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDEbLyxX7Z3DnQNc3Gw_MRBIrdutFk3rLg",
+            authDomain: "makemyday-eee4f.firebaseapp.com",
+            databaseURL: "https://makemyday-eee4f.firebaseio.com",
+            projectId: "makemyday-eee4f",
+            storageBucket: "makemyday-eee4f.appspot.com",
+            messagingSenderId: "971213658274",
+            appId: "1:971213658274:web:0f3af11dee68dea1fe5ffb",
+            measurementId: "G-52M14G18F5"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
     <div class="register-box">
         <div class="left-box">
             <img src="./assets/demo.webmaster541295de29059.png" alt="">
             <div class="btn-wrapper">
-                    <button type="button" id="signup_button">Upload your new avatar</button>
+                    <div id="user">Username</div>
+                    <!-- <button type="button" id="signup_button">Delete account</button> -->
                 </div>
         </div>
         <div class="right-box">
                 <ul class="navigation-menu">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="#">About us</a></li>
-                        <li id="feedback"><a href="#">Feedback</a></li>
+                        <li><a href="#">Setting</a></li>
                     </ul>
             <div class="form-wrapper">
                 <form action="">
                     <div class="wrap-name">
                         <div class="input-wrapper">
-                            <img src="assets/log_in_page element-05.png" alt="">
-                            <input type="text" placeholder="Change your first name" id="first_name">
+                            <img src="assets/log_in_page element-04.png" alt="">
+                            <input type="text" placeholder="First name" id="first_name">
                         </div>
                         <div class="input-wrapper">
-                            <img src="assets/log_in_page element-05.png" alt="">
-                            <input type="text" placeholder="Change your last name" id="last_name">
+                            <img src="assets/log_in_page element-04.png" alt="">
+                            <input type="text" placeholder="Last name" id="last_name">
+                        </div>
+                        <div class="input-wrapper">
+                                <img src="assets/log_in_page element-04.png" alt="">
+                                <input type="text" placeholder="User name" id="user_name">
+                            </div>
+                        <div class="btn-wrapper">
+                            <button type="button" id="update_button">Update profile</button>
                         </div>
                     </div>
+                    
                     <div class="input-wrapper">
                         <img src="assets/log_in_page element-05.png" alt="">
-                        <input type="email" placeholder="Change your email" id="email_input">
+                        <input type="password" placeholder="Enter old password" id="old_passwd">
                     </div>
                     <div class="input-wrapper">
                         <img src="assets/log_in_page element-05.png" alt="">
-                        <input type="email" placeholder="Confirm your email" id="confirm_email">
-                    </div>
-
-                    <div class="input-wrapper">
-                        <img src="assets/log_in_page element-05.png" alt="">
-                        <input type="password" placeholder="Change your password" id="passwd_input">
+                        <input type="password" placeholder="Enter new password" id="new_passwd">
                     </div>
                     <div class="input-wrapper">
                         <img src="assets/log_in_page element-05.png" alt="">
-                        <input type="password" placeholder="Confirm your password" id="confirm_passwd">
+                        <input type="password" placeholder="Confirm new password" id="confirm_passwd">
                     </div>
+                    
                     <div class="btn-wrapper">
-                        <button type="button" id="signup_button">Let's change</button>
+                        <button type="button" id="changepwd_button">Change password</button>
                     </div>
                 </form>
             </div>

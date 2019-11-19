@@ -1210,7 +1210,7 @@ background-size: cover;
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: #98C5FA transparent transparent transparent;
+    border-color: rgb(114, 114, 114) transparent transparent transparent;
   }
   
   .tooltip:hover .tooltiptext {

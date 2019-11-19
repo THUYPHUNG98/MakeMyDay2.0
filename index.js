@@ -129,6 +129,11 @@ function loadTodayCounterTab(){
     //console.log(pushListLi)
     let x = countLi(pushListUl);
     insertDetailTabCounter(x); 
+    let id2 = `${yearPointer}-${monthPointer+1}-${tmp4}`
+    let todayCell = document.getElementById(`${id2}`); 
+    console.log(todayCell);
+    todayCell.style.borderColor = "#BCD9FF";
+    todayCell.style.borderWidth = "4px 4px 4px 4px"
     
     
 }
@@ -295,6 +300,7 @@ function setEventCell(){
             let x = countLi(pushListUl);
             insertDetailData(x);
             //get update set
+
             works.once('value', function(snapshot) {
                 let worksList = snapshot.val();
                 if(worksList != null) {
@@ -314,6 +320,7 @@ function setEventCell(){
                             delete_enable.style.display = "flex";
                             work_name.value = e.target.textContent;
                             let currentActive = document.getElementsByClassName("active");
+
                             for(let i = 0; i < currentActive.length; i++) {
                                 console.log(currentActive[i]);
                                 currentActive[i].className = "panel_btn";
@@ -324,6 +331,7 @@ function setEventCell(){
                             let label = worksList[index].label;
                             if(label == 1) {
                                 label_btns[1].className += " active";
+
                             } else if(label == 2) {
                                 label_btns[2].className += " active";
                             } else if(label == 3) {
@@ -331,6 +339,7 @@ function setEventCell(){
                             } else {
                                 label_btns[0].className += " active";
                             };
+
                             let dateArr = worksList[index].date.split('-');
                             if(dateArr[1].length == 1) {
                                 dateArr[1] = "0" + dateArr[1];
@@ -551,7 +560,6 @@ for(var i = 0; i < label_btns.length; i++) {
     label_btns[i].addEventListener('click', function() {
         var current = document.getElementsByClassName('active');
         console.log(current[0]);
-        
         current[0].className = current[0].className.replace(' active','');
         this.className += ' active';
         console.log(this.className);
@@ -615,20 +623,20 @@ for(var i = 0; i < label_btns.length; i++) {
                     if(worksList[i] != undefined) {
                         if(worksList[i].date == null || worksList[i].date == undefined ) {
                             if(worksList[i].label == 0) {
-                                unsetContainer.insertAdjacentHTML('beforeend', `<li class="blue unsetList tooltip" id="${i}">${worksList[i].name}
-                                                                                    <span class= "tooltiptext"  style="background-color: #5696E1 ;">${worksList[i].name}</span>
+                                unsetContainer.insertAdjacentHTML('beforeend', `<li class="blue unsetList " id="${i}">${worksList[i].name}
+                                                                              
                                                                                 </li>`);
                             } else if(worksList[i].label == 1) {
-                                unsetContainer.insertAdjacentHTML('beforeend', `<li class="yellow unsetList tooltip" id="${i}">${worksList[i].name}
-                                                                                    <span class= "tooltiptext"  style="background-color: #FFCC00 ;">${worksList[i].name}</span>
+                                unsetContainer.insertAdjacentHTML('beforeend', `<li class="yellow unsetList " id="${i}">${worksList[i].name}
+                                                                               
                                                                                 </li>`);
                             } else if(worksList[i].label == 2) {
-                                unsetContainer.insertAdjacentHTML('beforeend', `<li class="green unsetList tooltip" id="${i}">${worksList[i].name}
-                                                                                    <span class= "tooltiptext"  style="background-color: #72DB72 ;">${worksList[i].name}</span>
+                                unsetContainer.insertAdjacentHTML('beforeend', `<li class="green unsetList " id="${i}">${worksList[i].name}
+                                                                              
                                                                                 </li>`);
                             } else if(worksList[i].label == 3){
-                                unsetContainer.insertAdjacentHTML('beforeend', `<li class="red unsetList tooltip" id="${i}">${worksList[i].name}
-                                                                                    <span class= "tooltiptext"  style="background-color: #FF8383 ;">${worksList[i].name}</span>
+                                unsetContainer.insertAdjacentHTML('beforeend', `<li class="red unsetList " id="${i}">${worksList[i].name}
+                                                                               
                                                                                 </li>`);
                             } else {
                                 console.log('no unset');
@@ -676,6 +684,7 @@ for(var i = 0; i < label_btns.length; i++) {
                     let label = worksList[index].label;
                     if(label == 1) {
                         label_btns[1].className += " active";
+                        
                     } else if(label == 2) {
                         label_btns[2].className += " active";
                     } else if(label == 3) {
@@ -994,23 +1003,32 @@ for(var i = 0; i < label_btns.length; i++) {
     });
 
     //set time and date
-    setInterval(() => { 
-        let newDate = new Date();
-        let hours = newDate.getHours();
-        let minutes = newDate.getMinutes();
-        let seconds = newDate.getSeconds();
-        if(hours.toString().length == 1) {
-            hours = "0" + hours;
-        };
-        if(minutes.toString().length == 1) {
-            minutes = "0" + minutes;
-        };
-        if(seconds.toString().length == 1) {
-            seconds = "0" + seconds;
+    setInterval(() => {
+        var dt = new Date();
+        let newdate = dt.getDate() + "/" + (dt.getMonth() + 1) + "/" + dt.getFullYear();
+        let today_full_1 = document.getElementById("today_full_1");
+        today_full_1.textContent = newdate;
+    
+        var hclock = dt.getHours();
+        var mclock = dt.getMinutes();
+        var sclock = dt.getSeconds();
+        var session = 'AM';
+        if (hclock == 0) {
+            hclock = 12;
         }
-        let time = hours + ":" + minutes + ":" + seconds;
-        let today_full_2=  document.getElementById("today_full_2") ;
+        if (hclock > 12) {
+            hclock = hclock - 
+            12;
+            session = 'PM';
+        }
+        hclock = (hclock < 10) ? '0' + hclock : hclock;
+        mclock = (mclock < 10) ? '0' + mclock : mclock;
+        sclock = (sclock < 10) ? '0' + sclock : sclock;
+        let time = hclock + ":" + mclock + ":" + sclock + " " + session;
+        let today_full_2 = document.getElementById("today_full_2");
         today_full_2.textContent = time;
+    
+    
     }, 1000);
         
     var dt = new Date();

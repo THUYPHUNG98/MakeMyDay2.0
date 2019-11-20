@@ -12,6 +12,11 @@ body {
 
 
 }
+#allPage{
+    min-width: 1070px;
+    max-height: 963px;
+    overflow: auto;
+}
                 /* user info */
 .user_info_nav{
     margin-top: 15px;

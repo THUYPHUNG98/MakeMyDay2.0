@@ -854,6 +854,7 @@ for(var i = 0; i < label_btns.length; i++) {
                             name: work_name.value,
                         });
                         work_name.value = "";
+                        // alert('Adding unset work succeed!');
                     } else { // update unset
                         let upIndex = delete_btn.getAttribute('index');
                         works.child(upIndex).set({
@@ -861,6 +862,7 @@ for(var i = 0; i < label_btns.length; i++) {
                             name: work_name.value,
                         });
                         delete_btn.setAttribute('index', '');
+
                         task_panel.style.display = "none";
                     };
                 };
@@ -891,6 +893,7 @@ for(var i = 0; i < label_btns.length; i++) {
                             work_date.value = setDate;
                             start_time.value = time;
                             end_time.value = time1;
+                            // alert('Adding work succeed!');
                         } else {//update set
                             let upIndex = delete_btn.getAttribute('index');
                             works.child(upIndex).set({
@@ -901,6 +904,7 @@ for(var i = 0; i < label_btns.length; i++) {
                                 endTime: end_time.value,
                                 remind: remind_btn.value,
                             });
+                            // alert('Updating work succeed!');
                             delete_btn.setAttribute('index', '');
                             task_panel.style.display = "none";
                             document.querySelector('.bg_detailtasks_tab').style.display = 'none';

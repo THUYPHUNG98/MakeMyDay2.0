@@ -917,6 +917,9 @@ for(var i = 0; i < label_btns.length; i++) {
         feedBack_btn.addEventListener('click', function() {
             ref.child('feedbacks').push(feedback.value);
             console.log("feedbacks");
+            document.querySelector('.modal-feedback').style.display = 'none';
+            alert('Your feedback has been sent, have a good day ❤')
+
             
         });
                 // set button

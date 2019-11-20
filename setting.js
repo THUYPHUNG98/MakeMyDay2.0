@@ -44,7 +44,7 @@ firebase.auth().onAuthStateChanged(function(user) {
             user.reauthenticateWithCredential(credential).then(function() {
                 user.updatePassword(newPasswd.value).then(function() {
                     firebase.auth().signOut().then(function() {
-                        window.location.assign('login.html');
+                        window.location.assign('index.html');
                         alert('Changing password succeed! Re-sign in to enjoy');
                       })
                   }).catch(function(error) {
@@ -71,7 +71,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                     user.delete().then(function() {
                         ref.set(null);
                         alert('Deleting succeed!');
-                        window.location.assign('login.html');
+                        window.location.assign('index.html');
                       }).catch(function(error) {
                         console.log(error);
                         
@@ -80,6 +80,6 @@ firebase.auth().onAuthStateChanged(function(user) {
             });
         });
     } else {
-        window.location.assign('login.html');
+        window.location.assign('index.html');
     }
 });

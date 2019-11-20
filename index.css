@@ -1,1226 +1,180 @@
-*{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-}
 body {
-    background-image: url(./assets/index_bg.png);
-    background-size: cover;
+    background-image: url('assets/body_background.jpg');
     background-repeat: no-repeat;
-
-
+    background-position: center;
+    background-size: cover;
+    font-family: 'Montserrat', sans-serif;
 }
-                /* user info */
-.user_info_nav{
-    margin-top: 15px;
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+button {
+    cursor: pointer;
+}
+
+.register-box {
     display: flex;
+    width: 800px;
+    height: 435px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px 70px;
+    background-image: url('assets/log_in_page\ element-02.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0 0 39px rgba(0, 0, 0, .2);
+}
+
+.register-box .left-box {
+    flex: 0 0 50%;
+}
+
+.register-box .left-box {
+    flex: 0 0 50%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     justify-content: flex-end;
-    margin-right: 30px;
-}
-#user_info_left{
-    text-align: right;
-    margin-right: 10px;
-    color: #5996e1;
-    padding-top: 8px;
-}
-#user_info_left p{
-    font-size: 30px;
-}
-#user_info_left button{
-    color: rgb(89, 150, 225);
-    border: none;
-    text-decoration: underline;
-    cursor: pointer;
-    background-color: transparent;
 }
 
-
-.user_info_nav img{
-    border-radius: 100%;
+.left-box h1,
+h3 {
+    font-weight: 600;
 }
 
-                /* bắt đầu tab weather này */
-#weather_tab{
-    display: flex;
-    margin: 0px auto; 
-    margin-top: 32px;
-    width: 70%;
-    height: 60%;
-    min-width: 1020px;
-    min-height: 510px;
-    background-image: url(./assets/log_in_page\ element-02.png);
-    background-size: cover;
-    box-shadow: 0px 0px 80px -25px  #5696E1;
-}
-#mini_tab_weather_left{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-end;
-    height: 100%;
-    width: 50%;
-    padding-bottom: 5%;
-
-
-
-}
-#mini_tab_weather_right{
-    height: 100%;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    padding-right: 4%;
-
-    
-}
-.mini{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 25%;
-    color: #5996E1;
-
-}
-.weather_icon{
-    width:90%;
-}
-.temperature{
-    font-size: 40px;
-    color: #98C5FA;
-}
-.noon{
-    font-size: 20px;
-    color: #5996E1;
+.left-box h1 {
+    color: #5696E1;
 }
 
-#nav{
-    display: flex;
-    justify-content: space-around;
-    list-style-type: none;
-    padding-top: 4%;
-    color: #5996E1;
-    font-size: 23px;
-
-}
-#nav li:hover{
-    text-decoration: underline;
-    color: #98C5FA;
-    transform: scale(1.2);
-    transition: 100ms; 
-    cursor: pointer;   
-}
-
-#today_box{
-    display: flex;
-    flex-direction: column;
-    height: 91%;
-    align-items: center;
-    margin: 10% 0%;
-}
-#just_today{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    font-size: 85px;
-
-}
-#today{
-    display: flex;
-    justify-content: center;
-    color: #5996E1;
-
-}
-#today_full{
-    display: flex;
-    justify-content: space-around;
-    font-size: 28px;
-    padding-bottom:7%;
-    margin: 0px 25px;
-
-}
-#today_full_1{
-    text-align: right;
-    color: #98C5FA;
-    width: 138px;
-    height: 35px;
-    margin-right: 10px;
-}
-#today_full_2{
-    text-align: left;
-    display: flex;
-    justify-content: center;
-    color: #BCD9FF;
-    width: 200px;
-    height: 35px;
-    margin-left: 10px;
-}
-#a_rectangle{
-    color: white;
-    justify-content: center;
-    text-align: center;
-    display: flex;
-    padding: 10%;
-    align-items: center;
-    width: 70%;
-    height: 56%;
-    background-color: #BCD9FF;
-    font-size: 27px;
-    font-family: 'Caveat', cursive;
-
-}
-
-
-                /* bắt đầu tab today counter này */
-#todaycounter_tab{
-    display: flex;
-    margin: 50px auto; 
-    width: 70%;
-    height: 35%;
-    min-width: 1020px;
-    min-height: 266px;
-    justify-content: space-between;
-
-}  
-.count_box{
-    display:flex;
-    flex-direction: column;
-    height: 100%;
-    width: 23.5%;
-    background-color: white;
-    box-shadow: 0px 0px 80px -25px  #5696E1;
-    
-}
-.count_box_first{
-    z-index: 0;
-    display: flex;
-    width: 100%;
-    height: 43%;
-}
-.count_number{
-    display: flex;
-    height: 100%;
-    width: 28%;
-    background-color:  #EAF4FF;
-    justify-content: center;
-    align-items: center;
-    font-size: 45px ;
-    
-}
-.count_name{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 72%;
-    font-size: 28px;
-    background-color: rgb(210, 230, 251);
-
-}
-.count_list{
-    padding-left: 18%;
-    padding-top: 10%;
-    padding-right: 3%;
-    overflow-x: hidden;
-    overflow-y: auto;
-
-}
-.count_list ul{
-    font-size: 19px;
-    height: 100%;
-    width: 100%;
-    /* list-style-type: disc; */
-}
-
-
-
-              /* bắt đầu tab today calender này */
-#calendar_tab{
-    display: flex;
-    margin: 50px auto; 
-    margin-bottom: 100px;
-    width: 70%;
-    height: 95%;
-    min-width: 1020px;
-    min-height: 842px;
-    justify-content: space-between;
-
-    
-}
-
-#calendar{
-    display: flex;
-    height: 100%;
-    min-height: 768px;
-    background-color: white;
-    width: 74%;
-    flex-direction: column;
-    box-shadow: 0px 0px 80px -25px  #5696E1;
-}
-
-                /* tab todo bên phải */
-#unset{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 11%;
-    width: inherit;
-    font-size: 30px;
-    color: #5996E1;
-    
-
-}
-#todo{
-    display: flex;
-    height: 100%;
-    min-height: 768px;
-    background-color: white;
-    width: 24%;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0px 0px 80px -25px  #5696E1;
-    position: relative;
-}
-
-#addBtn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    bottom: 5%;
-    right: 5%;
-    height: 80px;
-    width: 80px;
-    border: none;
-    border-radius: 50%;
-    background-color: rgb(255, 169, 169);
-    font-size: 80px;
-    color: white;
-    position: absolute;
-    top: -21px;
-    right: -23px;
-}
-#addBtn:hover{
-    background-color: #FF8383;
-    transform: scale(1.1);
-    transition: 300ms;
-    cursor: pointer;
-}
-#todo_list{
-    display: flex;
-    height: 85%;
-    width: 100%;
-    min-height: 663px;
-}
-#total{
-
-    font-size: 25px;
-    padding-bottom: 20px;
-    align-items: center;
-    justify-self: flex-end;
+.left-box h3 {
     color: #BCD9FF;
 }
-#todo_list ul{
-    display: flex;
-    list-style-type: none;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    min-height: 653px ;
-    overflow: auto;
-}
-#todo_list ul:hover{
-    cursor: pointer;
-}
 
-#todo_list>ul li{
-    display: flex;
-    text-align: center;
-    width: 85%;
-    min-height:55px;
-    justify-content: center;
-    align-items: center;
-    margin: 10px auto;
-    padding: 5px 10px;
-    overflow-wrap: break-word;
-    box-shadow: 1px 12px 25px -18px  rgb(0, 0, 0);
-    font-size: 20px;
-    color: white;
-    
-
-}
-
-#todo_list>ul li:hover{
-    cursor: pointer;
-    transform: scale(1.1);
-    transition: 100ms;
-}
-.blue {
-    background-color: #5696E1;
-}
-.active {
-    background-color: #5696E1;
-    transform: scale(1.1);
-}
-/* .blue:hover{
-    transform: scale(1.1);
-    transition-delay: 0ms;
-} */
-.red{
-    background-color: #FF8383;
-}
-/* .red:hover{
-    transform: scale(1.1);
-    transition-delay: 0ms;
-} */
-.yellow{
-    background-color: #FFCC00;
-}
-/* .yellow:hover{
-    transform: scale(1.1);
-    transition-delay: 0ms;
-} */
-.green{
-    background-color: #72DB72;
-}
-/* .green:hover{
-    transform: scale(1.1);
-    transition-delay: 0ms;
-} */
-
-
-
-                        /*modal ở đây */
-
-
-                  /* tab month và week */
-#cal_1{
-     
-    display: flex;
-    height: 10%;
-    min-height: 53px;
-    background-color:  #EAF4FF;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-
-}
-.shift_month{
-    display: flex;
-    height: 60px;
-    width: 60px;
-    background-color: #BCD9FF;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 40px;
-
-}
-#previous{ 
-    transform: rotate(-90deg);
-}
-#previous:hover{
-    transform: scale(1.1) rotate(-90deg);
-    background-color: #5696E1;
-    transition: 100ms;
-    cursor: pointer;
-}
-#next{ 
-    transform: rotate(90deg);
-}
-#next:hover{
-    transform: scale(1.1) rotate(90deg);
-    background-color: #5696E1;
-    transition: 100ms;
-    cursor: pointer;
-}
-#month_and_year{
-    font-size: 30px;
-    color: #5696E1;
-}
-
-
-
-                /* phần hiện thứ mấy */
-
-#cal_2{
-    display: flex;
-    justify-content: space-between;
-    margin: 26px; 
-    font-size: 26px;
-    color: #98C5FA;
-}
-#cal_2 div{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 14%;
-}
-
-                /* phần hiện lịch */
-#cal_3{
-    display: flex;
-    flex-direction: column;
-    width: 95%;
-    /* height: 78%; */
-    height: 677px;
-    margin: 0px auto;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    
-
-
-}
-#month_container{
-    display: flex;
-    width: 100%;
-    height: 100%;
-    flex-wrap: wrap;
-}
-/* #space_month_div{
-    width: 100%;
-    min-height: 100px;
-    background-color: white;
-}     */
-
-/* .month_div>ul{
-    display: flex;
-    width: 100%;
-    height: 100%;
-    flex-wrap: wrap;
-} */
-            /* phần hiện từng ngày trong lịch */
-.cal_day{
-    list-style-type: none;
-    width: 14.21%;
-    height: 20%;
-    border-style: solid;
-    border-width: 5px 2.5px;
-    border-color: #EAF4FF; 
-    justify-content: center;
-
-}
-.cal_day:hover{
-    transform: scale(1.1);
-    transition: 200ms;
-    background-color: #EAF4FF;
-    color: #5696E1;
-    cursor: pointer;
-}
-
-.cal_day .count_day{
-    height: 30%;
-    width: 96%;
-    font-size: 25px;
-    padding-left: 8px;
-
-}
-.cal_day .count_blue{
-    height: 16%;
-    width: 96%;
-    background-color: #5696E1;
-    margin: 0px 3px;
-    padding-left: 8px;
-    color: white;
-}
-.cal_day .count_blue:hover{
-    transform: scale(1.1);
-}
-.cal_day .count_green{
-    height: 16%;
-    width: 96%;
-    background-color: #72DB72;
-    margin: 0px 3px;
-    padding-left: 8px;
-    color: white;
-}
-.cal_day .count_green:hover{
-    transform: scale(1.1);
-
-}
-.cal_day .count_yellow{
-    height: 16%;
-    width: 96%;
-    background-color: #FFCC00;
-    margin: 0px 3px;
-    padding-left: 8px;
-    color: white;
-
-}
-.cal_day .count_yellow:hover{
-    transform: scale(1.1);
-
-}
-.cal_day .count_red{
-    height: 16%;
-    width: 96%;
-    background-color: #FF8383;
-    margin: 0px 3px;
-    padding-left: 8px;
-    color: white;
-
-}
-.cal_day .count_red:hover{
-    transform: scale(1.1);
-
-}
-
-
-                            /* modal task panel nha */
-#task_panel{
-    display: none;
-    overflow: auto;
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 28px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-.close_panel{
-    color: #98C5FA;
-    position: absolute;
-    top: -16px;
-    right: -9px;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  .close_panel:hover{
-      transform: scale(1.3);
-      color: #5696E1;
-      cursor: pointer;
-  }
-  #task_panel_content{
-    display: flex;
-    background-color: #fefefe;
-    overflow: auto;
-    margin: auto;
-    padding: 25px;
-    border: 1px solid #888;
-    width: 25%;
-    /* height: 98%;  */
-    min-width: 452px;
-    align-items: center;
-    flex-direction: column;
-}
-#task_panel_content_holder{
-    width: 100%;
-    /* height: 480px; */
-    position: relative;
-}
-#panel_add{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 25%;
-}
-.panel_name{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px 0px 10px 0px;
+.right-box {
     width: 100%;
 }
-.line{
-    width: 30%;
-    height: 2px;
-    background-color: #5696E1;
-}
 
-.name1{
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    font-size: 20px;
-    color: #5696E1;
-    
-
-}
-#input_name{
-    background-color: #BCD9FF;
-    border: none;
-    height: 15%;
-    width: 100%;
-    max-height: 53px;
-    min-height: 42px;
-    font-size: 30px;
-    color: #5696E1;
-    text-align: center;
-    
-}
-                        /* set label nha */
-#panel_cate{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-height: 70px;
-    height: 60px;
-}
-.panel_btn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 70%;
-    min-height: 50px;
-    width: 24%;
-    background-color: #BCD9FF;
-    color: white;
-    cursor: pointer;
-}
-.panel_btn active{
-    background-color: #5696E1;
-}
-
-
-/* #panel_cate div:hover {
-    transform: scale(1.05);
-    background-color: #5696E1;
-    transition: 200ms;
-    cursor: pointer;
-} */
-.line1{
-    width: 100%;
-    height: 3px;
-    background-color: #5696E1;
-}
-#panel_set{
-    display: flex;
-    margin-top: 5px;
-    width: 100%;
-    height: 60px;
-    max-height: 70px;
-    justify-content: space-between;
-    align-items: center;
-}
-#panel_set div{
-    display: flex;
-    height: 70%;
-    min-height: 50px;
-    width: 48%;
-    background-color:#BCD9FF;
-    justify-content: space-around;
-    align-items: center;
-    color: white;
-    font-size: 20px;
-}
-#panel_set div:hover{
-    transform: scale(1.05);
-    background-color: #5696E1;
-    transition: 200ms;
-    cursor: pointer;
-}
-#noti_set{
-    color: #FF8383;
-}
-                        /* lúc mà ấn set nha */
-#enable{
-    width: 100%;
-    height: 100%;
-    flex-direction: column;
-}
-#pick_time{
-    display: flex;
-    background-color: #BCD9FF;
-    height: 10%;
-    max-height: 200px;
-    min-height: 42px;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 20px;
-    
-
-
-}
-#pick_time_date{
-    display: flex;
-    height: 50px;
-    width: 100%;
-    background-color: #BCD9FF;
-    border: none;
-    text-align: center;
-    padding-left: 18%;
-    font-size: 25px;
-    color: #5696E1;
-}
-
-#pick_time_icon{
-    width: 45px;
-    height: 45px;
-    background-image: url(./assets/icon_task_panel-01.png);
-    background-size: contain;
-    transform: scale(0.6) translateX(-17px);;
+.right-box .calender {
     background-position: center;
+    background-size: 100%;
     background-repeat: no-repeat;
-
-}
-
-
-
-/* #repeat_container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: 100%;
-    height: 25%;
-
-
-
-}
-.every{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    width: 31%;
-    max-height: 52px;
-    min-height: 42px;
-    height: 47%;
-    background-color:#BCD9FF;
-    margin-bottom: 10px;
-    font-size: 20px;
-}
-.every:hover{
-    transform: scale(1.1);
-    background-color: #5696E1;
-    transition: 200ms;
-    cursor: pointer;
-} */
-
-                            /* remind ở đây */
-#pick_hour{
-    display: flex;
-    flex-direction: column;
-    height: 11%;
-    max-height: 200px;
-    min-height: 42px;
-    align-items: center;
-    justify-content: space-around;
-    font-size: 20px;
-    margin-bottom: 5px;
-    
-}
-#pick_limit_hour{
-    display: flex;
-    width: 100%;
-    height: 20%;
-    max-height: 70px;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 5px;
-}
-#pick_limit_hour .box{
-    display: flex;
     height: 100%;
-    max-height: 56px;
-    min-height: 50px;
-    width: 47%;
-    background-color:#BCD9FF;
-    justify-content: space-around;
-    align-items: center;
-    color: white;
-    font-size: 20px;
+    background-image: url('assets/xxx.png');
 }
-.pick_hour_icon{
-    display:inline-block;
-    width: 45px;
-    height: 45px;
-    background-image: url(./assets/icon_task_panel-02.png);
-    background-size: contain;
-    transform: scale(0.8);
-    background-position: center;
-    background-repeat: no-repeat;
+
+.navigation-menu {
+    list-style: none;
+    display: flex;
 }
-.input_start ,.input_end{
-    display:flex;
-    height: 100%;
-    width: 70%;
-    border: none;
-    background-color: #BCD9FF;
-    color: white;
-    font-size: 20px;
-    text-align: center;
+
+.navigation-menu li a {
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 700;
     color: #5696E1;
-    
+    padding: 0 10px;
 }
 
-.input_start:hover,.input_end:hover{
-    cursor: pointer;
-}
-#arrow{
-    font-weight: bold;
+.navigation-menu li {
+    flex: 0 0 33%;
 }
 
-#remind{
-    display: flex;
-    flex-direction: column;
-    height: 30%;
-    width: 100%;
-    max-height: 80px;
-    min-height: 63px;
-    color: #5696E1;
-    margin: 5px 0px;
-}
-#remind_at_task, #remind_once{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 5px 0px;
-    height: 50px;
-    width: 100%;
-    background-color: #BCD9FF;
-    justify-content: space-between;
-    padding-left: 20px;
-    padding-right: 20px;
-    font-size: 20px;
- }
-/* #remind_at_task select{
-    height: 85%;
-    width: 15%;
-    background-color:#BCD9FF ;
-    color: white;
-    font-size: 20px;
-    border: none;
-    
-} */ */
-/* #pick_time_remind option{
-    background-color: white;
-    color: #5696E1;
-} */
-/* #remind_at_task select:hover{
-    transform: scale(1.1);
-    transition: 100ms;
-    background-color: #5696E1;
-    cursor: pointer;
-
-} */
-.checkbox{
-    display: flex;
-    height: 100px;
-    width: 100px;
-    background-color: #BCD9FF;
-    border: none;
-}
-.checkbox:hover{
-    transform: scale(2);
-    transition: 100ms;
+.navigation-menu li a:hover {
+    text-decoration: underline;
 }
 
-#make_task{
-    margin-top: 8px;
-    display: flex;
-    width: 100%;
-    height: 10%;
-    min-height:50px;
-    background-color: #5696E1;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    color: white;
-}
-#delete_task{
-    height: 50px;
-    width: 100%;
-    min-height: 42px;
-    display: flex;
-    justify-content: center;
-    background-color: #5696E1;
-    margin-top: 10px;
-    align-items: center;
-    font-size: 20px;
-    color: white;
-}
-#delete_icon{
-    height: 50%;
-    width: 10%;
-    background-image: url(./assets/icon_task_panel-03-01.png);
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
+.form-wrapper {
+    padding: 50px 30px 0 30px;
 }
 
-#delete_task:hover, #make_task:hover{
-    transform: scale(1.05);
-    transition: 100ms;
-    cursor: pointer;
-
-}
-
-/*modal detail date*/
-.setlist1:hover{
-    color: rgb(129, 129, 129);
-    transform: scale(1.1);
-    transition: 100ms;
-    cursor: pointer;
-}
-
-.bg_detailtasks_tab{
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    position: fixed;
-    top: 0;
-    /* display: flex; */
-    justify-content: center;
-    align-items: center;
-    display: none;
-}
-.bg_todaymodal_date{
-    height: 538px;
-    width: 1107px;
-    background-image: url(./assets/index_bg.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.todaymodal_tasks{
-    display: flex;
-    margin: 50px auto;
-    width: 70%;
-    height: 35%;
-    min-width: 1020px;
-    min-height: 266px;
-    justify-content: space-between;
-}
-#todaymodal_tab{
-    width: 100%;
-}
-
-.todaymodal_date{
-    display: flex;
-    background-color: #85b4eb00;
-    margin: 50px auto;
-    width: 70%;
-    padding: 22px;
-    justify-content: center;
-    /* text-align: center; */
-    color: #5696e1;
-    font-weight: bold;
-    font-size: 50px;
+.form-wrapper .input-wrapper {
     position: relative;
-    /* opacity: 0; */
-
+    margin-bottom: 20px;
 }
-/* .bg_detailtasks_tab::before{
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    width: 100vw;
-    height: 100vh;
-    filter: blur(5px);
-} */
-#close{
+
+.form-wrapper .input-wrapper input {
+    font-size: 0.95rem;
+    font-weight: 600;
+    width: 100%;
+    padding: 10px 10px 10px 40px;
+    background: #EAF4FF;
+    border: none;
+    outline: none;
+}
+
+.form-wrapper .input-wrapper img {
     position: absolute;
-    top: -23px;
-    right: -115px;
-    transform: rotate(45deg);
-    cursor: pointer;
-}
-
-.modal-feedback {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.7);
-    position: fixed; 
-     top: 0;  
-    align-items: center;
-    justify-content: center;
-    display: none;
-}
-.mf-content {
-    background-image: url(./assets/index_bg.png);
-/* a Trọng thay ảnh cho em nhé :D */
-    width: 500px;
-    height: 300px;
-    background-color : white;
-    opacity: 1;
-    border-radius: 4px;
-    text-align: center;
-    padding: 20px;
-    position: relative;
-}
-
-textarea {
-    display: block;
-    margin: 15px auto ;
-}
-.close {
-    position: absolute; 
-    top: -16px;
-    right: 18px;
-    font-size: 42px;
-    transform: rotate(45deg);
-     cursor: pointer;
-     color :#5696E1;
-     padding-bottom: 50px;
-
-}
-.submit {
-    color: white;
-    margin: 20px auto;
-    padding: 5px;
-    width: 80px; 
-    height: 30px;
-    border-radius: 2px;
-    background-color :#5696E1;
-    cursor: pointer;
-}
-
-
-/* 
- .modal-setting {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.7);
-    position: fixed; 
-     top: 0;  
-    align-items: center;
-    justify-content: center;
-    display:none;
-}  */
-
-/* aboutus */
-.ms-content {
-    background-image: url(./assets/index_bg.png);
-/* a Trọng thay ảnh cho em nhé :D */
-    width: 800px;
-    height: 500px;
-    background-color : white;
-    opacity: 1;
-    border-radius: 4px;
-    text-align: center;
-    padding: 20px;
-    position: relative;
-}
-
-.modal-aboutus {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.7);
-    position: fixed; 
-     top: 0;  
-    align-items: center;
-    justify-content: center;
-    display:none;
-}
-
-.aboutus_top{
-    display: flex;
-}
-
-#aboutus_content{
-    margin-left: 337px;
-    background-color: white;
-    height: 205px;
-    text-align: left;
-    border-radius: 5px;
-    width: 70%;
-    padding: 10px;
-    border-color: black;
-    box-shadow: 0px 0px 0px 2px;
-    color: #79a3da;
-    overflow-y: scroll;
-}
-
-.ma-content {
-    background-image: url(./assets/log_in_page\ element-02.png);
-/* a Trọng thay ảnh cho em nhé :D */
-background-repeat: no-repeat;
-background-position: center;
-background-size: cover;
-    width: 800px;
-    height: 500px;
-    background-color : white;
-    opacity: 1;
-    border-radius: 4px;
-    text-align: center;
-    padding: 20px;
-    position: relative;
-    /* overflow-y: scroll; */
-}
-.member_info img{
-    border-radius: 100%;
-}
-
-
-.member_info_detail{
-    display: flex;
-    width: 50%;
-    color: #7aa4da;
-        justify-content: center;
-
-}
-
-#member_info_top{
-    display: flex;
-    margin-top: 55px;
-}
-#member_info_bottom{
-    display: flex;
-    margin-top: 55px;
-}
-#member_name{
-    padding-top: 7px;
-    margin-left: 23px;
-}
-#member_age{
-    font-size: 13px;
-    color: #a6c2e6;
-}
-
-
-
-/* tooltip */
-.tooltip {
-    /* border-bottom: 2px solid #BCD9FF; */
-    list-style-type: disc;
-    display: list-item;
-  }
-  
-  .tooltip .tooltiptext {
-    visibility: hidden;
-    width: 80%;
-    background-color: #98C5FA;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
+    width: 28px;
+    height: 28px;
+    top: 4px;
+    left: 5px;
     z-index: 1;
-    top: 110%;
-    left: 0%;
-    opacity: 0;
-    transition-delay: 2s;
-    transition: opacity 0.1s;
-  }
- 
-  .tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    transform: rotate(180deg);
-    bottom: 100%;
-    left: 20%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: rgb(114, 114, 114) transparent transparent transparent;
-  }
-  
-  .tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-  }
-  .tooltip:hover{
-      transform: scale(1.1);
-      transition: 100ms;
-      cursor: pointer;
-      color: rgb(114, 114, 114);
+}
 
+.wrap-name {
+    display: flex;
+    justify-content: space-between;
+}
+
+.wrap-name .input-wrapper {
+    flex: 0 0 48%;
+}
+::placeholder {
+    color: white;
   }
+
+.form-wrapper .remember-me {
+    width: 100%;
+    text-align: center;
+}
+
+.form-wrapper .remember-me span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #98C5FA;
+}
+
+.btn-wrapper {
+    text-align: center;
+    width: 100%;
+}
+
+.btn-wrapper button {
+    padding: 5px 20px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-top: 20px;
+    color: #fff;
+    background: #5696E1;
+    border: 1px solid #5696E1;
+    transition: 0.3s all ease-in-out;
+}
+
+.btn-wrapper button:hover {
+    color: #5696E1;
+    border: 1px solid #5696E1;
+    background: #fff;
+}
+
+.text-bottom {
+    width: 100%;
+    font-size: 0.8rem;
+    text-align: center;
+    font-weight: 600;
+    color: #98C5FA;
+    margin-top: 50px;
+}
+
+.text-bottom p a {
+    color: #5696E1;
+}
+.text-bottom p a:hover {
+    color: #5696E1;
+    text-decoration: underline;
+}

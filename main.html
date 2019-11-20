@@ -1,0 +1,446 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MakeMyDay</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="shortcut icon" type="image/png" href="assets/favicon.jpg">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Caveat:400,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-auth.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBBEMky6SbbPTHK_7zhlqZ5D3z56hHunXA",
+    authDomain: "make-my-day-2.firebaseapp.com",
+    databaseURL: "https://make-my-day-2.firebaseio.com",
+    projectId: "make-my-day-2",
+    storageBucket: "make-my-day-2.appspot.com",
+    messagingSenderId: "677142206196",
+    appId: "1:677142206196:web:eff1fa6a910467a9f4f0a1"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+    <div id="allPage">
+        <!-- người dùng -->
+        <div class="user_info_nav">
+            <div id="user_info_left">
+                <p id="login_name">My name</p>
+                <button id="logout_btn">Log out</button>
+            </div>
+            <img src="./assets/demo.webmaster541295de29059.png" alt="avatar" height="65" width="65">
+    </div>
+        <!-- tab weather -->
+        <div id="weather_tab">
+            <div id="mini_tab_weather_left">
+                <div class="mini" id="todayy">
+                    <div class="noon">Today</div>
+                    <div class="temperature" id="today_temp">20°C</div>
+                    <img class="weather_icon" id="today_icon" src="assets/rain_icon.png">
+                </div>
+                <div class="mini" id="tomorrow">
+                    <div class="noon">Tomorrow</div>
+                    <div class="temperature" id="tomorrow_temp">20°C</div>
+                    <img class="weather_icon" id="tomor_icon" src="assets/rain_icon.png">
+                </div>
+                <div class="mini" id="nextday">
+                    <div class="noon">Next day</div>
+                    <div class="temperature" id="nextday_temp">20°C</div>
+                    <img class="weather_icon" id="nextday_icon" src="assets/rain_icon.png">
+                </div>
+            </div>
+            <div id="mini_tab_weather_right" class='bg'>
+                <nav>
+                    <ul id="nav">
+                        <li>Home</li>
+                        <li id="setting">Setting</li>
+                        <li id="aboutus">About us</li>
+                        <li id="feedback">Feedback</li>
+                    </ul>
+                </nav>
+                <div id="today_box">
+                    <div id="just_today">
+                        <div id="today">Today</div>
+                        <div id="today_full">
+                            <span id="today_full_1"></span>
+                            <span id="today_full_2"></span>
+                        </div>
+                    </div>
+
+                    <div id="a_rectangle">remind</div>
+                </div>
+
+            </div>
+        </div>
+        <!-- tab counter -->
+
+        <div id="todaycounter_tab">
+            <div class="count_box">
+                <div class="count_box_first">
+                    <div style="color: #5696E1;" class="count_number"></div>
+                    <div style="color: #5696E1;" class="count_name">To-do</div>
+                </div>
+                <div style="color: #5696E1;" class="count_list">
+                    <ul class="count_list_li">
+
+                    </ul>
+                </div>
+            </div>
+            <div class="count_box">
+                <div class="count_box_first">
+                    <div style="color: #FFCC00;" class="count_number"></div>
+                    <div style="color: #5696E1;" class="count_name">Dates</div>
+                </div>
+                <div style="color: #FFCC00;" class="count_list">
+                    <ul class="count_list_li">
+
+                    </ul>
+                </div>
+            </div>
+            <div class="count_box">
+                <div class="count_box_first">
+                    <div style="color: #72DB72;" class="count_number"></div>
+                    <div style="color: #5696E1;" class="count_name">Routine</div>
+                </div>
+                <div style="color: #72DB72;" class="count_list">
+                    <ul class="count_list_li">
+
+                    </ul>
+                </div>
+            </div>
+            <div class="count_box">
+                <div class="count_box_first">
+                    <div style="color: #FF8383;" class="count_number"></div>
+                    <div style="color: #5696E1;" class="count_name">Deadline</div>
+                </div>
+                <div style="color: #FF8383;" class="count_list">
+                    <ul class="count_list_li">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- tab calenther -->
+
+        <div id="calendar_tab">
+            <div id="calendar">
+                <div id="cal_1">
+                    <div class="shift_month" id="previous">^</div>
+                    <div id="month_and_year"> November 2019</div>
+                    <div  class="shift_month" id="next">^</div>
+                </div>
+                <div id="cal_2">
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
+                    <div>Sun</div>
+                </div>
+<!-- 
+--------------------------------------------------------                 -->
+                <div id="cal_3">
+                    <ul id="month_container"  targetmonth = "0">
+
+                  <!-- insert bảng vào đây -->
+<!-- --------------------------------------------------------                   -->
+                    </ul>
+
+
+                </div>
+            </div>
+            <!-- tab todo -->
+            <div id="todo">
+                <div id="addBtn">+</div>
+
+                <div id="unset">Unset</div>
+
+                <div id="todo_list">
+                    <ul id="unset_list">
+
+                        <!-- insert unset_lish vào chỗ này -->
+
+
+                    </ul>
+                </div>
+                <div id="total"></div>
+
+            </div>
+
+        </div>
+
+
+
+        <div id="task_panel">
+            <div id="task_panel_content">
+                <div id="task_panel_content_holder">
+                    <span class="close_panel">&times;</span>
+                    <div class="panel_name">
+                        <div class="line"></div>
+                        <div class="name1">Task name</div>
+                        <div class="line"></div>
+                    </div>
+                    <input id="input_name" type="text" value="">
+
+                    <div class="panel_name">
+                        <div class="line"></div>
+                        <div class="name1" label="abc">Category</div>
+                        <div class="line"></div>
+                    </div>
+                    <div id="panel_cate">
+                        <div class="panel_btn">To-do</div>
+                        <div class="panel_btn">Dates</div>
+                        <div class="panel_btn">Routine</div>
+                        <div class="panel_btn">Deadline</div>
+                    </div>
+                    <div class="line1"></div>
+                    <div id="panel_set">
+                        <div id="unset_btn">Unset</div>
+                        <div id="set_btn">Set</div>
+                    </div>
+                    <div id="noti_set"></div>
+                    <div id="enable" style="display: none;">
+                        <div class="panel_name">
+                            <div class="line"></div>
+                            <div class="name1">Task date</div>
+                            <div class="line"></div>
+                        </div>
+                        <div id="pick_time">
+                            <input id="pick_time_date" type="date">
+
+                        </div>
+                        <!-- <div class="panel_name">
+                            <div class="line"></div>
+                            <div class="name1">Repeat every</div>
+                            <div class="line"></div>
+                        </div>
+                        <div id="repeat_container">
+                            <div class="every">Day</div>
+                            <div class="every">Week</div>
+                            <div class="every">Month</div>
+                            <div class="every">2 Days</div>
+                            <div class="every">3 Days</div>
+                            <div class="every">4 Days</div>
+                        </div> -->
+                        <div class="panel_name">
+                            <div class="line"></div>
+                            <div class="name1">Task time</div>
+                            <div class="line"></div>
+                        </div>
+                        <div id="pick_hour">
+                            <div id="pick_limit_hour">
+                                <div class="box" id="hour_start">
+                                    <div class="pick_hour_icon"></div>
+                                    <input type="time" class="input_start" id="start_time">
+
+                                </div>
+                                <div id="arrow">→</div>
+                                <div class="box" id="hour_end">
+                                    <div class="pick_hour_icon"></div>
+                                    <input type="time" class="input_end" id="end_time">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line1"></div>
+                        <div id="remind">
+                            <!-- <div id="remind_at_task">
+                                <div>Remind me before</div>
+                                <select id="pick_time_remind">
+
+                                </select>
+                                <div>min</div>
+                                <input class="checkbox" type="checkbox">
+                            </div> -->
+                            <div id="remind_once">
+                                <div>Remind me at morning</div>
+                                <input class="checkbox" type="checkbox" id="remind_checkbox" value="false">
+                            </div>
+
+                        </div>
+                        <div class="line1"></div>
+                        <div id="make_task">Let's make</div>
+                    </div>
+
+                    <div id="delete_task">
+                        <div id="delete_icon"></div>
+                        <div id="delete_btn">Delete</div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <!-- end của task panel -->
+
+
+        <!--modal detailtasks_tab-->
+        <div class="bg_detailtasks_tab">
+            <!-- <div class="detailtasks_content"> -->
+            <div class="bg_todaymodal_date">
+                <div id="todaymodal_tab">
+                    <div class="todaymodal_date">
+                        <div class="date_click">11/11/2019</div>
+                        <div id="close">+</div>
+                    </div>
+                    <div class="todaymodal_tasks">
+                        <div class="count_box">
+                            <div class="count_box_first">
+                                <div style="color: #5696E1;" class="count_number" id="modal_Todo_count">1</div>
+                                <div style="color: #5696E1;" class="count_name">To-do</div>
+                            </div>
+                            <div style="color: #5696E1;" class="count_list" >
+                                <ul id="modal_Todo">
+                        
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="count_box">
+                            <div class="count_box_first">
+                                <div style="color: #FFCC00;" class="count_number" id="modal_Dates_count">1</div>
+                                <div style="color: #5696E1;" class="count_name">Dates</div>
+                            </div>
+                            <div style="color: #FFCC00;" class="count_list" >
+                                <ul id="modal_Dates">
+                   
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="count_box">
+                            <div class="count_box_first">
+                                <div style="color: #72DB72;" class="count_number" id="modal_Routine_count">1</div>
+                                <div style="color: #5696E1;" class="count_name">Routine</div>
+                            </div>
+                            <div style="color: #72DB72;" class="count_list" >
+                                <ul id="modal_Routine">
+                             
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="count_box">
+                            <div class="count_box_first">
+                                <div style="color: #FF8383;" class="count_number" id="modal_Deadline_count">1</div>
+                                <div style="color: #5696E1;" class="count_name">Deadline</div>
+                            </div>
+                            <div style="color: #FF8383;" class="count_list">
+                                <ul id="modal_Deadline">
+                        
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- </div> -->
+        </div>
+        <div class="modal-feedback">
+            <div class="mf-content">
+                <div class="close"> + </div>
+
+                <form action="">
+                    <textarea name="" id="feed_back" cols="50" rows="12" placeholder="Please give us your feed back"></textarea>
+                    <div class="submit" id="submit_btn">Submit</div>
+                </form>
+            </div>
+
+        </div>
+
+ 
+        <div class="modal-aboutus">
+            <div class="ma-content">
+                <div class="close"> + </div>
+                <div class="aboutus_top">
+                    <div id="aboutus_content">
+                        MakeMyDay là 1 website về quản lý thời gian và sắp xếp lịch trình. Web cung cấp cho bạn những
+                        thông tin cần thiết để bạn có thể bắt đầu một ngày mới nhanh chóng, biết những điều cần biết và
+                        giữ cho lịch trình trong một ngày của bạn luôn được sắp xếp, nhắc nhở đúng lúc. Giúp cho mọi
+                        công việc và dự định được hoàn thành, từ đó cải thiện tâm trạng, sức khỏe, lối sống.
+                        <br>
+                        MakeMyDay : với ý nghĩa trong tiếng anh là làm nên ngày của bạn, chúng tôi sẽ giữ cho công việc,
+                        lịch trình, những cuộc hẹn, của bạn luôn ngăn nắp, rõ ràng, trực quan. Và bạn có thể yên tâm
+                        rằng ngày hôm nay của mình sẽ thật suôn sẻ. Chữ “My” thể hiện tính tùy biến và cá nhân hóa trong
+                        tất cả các nội dung mà bạn cần.
+                        <br>
+                        MakeMyDay còn tới từ câu “You’ve made my day” – bạn đã khiến ngày hôm nay của tôi thật tuyệt
+                        vời. Đó chính là điều chúng tôi nỗ lực để đem tới cho bạn
+
+                    </div>
+                </div>
+                <div class="member_info">
+                    <div id="member_info_top">
+                        <div class="member_info_detail">
+                            <img src="./assets/thuy.jpg" alt="avatar" height="65" width="65">
+                            <div id="member_name">
+                                <p>PHÙNG THỊ THÙY</p>
+                                <p id="member_age">21 years old
+                                    <br>Email: thuyphung1608@gmail.com
+                                </p>
+                            </div>
+                        </div>
+                        <div class="member_info_detail">
+                            <img src="./assets/trong.jpg" alt="avatar" height="65" width="65">
+                            <div id="member_name">
+                                <p>PHAN ĐỨC TRỌNG</p>
+                                <p id="member_age">19 years old
+                                    <br>Email: phanductrong.glb@gmail.com
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="member_info_bottom">
+                        <div class="member_info_detail">
+                            <img src="./assets/son.png" alt="avatar" height="65" width="65">
+                            <div id="member_name">
+                                <p>NGUYỄN HÙNG SƠN</p>
+                                <p id="member_age">18 years old
+                                    <br>Email: nhson711@gmail.com
+                                </p>
+                            </div>
+                        </div>
+                        <div class="member_info_detail">
+                            <img src="./assets/ngan.jpg" alt="avatar" height="65" width="65">
+                            <div id="member_name">
+                                <p>TRẦN KHÁNH NGÂN</p>
+                                <p id="member_age">20 years old
+                                    <br>Email: khanhngannn710@gmail.com
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="modal-setting" style="display:none">
+            <div class="ms-content">
+                <div class="close"> + </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    
+    <script src="main.js"></script>
+</body>
+
+</html>

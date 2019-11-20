@@ -22,7 +22,7 @@ signup_btn.addEventListener('click', function(e) {
                 username: userName.value,
                 email: email.value,
             });
-            window.location.assign('login.html');
+            window.location.assign('index.html');
             alert('Signing up succeed! Log in to enjoy');
         }).catch(function(error) {
             let codeErr = error.code;

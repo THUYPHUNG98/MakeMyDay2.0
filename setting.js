@@ -31,32 +31,32 @@ firebase.auth().onAuthStateChanged(function(user) {
                 alert('Update succeed!');
             }
         });
-        var credential = firebase.auth.EmailAuthProvider.credential(
-            user.email, 
-            oldPasswd.value.toString(),
-        );
+        var credential;
         changepwd_button.addEventListener('click', function() {
-            console.log(credential);
-            
+            credential = firebase.auth.EmailAuthProvider.credential(
+            user.email, 
+            oldPasswd.value,
+        );
+        console.log(credential);
+        
+        if(newPasswd.value != ""||confirmPasswd.value !="" ||newPasswd.value == confirmPasswd.value || newPasswd.value.length < 6) {
             user.reauthenticateWithCredential(credential).then(function() {
-                console.log(credential);
-            
-                if(newPasswd.value != ""||confirmPasswd.value !="" ||newPasswd.value == confirmPasswd.value || newPasswd.value.length < 6) {
-                    user.updatePassword(newPasswd).then(function() {
-                        firebase.auth().signOut().then(function() {
-                            window.location.assign('login.html');
-                          })
-                      }).catch(function(error) {
-                        console.log(error);
-                        
-                      });
-                } else {
-                    alert('Enter your new password again! Password must be more than 6 chareacters');
-                }
+                user.updatePassword(newPasswd.value).then(function() {
+                    firebase.auth().signOut().then(function() {
+                        window.location.assign('login.html');
+                        alert('Changing password succeed! Re-sign in to enjoy');
+                      })
+                  }).catch(function(error) {
+                    console.log(error);
+                    
+                  });
               }).catch(function(error) {
                 console.log(error);
                 alert(error.message);
               });
+        } else {
+            alert('Enter your new password again! Password must be more than 6 chareacters');
+        }
         });
     } else {
         window.location.assign('login.html');

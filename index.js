@@ -184,7 +184,7 @@ function insertDetailTabCounter(y){
     if(y.blueCount == 0 && y.yellowCount == 0 && y.greenCount == 0 && y.redCount == 0) {
         setTimeout(function(){
             alert('Today you have no work! Add work to make your day ^^');
-        }, 3000);
+        }, 2000);
     }
 }
 
@@ -522,9 +522,9 @@ add_btn.addEventListener('click', function(){
     unset_btn.style.display = "flex";
     set_btn.style.width = "47%";
     work_name.value = "";
-    work_date.value = null;
-    start_time.value = null;
-    end_time.value = null;
+    // work_date.value = null;
+    // start_time.value = null;
+    // end_time.value = null;
     enable.style.display = "none";
     let currentActive = document.getElementsByClassName("active");
         for(let i = 0; i < currentActive.length; i++) {
@@ -769,26 +769,26 @@ for(var i = 0; i < label_btns.length; i++) {
                 let day = parseInt(dateArr[2]);
                 let year = parseInt(dateArr[0]);
                 if(year < d.getFullYear()) {
-                    message = 'Just set work for today or future!';
+                    message = 'Just set work for today or future! Reset your task date';
                 } else {
                     if(year == d.getFullYear()) {
                         if(month < (d.getMonth() + 1)){
-                            message = 'Just set work for today or future!';
+                            message = 'Just set work for today or future!  Reset your task date';
                         } else {
                             if(month == (d.getMonth()+1)) {
                                 if(day < d.getDate()) {
-                                    message = 'Just set work for today or future!';
+                                    message = 'Just set work for today or future!  Reset your task date';
                                 } else {
                                     if(day == d.getDate()) {
                                         if(hours < d.getHours()) {
-                                            message = "Just set work for now or then";
+                                            message = "Just set work for now or then!  Reset your task time - start time";
                                         } else {
                                             if(hours == d.getHours()) {
                                                 if(minutes < d.getMinutes()) {
-                                                    message = "Just set work for now or then";
+                                                    message = "Just set work for now or then! Reset your task time - start time";
                                                 } else {
                                                     if(start_time.value >= end_time.value) {
-                                                        message = "Start time must be smaller than end time";
+                                                        message = "Start time must be smaller than end time! Reset yout task time - end time";
                                                     } else {
                                                         date = dateArr[0] +'-'+ month +'-'+ day;
                                                     }
@@ -853,6 +853,8 @@ for(var i = 0; i < label_btns.length; i++) {
                             label: label,
                             name: work_name.value,
                         });
+                        work_name.value = "";
+                        alert('Adding unset work succeed!');
                     } else { // update unset
                         let upIndex = delete_btn.getAttribute('index');
                         works.child(upIndex).set({
@@ -860,6 +862,7 @@ for(var i = 0; i < label_btns.length; i++) {
                             name: work_name.value,
                         });
                         delete_btn.setAttribute('index', '');
+                        alert('Updating unset work succeed!');
                         task_panel.style.display = "none";
                     };
                 };
@@ -886,7 +889,11 @@ for(var i = 0; i < label_btns.length; i++) {
                                 endTime: end_time.value,
                                 remind: remind_btn.value,
                             });
-
+                            work_name.value = "";
+                            work_date.value = setDate;
+                            start_time.value = time;
+                            end_time.value = time1;
+                            alert('Adding work succeed!');
                         } else {//update set
                             let upIndex = delete_btn.getAttribute('index');
                             works.child(upIndex).set({
@@ -897,8 +904,10 @@ for(var i = 0; i < label_btns.length; i++) {
                                 endTime: end_time.value,
                                 remind: remind_btn.value,
                             });
+                            alert('Updating work succeed!');
                             delete_btn.setAttribute('index', '');
                             task_panel.style.display = "none";
+                            document.querySelector('.bg_detailtasks_tab').style.display = 'none';
                         };
                     };
                 });
@@ -907,18 +916,22 @@ for(var i = 0; i < label_btns.length; i++) {
         delete_btn.addEventListener('click', function() {
             let delIndex = delete_btn.getAttribute('index');
             console.log(delIndex);
-            works.child(delIndex).set(null);
-            console.log('deleted');
-            task_panel.style.display = "none";
-            console.log('close oke');
-            document.querySelector('.bg_detailtasks_tab').style.display = 'none';
+            var r = confirm('Are you sure to delete this work?');
+            if(r == true) {
+                works.child(delIndex).set(null);
+                alert('Deleting succeed!');
+                task_panel.style.display = "none";
+                console.log('close oke');
+                document.querySelector('.bg_detailtasks_tab').style.display = 'none';
+            };
         });
         //feed back
         feedBack_btn.addEventListener('click', function() {
             ref.child('feedbacks').push(feedback.value);
             console.log("feedbacks");
+            feedback.value = "";
             document.querySelector('.modal-feedback').style.display = 'none';
-            alert('Your feedback has been sent, have a good day ❤')
+            alert('Your feedback has been sent, have a good day ❤');
 
             
         });

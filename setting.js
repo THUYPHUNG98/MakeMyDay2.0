@@ -9,6 +9,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         const changepwd_button = document.getElementById('changepwd_button');
         const update_btn = document.getElementById('update_button');
         const userDisplay = document.getElementById('user');
+        const delAccount_btn = document.getElementById('delAccount_button');
         console.log(user.email);
         let ref = firebase.database().ref(user.uid);
         ref.on('value', function(snapshot) {
@@ -55,8 +56,28 @@ firebase.auth().onAuthStateChanged(function(user) {
                 alert(error.message);
               });
         } else {
-            alert('Enter your new password again! Password must be more than 6 chareacters');
+            alert('Enter your new password again! (Password must be more than 6 chareacters)');
         }
+        });
+        delAccount_btn.addEventListener('click', function() {
+            let password = prompt('Enter your password:');
+            credential = firebase.auth.EmailAuthProvider.credential(
+                user.email, 
+                password,
+            );
+            user.reauthenticateWithCredential(credential).then(function() {
+                var r = confirm('Are you sure to delete your account?');
+                if(r ==  true) {
+                    user.delete().then(function() {
+                        ref.set(null);
+                        alert('Deleting succeed!');
+                        window.location.assign('login.html');
+                      }).catch(function(error) {
+                        console.log(error);
+                        
+                      });
+                }
+            });
         });
     } else {
         window.location.assign('login.html');

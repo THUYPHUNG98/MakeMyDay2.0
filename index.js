@@ -5,6 +5,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         let works = firebase.database().ref(userId + '/works');
         ////////////////////////////////////////////////////////////////////////////////
 // F1 get full time - chỉ 1 lần
+let todayWorks;
 var d = new Date();
 let time, time1, setDate;
 let hours = d.getHours();
@@ -133,9 +134,7 @@ function loadTodayCounterTab(){
     let todayCell = document.getElementById(`${id2}`); 
     console.log(todayCell);
     todayCell.style.borderColor = "#BCD9FF";
-    todayCell.style.borderWidth = "4px 4px 4px 4px"
-    
-    
+    todayCell.style.borderWidth = "4px 4px 4px 4px";
 }
 
 function insertDetailTabCounter(y){
@@ -177,12 +176,16 @@ function insertDetailTabCounter(y){
                                     </li>`;
 
     }
-
+    
     countBoxTodo.innerHTML = y.blueCount;
     countBoxDates.innerHTML = y.yellowCount;
     countBoxRoutine.innerHTML = y.greenCount;
-    countBoxDeadline.innerHTML = y.redCount;   
-
+    countBoxDeadline.innerHTML = y.redCount;
+    if(y.blueCount == 0 && y.yellowCount == 0 && y.greenCount == 0 && y.redCount == 0) {
+        setTimeout(function(){
+            alert('Today you have no work! Add work to make your day ^^');
+        }, 3000);
+    }
 }
 
 
@@ -589,6 +592,7 @@ for(var i = 0; i < label_btns.length; i++) {
             }
             loadAll(currentMonth,currentYear);
             loadData(setsList);
+
         });
         nextBtn.addEventListener("click",function next(){
             console.log("ahuhu");
@@ -1166,14 +1170,13 @@ for(var i = 0; i < label_btns.length; i++) {
                 }
             }
         }
-    
         // Today is a beautiful day. Enjoy your day!
         // It will rain today. Take an umbrella with you when you go out for a complete working day. </br> ☂️🌧️☔
         // It's sunny today </br> Take care for your health <br> 👓☀️⛱️
     }
     remind();
     } else {
-        console.log('fail!');
+        window.location.assign('login.html');
     }
 
   });
